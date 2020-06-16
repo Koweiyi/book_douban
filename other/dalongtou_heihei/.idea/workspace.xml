@@ -25,7 +25,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="886e52d8-0053-419f-ac32-e368e8f1f6c7" name="默认的" comment="ceshi" />
+    <list default="true" id="886e52d8-0053-419f-ac32-e368e8f1f6c7" name="默认的" comment="ceshi">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ceshi/ceshi1.py" beforeDir="false" afterPath="$PROJECT_DIR$/ceshi/ceshi1.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +54,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -101,6 +110,10 @@
       <workItem from="1592279497793" duration="7000" />
       <workItem from="1592279729448" duration="16000" />
       <workItem from="1592279784749" duration="852000" />
+      <workItem from="1592287491412" duration="903000" />
+      <workItem from="1592295009553" duration="69000" />
+      <workItem from="1592295085789" duration="51000" />
+      <workItem from="1592295148337" duration="224000" />
     </task>
     <task id="LOCAL-00001" summary="ceshi">
       <created>1592280471161</created>
@@ -164,32 +177,32 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="777" y="184" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1592279997723" />
-    <state width="870" height="195" key="GridCell.Tab.0.bottom" timestamp="1592280357913">
+    <state width="870" height="195" key="GridCell.Tab.0.bottom" timestamp="1592294998135">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="870" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592280357913" />
-    <state width="870" height="195" key="GridCell.Tab.0.center" timestamp="1592280357913">
+    <state width="870" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592294998135" />
+    <state width="870" height="195" key="GridCell.Tab.0.center" timestamp="1592294998135">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="870" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592280357913" />
-    <state width="870" height="195" key="GridCell.Tab.0.left" timestamp="1592280357913">
+    <state width="870" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592294998135" />
+    <state width="870" height="195" key="GridCell.Tab.0.left" timestamp="1592294998135">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="870" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592280357913" />
-    <state width="870" height="195" key="GridCell.Tab.0.right" timestamp="1592280357913">
+    <state width="870" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592294998135" />
+    <state width="870" height="195" key="GridCell.Tab.0.right" timestamp="1592294998135">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="870" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592280357913" />
-    <state x="296" y="99" width="996" height="707" key="SettingsEditor" timestamp="1592280072552">
+    <state width="870" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592294998135" />
+    <state x="385" y="103" width="996" height="707" key="SettingsEditor" timestamp="1592295371683">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="296" y="99" width="996" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1592280072552" />
+    <state x="385" y="103" width="996" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1592295371683" />
     <state x="665" y="306" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592280531067">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="665" y="306" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1592280531067" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/dalongtou_heihei$ceshi1.coverage" NAME="ceshi1 Coverage Results" MODIFIED="1592280348249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ceshi" />
+    <SUITE FILE_PATH="coverage/dalongtou_heihei$ceshi1.coverage" NAME="ceshi1 Coverage Results" MODIFIED="1592295392745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ceshi" />
   </component>
 </project>
