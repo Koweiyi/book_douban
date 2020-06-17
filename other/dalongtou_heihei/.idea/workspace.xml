@@ -25,10 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="886e52d8-0053-419f-ac32-e368e8f1f6c7" name="默认的" comment="ceshi">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ceshi/ceshi1.py" beforeDir="false" afterPath="$PROJECT_DIR$/ceshi/ceshi1.py" afterDir="false" />
-    </list>
+    <list default="true" id="886e52d8-0053-419f-ac32-e368e8f1f6c7" name="默认的" comment="ceshi" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,6 +111,7 @@
       <workItem from="1592295009553" duration="69000" />
       <workItem from="1592295085789" duration="51000" />
       <workItem from="1592295148337" duration="224000" />
+      <workItem from="1592295379695" duration="696000" />
     </task>
     <task id="LOCAL-00001" summary="ceshi">
       <created>1592280471161</created>
@@ -129,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592280521105</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ceshi">
+      <created>1592295461298</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1592295461298</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,30 +182,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="777" y="184" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1592279997723" />
-    <state width="870" height="195" key="GridCell.Tab.0.bottom" timestamp="1592294998135">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1592296700417">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="870" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592294998135" />
-    <state width="870" height="195" key="GridCell.Tab.0.center" timestamp="1592294998135">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592296700417" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1592296700417">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="870" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592294998135" />
-    <state width="870" height="195" key="GridCell.Tab.0.left" timestamp="1592294998135">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592296700417" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1592296700417">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="870" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592294998135" />
-    <state width="870" height="195" key="GridCell.Tab.0.right" timestamp="1592294998135">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592296700417" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1592296700417">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="870" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592294998135" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592296700417" />
     <state x="385" y="103" width="996" height="707" key="SettingsEditor" timestamp="1592295371683">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="385" y="103" width="996" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1592295371683" />
-    <state x="665" y="306" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592280531067">
+    <state x="468" y="148" key="Vcs.Push.Dialog.v2" timestamp="1592295475206">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="665" y="306" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1592280531067" />
+    <state x="468" y="148" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1592295475206" />
+    <state x="665" y="306" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592295445176">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="665" y="306" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1592295445176" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dalongtou_heihei$ceshi1.coverage" NAME="ceshi1 Coverage Results" MODIFIED="1592295392745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ceshi" />
