@@ -10,6 +10,11 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
     </expand>
     <select>
       <path>
@@ -21,7 +26,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="886e52d8-0053-419f-ac32-e368e8f1f6c7" name="默认的" comment="ceshi">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ceshi/xiao_pa_chong.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +55,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/xiao_bug" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -119,6 +125,7 @@
       <workItem from="1592374295164" duration="2696000" />
       <workItem from="1592378478368" duration="1166000" />
       <workItem from="1592380253169" duration="657000" />
+      <workItem from="1592416994104" duration="703000" />
     </task>
     <task id="LOCAL-00001" summary="ceshi">
       <created>1592280471161</created>
@@ -204,10 +211,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="367" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592355404950" />
-    <state x="777" y="184" key="FileChooserDialogImpl" timestamp="1592363038088">
+    <state x="777" y="184" key="FileChooserDialogImpl" timestamp="1592417696136">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="777" y="184" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1592363038088" />
+    <state x="777" y="184" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1592417696136" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1592296700417">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -224,10 +231,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592296700417" />
-    <state x="385" y="103" width="996" height="707" key="SettingsEditor" timestamp="1592380308977">
+    <state x="385" y="103" width="996" height="707" key="SettingsEditor" timestamp="1592417047114">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="385" y="103" width="996" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1592380308977" />
+    <state x="385" y="103" width="996" height="707" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1592417047114" />
     <state x="646" y="325" key="VCS.EditChangelistDialog" timestamp="1592355506901">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
