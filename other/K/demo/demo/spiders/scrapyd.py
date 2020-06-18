@@ -22,7 +22,7 @@ class ScrapydSpider(scrapy.Spider):
 
             yield item
 
-        next_page = response.css("li.next a::attr(herf)").extract_first()
+        next_page = response.css("li.next a::attr(href)").extract_first()
         if next_page is not None:
             next_page = response.urljoin(next_page)
             yield  scrapy.Request(next_page, callback=self.parse)
