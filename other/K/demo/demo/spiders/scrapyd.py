@@ -14,7 +14,7 @@ class ScrapydSpider(scrapy.Spider):
 
         item = DemoItem()
 
-        for i in  quote:
+        for i in quote:
             item['cont'] = i.css(".text::text").extract_first()
             tags = i.css(".tags .tag::text").extract()
 
