@@ -26,6 +26,9 @@ class DoubanMusicPipeline:
         self.cursor = self.connect.cursor()
     
     def process_item(self, item, spider):
+
+        print("来了老弟")
+
         if isinstance(item, MusicDetailItem):
             self.process_musicdetail_item(item)
             print(item['comment_number'])
@@ -42,14 +45,23 @@ class DoubanMusicPipeline:
         return item
 
     def process_musictags_item(self, item):
+        print("come into tags process")
+        print(item['url'])
         pass
 
     def process_musictable_item(self, item):
+        print("come into table process")
+        print(item['music_url'])
+        print(item['music_id'])
         pass
 
     def process_musicuser_item(self, item):
+        print("come into user process")
+
         pass
 
     def process_musicdetail_item(self, item):
+        print("come into detail process")
+
         pass
     
