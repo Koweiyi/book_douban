@@ -8,7 +8,21 @@
 import scrapy
 
 
-class DoubanItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class BookItem(scrapy.Item):
+    book_id = scrapy.Field()
+    book_img = scrapy.Field()
+    book_name = scrapy.Field()
+    book_star = scrapy.Field()
+    book_commentCount = scrapy.Field()
+    book_author = scrapy.Field()
+    book_publish = scrapy.Field()
+    book_date = scrapy.Field()
+    book_price = scrapy.Field()
+    book_tag = scrapy.Field()
+
+
+class Tag(scrapy.Item):
+    tag_name = scrapy.Field()
+    tag_isHot = scrapy.Field()
+
+
