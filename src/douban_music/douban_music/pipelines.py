@@ -31,17 +31,16 @@ class DoubanMusicPipeline:
 
         if isinstance(item, MusicDetailItem):
             self.process_musicdetail_item(item)
-            print(item['comment_number'])
+
         elif isinstance(item, MusicUserItem):
             self.process_musicuser_item(item)
-            print(item['comment_number'])
+
         elif isinstance(item, MusicTableItem):
             self.process_musictable_item(item)
-            print(item['comment_number'])
+
         elif isinstance(item, MusicTagsItem):
             self.process_musictags_item(item)
-            print(item['music_name'])
-        
+
         return item
 
     def process_musictags_item(self, item):
