@@ -36,6 +36,11 @@ class MusicDetailItem(scrapy.Item):
     music_comment1 = scrapy.Field()
     music_comment2 = scrapy.Field()
     music_comment3 = scrapy.Field()
+    music_comment1_star = scrapy.Field()
+    music_comment2_star = scrapy.Field()
+    music_comment3_star = scrapy.Field()
+
+
 
     pass
 
