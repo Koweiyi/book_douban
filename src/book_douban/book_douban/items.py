@@ -22,7 +22,7 @@ class BookItem(Item):
     rate = Field()  # 评分
     rate_pl = Field()  # 评分人数
     five_star = Field()  # 五星比率
-    for_star = Field()  # 四星比率
+    four_star = Field()  # 四星比率
     three_star = Field()  # 三星比率
     two_star = Field()  # 二星比率
     one_star = Field()  # 一星比率
