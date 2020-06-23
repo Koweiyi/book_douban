@@ -90,32 +90,38 @@ class MusicSpider(scrapy.Spider):
         detailItem['music_vote'] = ''
         detailItem['music_comment'] = ''
         detailItem['music_comment_star'] = ''
+
         # 以下是爬取歌曲基本信息
         detailItem['music_name'] = response.xpath('//*[@id="wrapper"]/h1/span/text()').extract_first()
-        info = response.xpath('//*[@id="info"]/span').extract()
-        for i in range(0, len(info)):
-            if "又名" in info[i]:
-                # detailItem['music_rename'] = response.xpath('//*[@id="info"]/text()') \
-                #     .extract()[i+1].replace("\xa0", "").replace("\n", "").rstrip()
-                detailItem['music_rename'] = response.css('#info').re('.+又名:</span>.+')[0].split(">")[-1]
-            elif "表演者" in info[i]:
-                detailItem['music_man'] = "|".join(response.xpath('//*[@id="info"]/span[{}]/span/a/text()'.format(i + 1)).extract())
-            elif "发行时间" in info[i]:
-                # detailItem['music_time'] = response.xpath('//*[@id="info"]/text()') \
-                #     .extract()[i+1].replace("\xa0", "").replace("\n", "").rstrip()
-                detailItem['music_time'] = response.css('#info').re('.+发行时间:</span>.+')[0].split(">")[-1]
-            elif "流派" in info[i]:
-                # detailItem['music_sect'] = response.xpath('//*[@id="info"]/span[i+1]') \
-                #     .extract()[i+1].replace("\xa0", "").replace("\n", "").rstrip()
-                detailItem['music_sect'] = response.css('#info').re('.+流派:</span>.+')[0].split(">")[-1]
-            elif "专辑类型" in info[i]:
-                # detailItem['music_album'] = response.xpath('//*[@id="info"]/text()') \
-                #     .extract()[i+1].replace("\xa0", "").replace("\n", "").rstrip()
-                detailItem['music_album'] = response.css('#info').re('.+专辑类型:</span>.+')[0].split(">")[-1]
-            elif "介质" in info[i]:
-                # detailItem['music_media'] = response.xpath('//*[@id="info"]/text()') \
-                #     .extract()[i+1].replace("\xa0", "").replace("\n", "").rstrip()
-                detailItem['music_media'] = response.css('#info').re('.+介质:</span>.+')[0].split(">")[-1]
+        info = response.xpath('//*[@id="info"]/span/text()').extract()
+        lis = ["又名:", "发行时间:", "流派:", "专辑类型:", "介质:"]
+        lis_item = ['music_rename', 'music_time', 'music_sect', 'music_album', 'music_media']
+
+        for i in range(0, 5):
+            if lis[i] in info:
+                detailItem[lis_item[i]] = response.css('#info').re('.+{}</span>.+'.format(lis[i]))[0].split(">")[-1] \
+                    .replace("\xa0", "").replace("\n", "").rstrip()
+        detailItem['music_man'] = "|".join(response.css('#info span>a').xpath('string()').extract())
+
+
+        # for i in range(0, len(info)):
+        #     if "又名" in info[i]:
+        #         detailItem['music_rename'] = response.css('#info').re('.+又名:</span>.+')[0].split(">")[-1] \
+        #             .replace("\xa0", "").replace("\n", "").rstrip()
+        #     elif "表演者" in info[i]:
+        #         detailItem['music_man'] = "|".join(response.xpath('//*[@id="info"]/span[{}]/span/a/text()'.format(i + 1)).extract())
+        #     elif "发行时间" in info[i]:
+        #         detailItem['music_time'] = response.css('#info').re('.+发行时间:</span>.+')[0].split(">")[-1] \
+        #             .replace("\xa0", "").replace("\n", "").rstrip()
+        #     elif "流派" in info[i]:
+        #         detailItem['music_sect'] = response.css('#info').re('.+流派:</span>.+')[0].split(">")[-1] \
+        #             .replace("\xa0", "").replace("\n", "").rstrip()
+        #     elif "专辑类型" in info[i]:
+        #         detailItem['music_album'] = response.css('#info').re('.+专辑类型:</span>.+')[0].split(">")[-1] \
+        #             .replace("\xa0", "").replace("\n", "").rstrip()
+        #     elif "介质" in info[i]:
+        #         detailItem['music_media'] = response.css('#info').re('.+介质:</span>.+')[0].split(">")[-1] \
+        #             .replace("\xa0", "").replace("\n", "").rstrip()
         detailItem['music_mark'] = response.xpath('//*[@id="interest_sectl"]/div/div[2]/strong/text()').extract_first()
         detailItem['music_vote'] = response.xpath(
             '//*[@id="interest_sectl"]/div/div[2]/div/div[2]/a/span/text()').extract_first()
@@ -133,12 +139,12 @@ class MusicSpider(scrapy.Spider):
                 return 4
             if str == "还行":
                 return 3
-            if str == " ":
-                return 2
-            return 1
+            if str == "很差":
+                return 1
+            return 2
 
         comment_list = response.xpath('//*[@id="comments"]/ul/li')
-        if len(comment_list) < 2:
+        if len(comment_list) < 3:
             a = len(comment_list)
         else:
             a = 3
