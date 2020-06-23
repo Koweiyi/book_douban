@@ -24,6 +24,7 @@ class MusicDetailItem(scrapy.Item):
     music_man = scrapy.Field()
     music_rename = scrapy.Field()
     music_sect = scrapy.Field()
+    music_album = scrapy.Field()
     music_media = scrapy.Field()
     music_time = scrapy.Field()
     music_mark = scrapy.Field()
@@ -40,16 +41,23 @@ class MusicDetailItem(scrapy.Item):
     music_comment2_star = scrapy.Field()
     music_comment3_star = scrapy.Field()
 
+    music_comment = scrapy.Field()
+    music_comment_star = scrapy.Field()
+
 
 
     pass
 
 
 class MusicUserItem(scrapy.Item):
-    music_user_site1 = scrapy.Field()
-    music_user_site2 = scrapy.Field()
-    music_user_site3 = scrapy.Field()
-    music_user_time1 = scrapy.Field()
-    music_user_time2 = scrapy.Field()
-    music_user_time3 = scrapy.Field()
+    music_user1_site = scrapy.Field()
+    music_user2_site = scrapy.Field()
+    music_user3_site = scrapy.Field()
+    music_user1_time = scrapy.Field()
+    music_user2_time = scrapy.Field()
+    music_user3_time = scrapy.Field()
+
+    music_user_site = scrapy.Field()
+    music_user_time = scrapy.Field()
+
     pass
