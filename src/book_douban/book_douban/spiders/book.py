@@ -25,17 +25,29 @@ class BookSpider(CrawlSpider):
             tags.append(response.xpath("//*[@id='db-tags-section']/div/span[{0}]/a/text()".format(i)).extract()[0])
         item['ID'] = response.url.split('/')[-2]
         item['book_name'] = response.xpath("//div[@id='wrapper']/h1/span/text()").extract()[0]
-        item['book_author'] = response.xpath("//div[@id='info']/a[1]/text()").extract_first().replace(' ', '').replace(
-            '\n', '')
+
+        book_author = response.xpath("/html/body/div[3]/div[2]/div/div[1]/div[1]/div[1]/div[1]/div[2]/a[1]/text()") \
+            .extract_first()
+        if book_author is not None:
+            item['book_author'] = book_author.replace(' ', '').replace('\n', '')
+        else:
+            item['book_author'] = None
+
         if "出版社" in content:
             publisher = re.findall(r"<span class=\"pl\">出版社:</span>(.*?)<br>", content, re.S)
             item['publisher'] = "".join(publisher).replace('\n', '').replace(' ', '').replace("\xa0", "")
+        else:
+            item['publisher'] = ""
         if "出版年" in content:
             date = re.findall(r"<span class=\"pl\">出版年:</span>(.*?)<br>", content, re.S)
             item['date'] = "".join(date).replace('\n', '').replace(' ', '').replace("\xa0", "")
+        else:
+            item['date'] = ""
         if "定价" in content:
             price = re.findall(r"<span class=\"pl\">定价:</span>(.*?)<br>", content, re.S)
             item['price'] = "".join(price).replace('\n', '').replace(' ', '').replace("\xa0", "")
+        else:
+            item['price'] = ""
         item['tags'] = "|".join(tags)
         item['intro'] = response.xpath("//*[@id=\"link-report\"]/span[1]/div/p[1]/text()").extract_first()
         item['rate'] = response.xpath("//*[@id=\"interest_sectl\"]/div/div[2]/strong/text()").extract_first()
@@ -51,12 +63,22 @@ class BookSpider(CrawlSpider):
             comment = CommentItem()
             url = response.xpath("//*[@id=\"comments\"]/ul/li[{0}]/div/h3/span[2]/a/@href"
                                  .format(i + 1)).extract_first()
-            yield scrapy.Request(url, callback=self.parse_critic)
+            if url is not None:
+                url = response.urljoin(url)
+                yield scrapy.Request(url, callback=self.parse_critic)
             comment['ID'] = response.url.split('/')[-2]
-            comment['critic'] = response.xpath("//*[@id=\"comments\"]/ul/li[{0}]/div/h3/span[2]/a/text()"
-                                               .format(i + 1)).extract_first()
-            comment['date'] = response.xpath("//*[@id=\"comments\"]/ul/li[{0}]/div/h3/span[2]/span[2]/text()"
-                                             .format(i + 1)).extract_first()
+            critic = (response.xpath("//*[@id=\"comments\"]/ul/li[{0}]/div/h3/span[2]/a/text()"
+                                     .format(i + 1)).extract_first())
+            if critic is None:
+                continue
+            comment['critic'] = critic
+
+            date = response.xpath("//*[@id=\"comments\"]/ul/li[{0}]/div/h3/span[2]/span[2]/text()"
+                                  .format(i + 1)).extract_first()
+            if date is None:
+                continue
+            comment['date'] = date
+
             comment['star_num'] = response.xpath("//*[@id=\"comments\"]/ul/li[{0}]/div/h3/span[2]/span[1]/@title"
                                                  .format(i + 1)).extract_first()
             comment['content'] = response.xpath("//*[@id=\"comments\"]/ul/li[{0}]/div/p/span/text()"
@@ -69,5 +91,3 @@ class BookSpider(CrawlSpider):
         critic['join_date'] = response.xpath("//*[@id=\"profile\"]/div/div[2]/div[1]/div/div/text()[2]").extract_first()
         critic['user_address'] = response.xpath("//*[@id=\"profile\"]/div/div[2]/div[1]/div/a/text()").extract_first()
         yield critic
-
-
