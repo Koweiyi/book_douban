@@ -33,5 +33,12 @@ class CommentItem(Item):
     critic = Field()  # 评论人
     date = Field()  # 评论时间
     content = Field()  # 评论内容
-    critic_address = Field()  # 评论人地址
     star_num = Field()  # 评论星数
+
+
+class CriticItem(Item):
+    user_name = Field()  # 用户名
+    user_address = Field()  # 用户常住地
+    join_date = Field  # 用户加入时间
+
+
