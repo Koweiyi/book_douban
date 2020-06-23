@@ -56,11 +56,15 @@ class DoubanMusicPipeline:
 
     def process_musicuser_item(self, item):
         print("come into user process")
-
+        print(item['music_user_site'])
+        print(item['music_user_time'])
         pass
 
     def process_musicdetail_item(self, item):
         print("come into detail process")
-
+        print(item['music_name'])
+        print(item['music_rename'])
+        print(item['music_time'])
+        print(item['music_mark'])
         pass
     
