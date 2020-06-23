@@ -52,12 +52,12 @@ class DoubanMusicPipeline:
     def process_musictable_item(self, item):
         print("come into table process")
         self.cursor.execute('''
-                    SELECT * FROM dalongtou_music WHERE music_id = %s
+                    SELECT * FROM dalongtou_music WHERE music_id = \"%s\"
                     ''', (item['music_id']))
         film = self.cursor.fetchone()
 
         sql_insert1 = '''insert into dalongtou_music(music_id,music_url)
-                            value (\"%s\",\"%s\",\"%s\")''', (item['music_id'], item['music_url'])
+                            value (\"%s\",\"%s\")''', (item['music_id'], item['music_url'])
         sql_insert2 = '''insert into dalongtou_music_comment(music_id,)
                                     value \"%s\")''', (item['music_id'])
         if film is None:
@@ -107,7 +107,8 @@ class DoubanMusicPipeline:
                         music_album,music_media,music_time,music_mark,
                         music_vote,music_star1,music_star2,music_star3,
                         music_star4,music_star5)
-                        value (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) WHERE music_id = %s''', (
+                        value (\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",
+                                \"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\") WHERE music_id = %s''', (
             item['music_name'], item['music_man'], item['music_rename'],
             item['music_sect'], item['music_album'], item['music_media'],
             item['music_time'], item['music_mark'], item['music_vote'],

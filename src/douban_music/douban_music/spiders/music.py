@@ -40,6 +40,7 @@ class MusicSpider(scrapy.Spider):
     def parse_tags(self, response):
         print("come into pares_tags")
         tagsItem = MusicTagsItem()
+        tagsItem['url'] = ''
         tags_list1 = response.xpath('//*[@id="风格"]/div[2]/table/tbody/tr')
         for trr in tags_list1:
             tags_list2 = trr.xpath('td')
@@ -58,6 +59,8 @@ class MusicSpider(scrapy.Spider):
         print("come into pares_table")
 
         tableItem = MusicTableItem()
+        tableItem['music_url'] = ''
+        tableItem['music_id'] = ''
         table_list = response.xpath('//*[@id="subject_list"]/table')
         for table in table_list:
             tableItem['music_url'] = table.xpath('tr/td[1]/a/@href').extract_first()
