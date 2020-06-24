@@ -74,12 +74,12 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    # 'book_douban.pipelines.BookDoubanPipeline': 300,
+    'book_douban.pipelines.BookDoubanPipeline': 300,
     'scrapy.pipelines.images.ImagesPipeline': 1
 }
 
 IMAGES_STORE = 'images'
-IMAGES_URLS_FIELD = 'pip_book_src'
+IMAGES_URLS_FIELD = 'pic_book_src'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

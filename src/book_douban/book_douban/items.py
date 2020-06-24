@@ -26,6 +26,8 @@ class BookItem(Item):
     three_star = Field()  # 三星比率
     two_star = Field()  # 二星比率
     one_star = Field()  # 一星比率
+    pic = Field()
+    pic_sha1 = Field()
 
 
 class CommentItem(Item):
@@ -43,7 +45,7 @@ class CriticItem(Item):
 
 
 class PicItem(Item):
-    pic_book_src =Field()
+    pic_book_src = Field()
 
 
 
