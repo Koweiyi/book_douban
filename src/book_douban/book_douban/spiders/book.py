@@ -64,8 +64,7 @@ class BookSpider(CrawlSpider):
             url = response.xpath("//*[@id=\"comments\"]/ul/li[{0}]/div/h3/span[2]/a/@href"
                                  .format(i + 1)).extract_first()
             if url is not None:
-                url = response.urljoin(url)
-                yield scrapy.Request(url, callback=self.parse_critic)
+                yield scrapy.http.Request(url=url, callback=self.parse_critic, dont_filter=True)
             comment['ID'] = response.url.split('/')[-2]
             critic = (response.xpath("//*[@id=\"comments\"]/ul/li[{0}]/div/h3/span[2]/a/text()"
                                      .format(i + 1)).extract_first())
