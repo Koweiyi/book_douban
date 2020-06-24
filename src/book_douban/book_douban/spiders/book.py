@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 import scrapy
+import hashlib
 import re
+
+from scrapy.utils.python import to_bytes
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
-from book_douban.items import BookItem, CommentItem, CriticItem
+from book_douban.items import BookItem, CommentItem, CriticItem, PicItem
 
 
 class BookSpider(CrawlSpider):
@@ -19,6 +22,10 @@ class BookSpider(CrawlSpider):
 
     def parse_item(self, response):
         item = BookItem()
+        pic = PicItem()
+
+        pic['pic_book_src'] = [response.xpath("//*[@id=\"mainpic\"]/a/img/@src").extract_first()]
+
         content = "".join(response.xpath('//*[@id="info"]').extract())
         tags = []
         for i in range(1, 5):
@@ -58,13 +65,13 @@ class BookSpider(CrawlSpider):
         item['three_star'] = response.xpath("//*[@id=\"interest_sectl\"]/div/span[6]/text()").extract_first()
         item['two_star'] = response.xpath("//*[@id=\"interest_sectl\"]/div/span[8]/text()").extract_first()
         item['one_star'] = response.xpath("//*[@id=\"interest_sectl\"]/div/span[10]/text()").extract_first()
+        item['pic'] = pic['pic_book_src'][0]
+        item['pic_sha1'] = "full/%s.jpg" % (hashlib.sha1(to_bytes(pic['pic_book_src'][0])).hexdigest())
+
+        yield pic
         yield item
         for i in range(3):
             comment = CommentItem()
-            url = response.xpath("//*[@id=\"comments\"]/ul/li[{0}]/div/h3/span[2]/a/@href"
-                                 .format(i + 1)).extract_first()
-            if url is not None:
-                yield scrapy.http.Request(url=url, callback=self.parse_critic, dont_filter=True)
             comment['ID'] = response.url.split('/')[-2]
             critic = (response.xpath("//*[@id=\"comments\"]/ul/li[{0}]/div/h3/span[2]/a/text()"
                                      .format(i + 1)).extract_first())
@@ -82,7 +89,11 @@ class BookSpider(CrawlSpider):
                                                  .format(i + 1)).extract_first()
             comment['content'] = response.xpath("//*[@id=\"comments\"]/ul/li[{0}]/div/p/span/text()"
                                                 .format(i + 1)).extract_first()
+            url = response.xpath("//*[@id=\"comments\"]/ul/li[{0}]/div/h3/span[2]/a/@href"
+                                 .format(i + 1)).extract_first()
             yield comment
+            if url is not None:
+                yield scrapy.http.Request(url=url, callback=self.parse_critic, dont_filter=True)
 
     def parse_critic(self, response):
         critic = CriticItem()
