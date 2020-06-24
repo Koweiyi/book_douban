@@ -7,6 +7,6 @@
 import pymysql
 from movie_douban import settings
 
-class MovieDoubanPipeline:
+class MovieDoubanPipeline(object):
     def process_item(self, item, spider):
         return item
