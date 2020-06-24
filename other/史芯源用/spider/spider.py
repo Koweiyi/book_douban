@@ -153,6 +153,11 @@ class DouBan():
                                 au = str(string)
                                 lei = re.sub(u"\\<.*?\\>|\\{.*?}", "", au)
                                 lei = lei[1:-1]
+                                string= soup.find_all(attrs={'property':'v:initialReleaseDate'})  # get a list.
+                                au = str(string)
+                                lei = re.sub(u"\\<.*?\\>|\\{.*?}", "", au)
+                                time = lei[1:-1]
+                                print(lei)
                                 author=news
                                 #inserttable(self,table,tag,title,url,author)
                             except:
