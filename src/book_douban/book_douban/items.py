@@ -39,6 +39,12 @@ class CommentItem(Item):
 class CriticItem(Item):
     user_name = Field()  # 用户名
     user_address = Field()  # 用户常住地
-    join_date = Field  # 用户加入时间
+    join_date = Field()  # 用户加入时间
+
+
+class PicItem(Item):
+    pic_book_src =Field()
+
+
 
 
