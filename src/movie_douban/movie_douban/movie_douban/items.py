@@ -18,11 +18,12 @@ class MovieItem(scrapy.Item):
 
 
 class MovieDetailItem(scrapy.Item):
+    dbid = scrapy.Field()
     other_title = scrapy.Field()
     direct = scrapy.Field()
     country = scrapy.Field()
-    time = scrapy.Field()
-    type = scrapy.Field()
+    movie_time = scrapy.Field()
+    movie_type = scrapy.Field()
     vote_num = scrapy.Field()
     five_star = scrapy.Field()
     four_star = scrapy.Field()
@@ -32,6 +33,7 @@ class MovieDetailItem(scrapy.Item):
 
 
 class MovieCommentItem(scrapy.Item):
+    dbid = scrapy.Field()
     content = scrapy.Field()
     comment_time = scrapy.Field()
     comment_people = scrapy.Field()
