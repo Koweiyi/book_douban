@@ -20,6 +20,7 @@ class MusicTableItem(scrapy.Item):
 
 
 class MusicDetailItem(scrapy.Item):
+    music_id = scrapy.Field()
     music_name = scrapy.Field()
     music_man = scrapy.Field()
     music_rename = scrapy.Field()
@@ -50,6 +51,8 @@ class MusicDetailItem(scrapy.Item):
 
 
 class MusicUserItem(scrapy.Item):
+    music_id = scrapy.Field()
+
     music_user1_site = scrapy.Field()
     music_user2_site = scrapy.Field()
     music_user3_site = scrapy.Field()

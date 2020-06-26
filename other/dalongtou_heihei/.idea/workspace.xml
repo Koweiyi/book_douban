@@ -25,11 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="886e52d8-0053-419f-ac32-e368e8f1f6c7" name="默认的" comment="ceshi">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/douban_music/douban_music/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/douban_music/douban_music/pipelines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../src/douban_music/douban_music/spiders/music.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/douban_music/douban_music/spiders/music.py" afterDir="false" />
-    </list>
+    <list default="true" id="886e52d8-0053-419f-ac32-e368e8f1f6c7" name="默认的" comment="ceshi" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -127,7 +123,7 @@
       <workItem from="1592378478368" duration="1166000" />
       <workItem from="1592380253169" duration="657000" />
       <workItem from="1592416994104" duration="703000" />
-      <workItem from="1592923022183" duration="3959000" />
+      <workItem from="1592923022183" duration="3979000" />
     </task>
     <task id="LOCAL-00001" summary="ceshi">
       <created>1592280471161</created>
