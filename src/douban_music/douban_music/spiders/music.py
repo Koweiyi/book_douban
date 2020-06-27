@@ -82,6 +82,8 @@ class MusicSpider(scrapy.Spider):
     def parse_detail(self, response):
         print("come into detail_table")
         detailItem = MusicDetailItem()
+        detailItem['music_id'] = ''
+
         detailItem['music_name'] = ''
         detailItem['music_rename'] = ''
         detailItem['music_man'] = ''
@@ -93,6 +95,7 @@ class MusicSpider(scrapy.Spider):
         detailItem['music_vote'] = ''
         detailItem['music_comment'] = ''
         detailItem['music_comment_star'] = ''
+        detailItem['music_comment_name'] = ''
 
         # 以下是爬取歌曲基本信息
         detailItem['music_name'] = response.xpath('//*[@id="wrapper"]/h1/span/text()').extract_first()
@@ -105,6 +108,7 @@ class MusicSpider(scrapy.Spider):
                 detailItem[lis_item[i]] = response.css('#info').re('.+{}</span>.+'.format(lis[i]))[0].split(">")[-1] \
                     .replace("\xa0", "").replace("\n", "").rstrip()
         detailItem['music_man'] = "|".join(response.css('#info span>a').xpath('string()').extract())
+        detailItem['music_id'] = str(response.url).split("/")[-2]
 
 
         # for i in range(0, len(info)):
@@ -155,11 +159,13 @@ class MusicSpider(scrapy.Spider):
         for i in range(0, a):
             li = comment_list[i]
             detailItem['music_comment'] = li.xpath(
-                '//*[@id="comments"]/ul/li[{}]/div/p/span/text()'.format(i + 1)).extract_first()
-            if li.xpath('//*[@id="comments"]/ul/li[{}]/div/h3/span[2]/span[1]/@title'.format(
-                    i + 1)).extract_first() is not None:
+                'div/p/span/text()').extract_first()
+
+            if li.xpath('div/h3/span[2]/span[1]/@title').extract_first() is not None:
                 detailItem['music_comment_star'] = star(li.xpath(
-                    '//*[@id="comments"]/ul/li[{}]/div/h3/span[2]/span[1]/@title'.format(i + 1)).extract_first())
+                    'div/h3/span[2]/span[1]/@title').extract_first())
+
+            detailItem['music_comment_name'] = li.xpath('div/h3/span[2]/a/text()').extract_first()
             yield detailItem
 
             if response.xpath(
@@ -202,6 +208,11 @@ class MusicSpider(scrapy.Spider):
 
     def parse_user(self, response):
         userItem = MusicUserItem()
+
+        if response.url.re('https://accounts.douban.com/passport/login?redir=.*') is not None:
+            pass
+
+        userItem['music_user_name'] = ''
         userItem['music_user_site'] = ''
         userItem['music_user_time'] = ''
         if response.xpath('//*[@id="profile"]/div/div[2]/div[1]/div/a/text()') is not None:
@@ -210,6 +221,9 @@ class MusicSpider(scrapy.Spider):
         if response.xpath('//*[@id="profile"]/div/div[2]/div[1]/div/div/text()[2]') is not None:
             userItem['music_user_time'] = response.xpath(
                 '//*[@id="profile"]/div/div[2]/div[1]/div/div/text()[2]').extract_first()
+        if response.xpath('//*[@id="db-usr-profile"]/div[2]/h1/text()') is not None:
+            userItem['music_user_name'] = response.xpath(
+                '//*[@id="db-usr-profile"]/div[2]/h1/text()').extract()[0].replace("\xa0", "").replace("\n", "").rstrip().replace(" ", "")
 
         yield userItem
 
