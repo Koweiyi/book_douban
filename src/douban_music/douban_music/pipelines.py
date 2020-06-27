@@ -20,7 +20,7 @@ class DoubanMusicPipeline:
                 db=settings.MYSQL_DBNAME,
                 user=settings.MYSQL_USER,
                 passwd=settings.MYSQL_PASSWD,
-                charset='utf8',
+                charset='utf8-mb4',
                 use_unicode=True,
                 cursorclass=pymysql.cursors.DictCursor
             )
@@ -37,10 +37,10 @@ class DoubanMusicPipeline:
         print("来了老弟")
 
         if isinstance(item, MusicDetailItem):
-             self.process_musicdetail_item(item)
+            self.process_musicdetail_item(item)
 
         elif isinstance(item, MusicUserItem):
-             self.process_musicuser_item(item)
+            self.process_musicuser_item(item)
 
         elif isinstance(item, MusicTableItem):
             self.process_musictable_item(item)
@@ -65,7 +65,7 @@ class DoubanMusicPipeline:
         film = self.cursor.fetchone()
 
         sql_insert1 = '''insert into dalongtou_music(music_id,music_url)value (\"%s\",\"%s\")'''
-        sql_insert2 = '''UPDATE dalongtou_music set music_url = \"%s\") WHERE music_id = \"%s\"'''
+        sql_insert2 = '''UPDATE dalongtou_music set music_url = \"%s\" WHERE music_id = \"%s\"'''
 
         if film is None:
             self.cursor.execute(sql_insert1, (item['music_id'], item['music_url']))
@@ -88,11 +88,8 @@ class DoubanMusicPipeline:
                             ''', (item['music_user_name']))
         film = self.cursor.fetchone()
 
-        sql_insert1 = '''UPDATE dalongtou_music_comment()
-                            SET (
-                            music_user_site = \"%s\",
-                            music_user_time = \"%s\") 
-                            WHERE music_user_name = \"%s\"'''
+        sql_insert1 = '''UPDATE dalongtou_music_comment 
+                        SET music_user_site = \"%s\", music_user_time = \"%s\" WHERE music_user_name = \"%s\"'''
 
         if film is None:
             print("报错！报错！！！！！！！！！！！！comment表: music_user_name找不到,插入user")
@@ -132,17 +129,17 @@ class DoubanMusicPipeline:
                         music_star3 = \"%s\",
                         music_star4 = \"%s\",
                         music_star5 = \"%s\"
-                        WHERE music_id = \"%s\"''', (
-            item['music_name'], item['music_man'], item['music_rename'],
-            item['music_sect'], item['music_album'], item['music_media'],
-            item['music_time'], item['music_mark'], item['music_vote'],
-            item['music_star1'], item['music_star2'], item['music_star3'],
-            item['music_star4'], item['music_star5'], item['music_id'])
+                        WHERE music_id = \"%s\"'''
 
         if film is None:
             print("报错！报错！！！！！！！！！！！！music表: music_id找不到，插入detail")
         else:
-            self.cursor.execute(sql_insert1)
+            self.cursor.execute(sql_insert1, (
+            item['music_name'], item['music_man'], item['music_rename'],
+            item['music_sect'], item['music_album'], item['music_media'],
+            item['music_time'], item['music_mark'], item['music_vote'],
+            item['music_star1'], item['music_star2'], item['music_star3'],
+            item['music_star4'], item['music_star5'], item['music_id']))
             self.connect.commit()
 
 
@@ -160,7 +157,7 @@ class DoubanMusicPipeline:
 
         sql_insert3 = '''UPDATE dalongtou_music_comment
                             SET music_comment = \"%s\",
-                            music_comment_star = \"%s\") 
+                            music_comment_star = \"%s\" 
                             WHERE music_id = \"%s\" and music_user_name = \"%s\"'''
 
         if film is None:

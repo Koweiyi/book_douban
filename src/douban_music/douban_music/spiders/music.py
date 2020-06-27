@@ -168,11 +168,10 @@ class MusicSpider(scrapy.Spider):
             detailItem['music_comment_name'] = li.xpath('div/h3/span[2]/a/text()').extract_first()
             yield detailItem
 
-            if response.xpath(
-                    '//*[@id="comments"]/ul/li[{}]/div/h3/span[2]/a/text()'.format(
-                        i + 1)).extract_first() != "[已注销]" or None:
-                user_href = response.xpath(
-                    '//*[@id="comments"]/ul/li[{}]/div/h3/span[2]/a/@href'.format(i + 1)).extract_first()
+            if li.xpath(
+                    '/div/h3/span[2]/a/text()').extract_first() != "[已注销]" or None:
+                user_href = li.xpath(
+                    'div/h3/span[2]/a/@href').extract_first()
                 yield scrapy.Request(url=user_href, callback=self.parse_user, dont_filter=True)
         # comment_list = response.xpath('//*[@id="comments"]/ul/li')
         # li1 = comment_list[0]
@@ -209,22 +208,20 @@ class MusicSpider(scrapy.Spider):
     def parse_user(self, response):
         userItem = MusicUserItem()
 
-        if response.url.re('https://accounts.douban.com/passport/login?redir=.*') is not None:
-            pass
+        if response.url.split(".")[0] != 'https://accounts':
+            userItem['music_user_name'] = ''
+            userItem['music_user_site'] = ''
+            userItem['music_user_time'] = ''
+            if response.xpath('//*[@id="profile"]/div/div[2]/div[1]/div/a/text()') is not None:
+                userItem['music_user_site'] = response.xpath(
+                    '//*[@id="profile"]/div/div[2]/div[1]/div/a/text()').extract_first()
+            if response.xpath('//*[@id="profile"]/div/div[2]/div[1]/div/div/text()[2]') is not None:
+                userItem['music_user_time'] = response.xpath(
+                    '//*[@id="profile"]/div/div[2]/div[1]/div/div/text()[2]').extract_first()
+            if response.xpath('//*[@id="db-usr-profile"]/div[2]/h1/text()') is not None:
+                userItem['music_user_name'] = response.xpath(
+                    '//*[@id="db-usr-profile"]/div[2]/h1/text()').extract()[0].replace("\xa0", "").replace("\n", "").rstrip().replace(" ", "")
 
-        userItem['music_user_name'] = ''
-        userItem['music_user_site'] = ''
-        userItem['music_user_time'] = ''
-        if response.xpath('//*[@id="profile"]/div/div[2]/div[1]/div/a/text()') is not None:
-            userItem['music_user_site'] = response.xpath(
-                '//*[@id="profile"]/div/div[2]/div[1]/div/a/text()').extract_first()
-        if response.xpath('//*[@id="profile"]/div/div[2]/div[1]/div/div/text()[2]') is not None:
-            userItem['music_user_time'] = response.xpath(
-                '//*[@id="profile"]/div/div[2]/div[1]/div/div/text()[2]').extract_first()
-        if response.xpath('//*[@id="db-usr-profile"]/div[2]/h1/text()') is not None:
-            userItem['music_user_name'] = response.xpath(
-                '//*[@id="db-usr-profile"]/div[2]/h1/text()').extract()[0].replace("\xa0", "").replace("\n", "").rstrip().replace(" ", "")
-
-        yield userItem
+            yield userItem
 
         pass
