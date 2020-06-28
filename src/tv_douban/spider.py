@@ -115,14 +115,13 @@ class DouBan():
         #                     DB_create.close()
         #                     print ('creat table '+createTableName+' successfully' )     
         #                     return createTableName 
-                    def inserttable(self,insertTable,inserttag,insertTitle,inserturl,insertauthor):
-                        insertContentSql="INSERT INTO "+insertTable+"(tag,title,url,author)VALUES(%s,%s,%s,%s)"
+                    def inserttable(self,insertTable,inserttag,insertTitle,inserturl,insertauthor,insertstar5,insterstar4,insterstar3,insterstar2,insterstar1,instertype,instertime,instershort1,instershort2,instershort3):
+                        insertContentSql="INSERT INTO "+insertTable+"(tag,title,url,author,star5,star4,star3,star2,star1,type,time,short1,short2,short3)VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
         #         insertContentSql="INSERT INTO "+insertTable+"(time,title,text,clicks)VALUES("+insertTime+" , "+insertTitle+" , "+insertText+" , "+insertClicks+")"
-        
         
                         DB_insert=self.connectDB()
                         cursor_insert=DB_insert.cursor()        
-                        cursor_insert.execute(insertContentSql,(inserttag,insertTitle,inserturl,insertauthor))
+                        cursor_insert.execute(insertContentSql,(inserttag,insertTitle,inserturl,insertauthor,insertstar5,insterstar4,insterstar3,insterstar2,insterstar1,instertype,instertime,instershort1,instershort2,instershort3))
                         DB_insert.commit()
                         DB_insert.close()
                         print ('inert contents to  '+insertTable+' successfully'  )
@@ -143,18 +142,35 @@ class DouBan():
                                 string= soup.find_all(class_ = 'attrs')  # get a list.
                                 au = str(string[0]);
                                 news = re.sub(u"\\<.*?\\>|\\{.*?}|\\[.*?]", "", au)
+                                author=news
                                 string= soup.find_all(class_ = 'rating_per')  # get a list.
                                 star5=str(string[0])
+                                star5=re.sub(u"\\<.*?\\>|\\{.*?}", "", star5)
                                 star4=str(string[1])
+                                star4=re.sub(u"\\<.*?\\>|\\{.*?}", "", star4)
                                 star3=str(string[2])
+                                star3=re.sub(u"\\<.*?\\>|\\{.*?}", "", star3)
                                 star2=str(string[3])
+                                star2=re.sub(u"\\<.*?\\>|\\{.*?}", "", star2)
                                 star1=str(string[4])
+                                star1=re.sub(u"\\<.*?\\>|\\{.*?}", "", star1)                 
                                 string= soup.find_all(attrs={'property':'v:genre'})  # get a list.
                                 au = str(string)
                                 lei = re.sub(u"\\<.*?\\>|\\{.*?}", "", au)
-                                lei = lei[1:-1]
-                                author=news
-                                #inserttable(self,table,tag,title,url,author)
+                                type = lei[1:-1]
+                                string= soup.find_all(attrs={'property':'v:initialReleaseDate'})  # get a list.
+                                au = str(string)
+                                lei = re.sub(u"\\<.*?\\>|\\{.*?}", "", au)
+                                time = lei[1:-1]
+                                string= soup.find_all(class_ = 'short')  # get a list.
+                                short1 =  str(string[0]) 
+                                short2 =  str(string[1])
+                                short3 =  str(string[2])
+                                short1 = re.sub(u"\\<.*?\\>|\\{.*?}", "", short1)
+                                short2 = re.sub(u"\\<.*?\\>|\\{.*?}", "", short2)
+                                short3 = re.sub(u"\\<.*?\\>|\\{.*?}", "", short3)
+                               
+                                inserttable(self,table,tag,title,url,author,star5,star4,star3,star2,star1,type,time,short1,short2,short3)
                             except:
                                 continue
                          
