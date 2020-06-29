@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: www.91iedu.com:3391/team06?useSSL=false&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: team06
+    password: team06
+    type: org.springframework.jdbc.datasource.SimpleDriverDataSource
