@@ -28,7 +28,6 @@ class DoubanMusicPipeline:
             # self.cursor.execute("SELECT VERSION()")
             # data = self.cursor.fetchone()
             # print(data)
-
         except:
             print("数据库连接失败")
 
@@ -58,7 +57,7 @@ class DoubanMusicPipeline:
 
     def process_musictable_item(self, item):
         print("come into table process")
-        #self.cursor.ping()
+        # self.cursor.ping()
         self.cursor.execute('''
                     SELECT * FROM dalongtou_music WHERE music_id = \"%s\"
                     ''', (item['music_id']))
@@ -81,7 +80,7 @@ class DoubanMusicPipeline:
         print("come into user process")
         print(item['music_user_site'])
         print(item['music_user_time'])
-        #self.cursor.ping()
+        # self.cursor.ping()
 
         self.cursor.execute('''
                             SELECT * FROM dalongtou_music_comment WHERE music_user_name = \"%s\"
@@ -94,7 +93,8 @@ class DoubanMusicPipeline:
         if film is None:
             print("报错！报错！！！！！！！！！！！！comment表: music_user_name找不到,插入user")
         else:
-            self.cursor.execute(sql_insert1, (item['music_user_site'], item['music_user_time'], item['music_user_name']))
+            self.cursor.execute(sql_insert1,
+                                (item['music_user_site'], item['music_user_time'], item['music_user_name']))
             self.connect.commit()
 
         pass
@@ -105,7 +105,7 @@ class DoubanMusicPipeline:
         print(item['music_rename'])
         print(item['music_time'])
         print(item['music_mark'])
-        #self.cursor.ping()
+        # self.cursor.ping()
 
         # 录入music表
         self.cursor.execute('''
@@ -135,14 +135,12 @@ class DoubanMusicPipeline:
             print("报错！报错！！！！！！！！！！！！music表: music_id找不到，插入detail")
         else:
             self.cursor.execute(sql_insert1, (
-            item['music_name'], item['music_man'], item['music_rename'],
-            item['music_sect'], item['music_album'], item['music_media'],
-            item['music_time'], item['music_mark'], item['music_vote'],
-            item['music_star1'], item['music_star2'], item['music_star3'],
-            item['music_star4'], item['music_star5'], item['music_id']))
+                item['music_name'], item['music_man'], item['music_rename'],
+                item['music_sect'], item['music_album'], item['music_media'],
+                item['music_time'], item['music_mark'], item['music_vote'],
+                item['music_star1'], item['music_star2'], item['music_star3'],
+                item['music_star4'], item['music_star5'], item['music_id']))
             self.connect.commit()
-
-
 
         # 录入comment表
 
@@ -165,6 +163,7 @@ class DoubanMusicPipeline:
             self.cursor.execute(sql_insert2, (item['music_id'], item['music_comment_name']))
             self.connect.commit()
 
-        self.cursor.execute(sql_insert3, (item['music_comment'], item['music_comment_star'], item['music_id'], item['music_comment_name']))
+        self.cursor.execute(sql_insert3, (
+        item['music_comment'], item['music_comment_star'], item['music_id'], item['music_comment_name']))
         self.connect.commit()
         pass
