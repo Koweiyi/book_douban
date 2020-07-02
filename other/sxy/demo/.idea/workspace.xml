@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="644cd365-5de1-4f44-9390-6af29e080ec1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/.pydevproject" beforeDir="false" afterPath="$PROJECT_DIR$/../../史芯源用/.pydevproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/spider/douban.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/spider/scrapydemo/scrapy.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/spider/scrapydemo/scrapydemo/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/spider/scrapydemo/scrapydemo/items.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/spider/scrapydemo/scrapydemo/middlewares.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/spider/scrapydemo/scrapydemo/pipelines.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/spider/scrapydemo/scrapydemo/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/spider/scrapydemo/scrapydemo/spiders/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/spider/scrapydemo/scrapydemo/spiders/douban.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/spider/scrapydemo/scrapydemo/spiders/scrapy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/spider/scrapydemo/scrapydemo/start.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/spider/spider.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/小练习/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../史芯源用/小练习/关于提交试卷补充说明.docx" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1dwdbOSPaYGKhMvdv8XQvmuVsu0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+      <command value="mvn " />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.iedu.demo.demo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="644cd365-5de1-4f44-9390-6af29e080ec1" name="Default Changelist" comment="" />
+      <created>1593340159111</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593340159111</updated>
+      <workItem from="1593340168808" duration="5229000" />
+      <workItem from="1593353204374" duration="1896000" />
+      <workItem from="1593391320652" duration="2449000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="492" y="217" key="FileChooserDialogImpl" timestamp="1593393780893">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="492" y="217" key="FileChooserDialogImpl/0.0.1368.872@0.0.1368.872" timestamp="1593393780893" />
+    <state width="1292" height="211" key="GridCell.Tab.0.bottom" timestamp="1593393783240">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="1292" height="211" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1593393783240" />
+    <state width="1292" height="211" key="GridCell.Tab.0.center" timestamp="1593393783240">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="1292" height="211" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1593393783240" />
+    <state width="1292" height="211" key="GridCell.Tab.0.left" timestamp="1593393783240">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="1292" height="211" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1593393783240" />
+    <state width="1292" height="211" key="GridCell.Tab.0.right" timestamp="1593393783240">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="1292" height="211" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1593393783240" />
+    <state x="213" y="107" key="SettingsEditor" timestamp="1593393482319">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="213" y="107" key="SettingsEditor/0.0.1368.872@0.0.1368.872" timestamp="1593393482319" />
+    <state x="77" y="123" key="new project wizard" timestamp="1593393781966">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="77" y="123" key="new project wizard/0.0.1368.872@0.0.1368.872" timestamp="1593393781966" />
+    <state x="368" y="214" width="672" height="677" key="run.anything.popup" timestamp="1593392940034">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="368" y="214" width="672" height="677" key="run.anything.popup/0.0.1368.872@0.0.1368.872" timestamp="1593392940034" />
+  </component>
+</project>
