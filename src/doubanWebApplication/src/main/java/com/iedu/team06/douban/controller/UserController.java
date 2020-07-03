@@ -18,11 +18,11 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/login")
-    public String login(String uid, String pwd, String nickName){
+    public String login(String uid, String pwd){
 
         if (userService.login(uid, pwd) != null)
             return "redirect:/html/index.html";
-        return "redirect/html/login.html";
+        return "redirect:/html/login.html";
     }
 
     @RequestMapping(value = "/add")

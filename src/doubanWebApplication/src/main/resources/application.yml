@@ -10,12 +10,13 @@ spring:
     view:
       suffix: .html
       prefix: /
+
 mybatis:
   configuration:
     cache-enabled: true
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
     map-underscore-to-camel-case: true
-  type-aliases-package: com.iedu.demo.doubandemo.entity
+  type-aliases-package: com.iedu.team06.douban.entity
 
 logging:
   level:
