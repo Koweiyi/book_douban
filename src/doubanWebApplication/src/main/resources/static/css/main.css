@@ -3,3 +3,21 @@
     margin-left: 30%;
     margin-top: 15%;
 }
+
+
+#login-btn-block{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center
+}
+
+#btnLogin{
+
+    padding-left: 10%;
+    padding-right: 10%;
+
+}

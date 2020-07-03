@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<form action="/logic/user/login" method="post" class="layui-form" id="login-form">
+<form action="/logic/user/login" method="post" class="layui-form layui-form-pane" id="login-form">
     <ul>
         <li class="layui-form-item">
             <label class="layui-form-label">用户名:</label>
@@ -22,7 +22,9 @@
             </div>
         </li>
         <li class="layui-form-item">
-            <button type="submit" id="btnLogin" class="layui-btn">登录</button>
+            <div id="login-btn-block">
+                <button type="submit" id="btnLogin" class="layui-btn">登录</button>
+            </div>
         </li>
     </ul>
 </form>
