@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
-import javax.websocket.server.ServerEndpoint;
 import java.util.List;
 
 @Repository
@@ -26,6 +25,4 @@ public interface UserMapper {
             "values (#{user.uid}, #{user.pwd}, #{user.nickName}, #{user.state})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     public int addUser(@Param("user") User user);
-
-
 }
