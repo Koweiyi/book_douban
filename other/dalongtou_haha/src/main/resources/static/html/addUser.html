@@ -2,42 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>注册</title>
+    <title>注册用户</title>
+    <link rel="stylesheet" href=" /js/layui/css/layui.css">
 </head>
 <body>
-<div class="layui-form layui-form-pane" style=" margin-right: 10%;margin-left: 10%">
+<div class="layui-form layui-form-pane" style="margin-right: 10%;margin-left: 10%">
     <ul>
         <li class="layui-form-item">
             <label class="layui-form-label">用户名: </label>
-            <div class="layui-input-block" >
-                <input class="layui-input" type="text" id= "uid" required lay-verify="required" name="uid" />
+            <div class="layui-input-block">
+                <input class="layui-input" type="text" id="uid" required lay-verify="required" name="uid" />
             </div>
         </li>
         <li class="layui-form-item">
             <label class="layui-form-label">密码: </label>
-            <div class="layui-input-block" >
-                <input class="layui-input" type="password" id="pwd" required lay-verify="required" name= ”pwd" />
+            <div class="layui-input-block">
+                <input class="layui-input" type="password" id= "pwd" required lay-verify="required" name="pwd" />
             </div>
         </li>
         <li class="layui-form-item">
             <label class="layui-form-label">重复密码: </label>
             <div class="layui-input-block">
-                <input class="layui-input" type= "password" id="rePwd" required lay-verify="required" name="rePwd" />
+                <input class="layui-input" type= ”password" id= "rePwd" required lay-verify= "required" name= "rePwd" />
             </div>
         </li>
-        <li class="layui-form-item">
-            <label class="layui-form-label">昵称: </label>
+        <li class="layui-form-item" >
+            <label class="layui-form-label" >昵称: </label>
             <div class="layui-input-block" >
                 <input class="layui-input" type="text" id="nickName" name= "nickName" />
             </div>
         </li>
-        <li class="layui-form-item">
-            <button id="btnsave" class="layui-btn" lay-submit lay-filter="saveAndCommit">注册新用户</button>
+        <li class="layui-form-item" >
+            <button id="btnSave" class="layui-btn" lay-submit lay-filter="saveAndCommit" >注册新用户</button>
         </li>
     </ul>
 </div>
 </body>
 </html>
 <script type="text/javascript" src="/js/layui/layui.all.js"></script>
-<script type="text/javascript" src="/js/logic/addUser.js"></script>
-
+<script type="text/javascript" src="/js/logic/adduser.js"></script>

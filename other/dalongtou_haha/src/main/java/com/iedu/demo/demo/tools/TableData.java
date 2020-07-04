@@ -1,6 +1,5 @@
-package com.dalongtou.demo.douban.tools;
+package com.iedu.demo.demo.tools;
 
-import com.dalongtou.demo.douban.entity.User;
 import lombok.Data;
 
 import java.util.List;
@@ -12,5 +11,4 @@ public class TableData {
     private String msg;
     private int count;
     private List<? extends Object> data;
-
 }

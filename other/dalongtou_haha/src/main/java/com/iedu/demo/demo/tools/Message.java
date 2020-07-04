@@ -1,4 +1,4 @@
-package com.dalongtou.demo.douban.tools;
+package com.iedu.demo.demo.tools;
 
 import lombok.Data;
 
