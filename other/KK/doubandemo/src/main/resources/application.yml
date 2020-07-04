@@ -1,7 +1,22 @@
 spring:
   datasource:
-    url: www.91iedu.com:3391/team06?useSSL=false&characterEncoding=utf-8&serverTimezone=GMT%2B8
     driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://www.91iedu.com:3391/team06?useSSL=false&characterEncoding=utf-8&serverTimezone=GMT%2B8
     username: team06
     password: team06
-    type: org.springframework.jdbc.datasource.SimpleDriverDataSource
+    type: org.springframework.jdbc.datasource.DriverManagerDataSource
+
+  mvc:
+    view:
+      suffix: .html
+      prefix: /
+mybatis:
+  configuration:
+    cache-enabled: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.iedu.demo.doubandemo.entity
+
+logging:
+  level:
+    com.iedu.demo.doubandemo.dao: debug

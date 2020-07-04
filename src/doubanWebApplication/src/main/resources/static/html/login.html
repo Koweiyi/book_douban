@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="/js/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<form action="/logic/user/login" method="post" class="layui-form layui-form-pane" id="login-form">
+    <ul>
+        <li class="layui-form-item">
+            <label class="layui-form-label">用户名:</label>
+            <div class="layui-input-block">
+                <input class="layui-input" type="text" name="uid" required lau-verify="reauired">
+            </div>
+        </li>
+        <li class="layui-form-item">
+            <label class="layui-form-label">密码:：</label>
+            <div class="layui-input-block">
+                <input type="password" name="pwd" class="layui-input" required lau-verify="reauired">
+            </div>
+        </li>
+        <li class="layui-form-item">
+            <div id="login-btn-block">
+                <button type="submit" id="btnLogin" class="layui-btn">登录</button>
+            </div>
+        </li>
+    </ul>
+</form>
+</body>
+</html>
+<script type="text/javascript" src="/js/layui/layui.all.js"></script>
