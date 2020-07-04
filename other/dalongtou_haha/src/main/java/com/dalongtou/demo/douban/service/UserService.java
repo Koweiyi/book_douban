@@ -15,4 +15,6 @@ public interface UserService {
     User addUser(User user);
 
     List<User> search(User user);
+
+    boolean resetPwd(int id);
 }

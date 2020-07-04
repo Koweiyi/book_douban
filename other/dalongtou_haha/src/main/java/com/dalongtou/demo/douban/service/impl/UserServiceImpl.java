@@ -34,6 +34,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean resetPwd(int id) {
+        String defaultPwd = "000000";
+
+        if(mapper.updatePwd(id, defaultPwd) == 1)
+            return true;
+        return false;
+    }
+
+    @Override
     public List<User> search(User user) {
         return mapper.selectAll();
     }

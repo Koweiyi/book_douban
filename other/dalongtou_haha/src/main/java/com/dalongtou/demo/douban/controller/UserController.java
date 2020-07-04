@@ -1,9 +1,12 @@
 package com.dalongtou.demo.douban.controller;
 
 import com.dalongtou.demo.douban.entity.User;
+import com.dalongtou.demo.douban.service.impl.UserServiceImpl;
+import com.dalongtou.demo.douban.tools.Message;
 import com.dalongtou.demo.douban.service.UserService;
 import com.dalongtou.demo.douban.tools.TableData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,14 +18,14 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService service;
+    private UserServiceImpl service;
 
     @RequestMapping(value = "/login")
-    public String login(String uid,String pwd,String nickname){
+    public String login(String uid, String pwd, String nickname) {
 
-        System.out.println(uid+","+pwd+","+nickname);
+        System.out.println(uid + "," + pwd + "," + nickname);
         System.out.println("为啥没有呢？");
-        if (service.login(uid,pwd) != null)
+        if (service.login(uid, pwd) != null)
             return "redirect:/html/mainpage.html";
 
         return "redirect:/html/login.html";
@@ -30,16 +33,16 @@ public class UserController {
 
     @RequestMapping(value = "/add")
     @ResponseBody
-    public User addUser(User user){
+    public User addUser(User user) {
 
         User newUser = service.addUser(user);
 
-        return  newUser;
+        return newUser;
     }
 
     @RequestMapping(value = "/search")
     @ResponseBody
-    public TableData search(User user){
+    public TableData search(User user) {
 
         TableData data = new TableData();
         List<User> result = service.search(user);
@@ -51,4 +54,20 @@ public class UserController {
         return data;
     }
 
+    @RequestMapping(value = "/pwdreset")
+    @ResponseBody
+    public Message pwdReset(int id) {
+        Message msg = new Message();
+
+        msg.setError(true);
+        msg.setContent("服务器错误");
+
+        if (service.resetPwd(id)) {
+            msg.setError(false);
+            msg.setContent("密码已经更新");
+        }
+
+
+        return msg;
+    }
 }
