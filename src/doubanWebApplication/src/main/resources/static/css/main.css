@@ -19,5 +19,17 @@
 
     padding-left: 10%;
     padding-right: 10%;
+}
+.layui-form-label{
+    width: 10px;
+}
 
+#bookSearch{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center
 }

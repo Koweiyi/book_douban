@@ -1,4 +1,5 @@
 layui.use(['laydate', 'jquery', 'table', 'form'], function(){
+
     var laydate = layui.laydate,
         form = layui.form,
         $ = layui.jquery,
@@ -10,7 +11,7 @@ layui.use(['laydate', 'jquery', 'table', 'form'], function(){
     });
 
     table.render({
-        elem: '#tblResult',
+        elem: '#tblBookResult',
         page: true,
         limit: 6,
         cols:[[
@@ -28,13 +29,13 @@ layui.use(['laydate', 'jquery', 'table', 'form'], function(){
 
     $('#btnBookSearch').click(function (event) {
 
-        table.reload('tblResult',{
-            uri:'logic/book/search',
+        table.reload('tblBookResult',{
+            url:'/logic/book/search',
             method:'post',
             where:{
                 'bookName': $('#bookName').val(),
                 'bookAuthor': $('#bookAuthor').val(),
-                'tags': $('#bookType').val(),
+                'tags': $('#tags').val(),
                 'date': $('#date').val(),
                 'isbn': $('#isbn').val()
             },
