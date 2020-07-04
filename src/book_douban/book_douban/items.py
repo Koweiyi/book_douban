@@ -11,12 +11,14 @@ from scrapy import Item, Field
 class BookItem(Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    ID = Field()  # 书本在豆瓣中的subject ID
+    id = Field()  # 书本在豆瓣中的subject ID
     book_name = Field()  # 书本名称
     book_author = Field()   # 作者
     publisher = Field()  # 出版社
     date = Field()  # 出版日期
     price = Field()  # 价格
+    page = Field()
+    isbn = Field()
     tags = Field()  # 书本标签
     intro = Field()  # 书本简介
     rate = Field()  # 评分
@@ -31,7 +33,7 @@ class BookItem(Item):
 
 
 class CommentItem(Item):
-    ID = Field()  # 评论对应subject ID
+    id = Field()  # 评论对应subject ID
     critic = Field()  # 评论人
     date = Field()  # 评论时间
     content = Field()  # 评论内容
