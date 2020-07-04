@@ -16,8 +16,11 @@ mybatis:
     cache-enabled: true
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
     map-underscore-to-camel-case: true
-  type-aliases-package: com.dalongtou.demo.douban.entity
+  type-aliases-package: com.iedu.demo.demo.entity
+#
+#logging:
+#  level:
+#    com.iedu.demo.demo.dao:debug
 
-logging:
-  level:
-    com.dalongtou.demo.douban.dao: debug
+server:
+  port: 8080
