@@ -13,19 +13,25 @@ layui.use(['laydate', 'jquery', 'table', 'form'], function(){
     table.render({
         elem: '#tblBookResult',
         page: true,
-        limit: 6,
+        limit: 30,
+        height: 500,
+        theme : "#1e9fff",
         cols:[[
-           {field: 'bookName', title: '书名', align: 'center'},
-           {field: 'bookAuthor', title: '作者', align: 'center'},
-           {field: 'publisher', title: '出版社', align: 'center'},
-           {field: 'date', title: '出版日期', align: 'center'},
-           {field: 'price', title: '价格', align: 'center'},
-           {field: 'page', title: '页数', align: 'center'},
-           {field: 'isbn', title: 'ISBN', align: 'center'},
-           {field: 'rate', title: '豆瓣评分', align: 'center'}
+            {field: 'id', title: "ID", sort: true, width: 100, align: "center"},
+            {field: 'bookName', title: '书名', align: 'center'},
+            {field: 'bookAuthor', title: '作者', align: 'center'},
+            {field: 'publisher', title: '出版社', align: 'center'},
+            {field: 'date', title: '出版日期', align: 'center', sort: true, width: 120},
+            {field: 'price', title: '价格', align: 'center', sort: true, width: 120},
+            {field: 'page', title: '页数', align: 'center', width: 100, sort: true},
+            {field: 'isbn', title: 'ISBN', align: 'center', width: 140, sort: true},
+            {field: 'tags', title: '豆瓣标签', align: 'center'},
+            {field: 'rate', title: '豆瓣评分', align: 'center', width: 100, sort: true}
         ]],
         data:[]
     });
+
+
 
     $('#btnBookSearch').click(function (event) {
 
