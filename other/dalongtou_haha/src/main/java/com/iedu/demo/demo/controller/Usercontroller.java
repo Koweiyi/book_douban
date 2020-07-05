@@ -38,12 +38,13 @@ public class Usercontroller {
 
     @RequestMapping(value="/search")
     @ResponseBody
-    public TableData search(User user) {
+    public TableData search(User user, int page, int limit) {
+
         TableData date = new TableData();
-        List<User> result = service.search(user);
+        List<User> result = service.search(user, page, limit);
         date.setCode(0);
         date.setMsg("");
-        date.setCount(result.size());
+        date.setCount(service.searchCount(user));
         date.setData(result);
 
         return date;

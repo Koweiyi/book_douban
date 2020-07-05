@@ -10,7 +10,9 @@ public interface UserService {
 
     User addUser(User user);
 
-    List<User> search(User user);
+    List<User> search(User user, int page, int limit);
+
+    int searchCount(User user);
 
     boolean resetPwd(int id);
 }
