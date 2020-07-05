@@ -26,6 +26,8 @@ public class BookServiceImpl implements BookService {
                 book.setBookAuthor("%" + book.getBookAuthor() + "%");
             if(!"".equals(book.getTags().trim()))
                 book.setTags("%" + book.getTags() + "%");
+//            if (!"".equals(book.getDate().trim()))
+//                book.setDate("%" + book.getDate() + "%");
         }
 
         if (page > 0 && limit > 0)
@@ -36,7 +38,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public int searchCount(Book book) {
-        int res = bookMapper.countSelectByWhere(book);
-        return  res > 100 ? 100 : res;
+//        int res = bookMapper.countSelectByWhere(book);
+//        return  res > 100 ? 100 : res;
+        return bookMapper.countSelectByWhere(book);
     }
 }

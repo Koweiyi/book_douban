@@ -14,13 +14,13 @@ public interface BookMapper {
     @Select("select * from books limit 0, 100")
     public List<Book> selectAll();
 
-    @Select("select * from books where ID = #{ID}")
+    @Select("select * from books where id = #{ID}")
     public Book selectById(String ID);
 
 
 
     @Select("<script>" +
-            "select book_name, book_author, publisher, date, price, page, isbn, tags, rate" +
+            "select id, book_name, book_author, publisher, date, price, page, tags, isbn, tags, rate" +
             "   from books" +
             "<where>" +
             "   <if test = 'book.bookName != null and book.bookName.length > 0'>" +
@@ -60,7 +60,7 @@ public interface BookMapper {
             "      and tags like #{book.tags}" +
             "   </if>" +
             "   <if test = 'book.date != null and book.date.length > 0'>" +
-            "      and date = #{book.date}" +
+            "      and date like #{book.date}" +
             "   </if>" +
             "   <if test = 'book.isbn != null and book.isbn.length > 0'>" +
             "      and isbn = #{book.isbn}" +
