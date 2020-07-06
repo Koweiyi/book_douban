@@ -14,5 +14,6 @@ public class User {
     public User(String uid, String pwd){
         this.uid = uid;
         this.pwd = pwd;
+
     }
 }
