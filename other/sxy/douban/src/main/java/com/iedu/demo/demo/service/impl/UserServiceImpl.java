@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
             user.setUid("%" + user.getUid() + "%");
         }
         if (page > 0 && limit > 0)
-            return mapper.selectByWhere(user, (page) * limit, limit);
+            return mapper.selectByWhere(user, (page-1) * limit, limit);
         return mapper.selectByWhere(user, null, null);
     }
 

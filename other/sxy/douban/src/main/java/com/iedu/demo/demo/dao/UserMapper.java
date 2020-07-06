@@ -52,15 +52,15 @@ public interface UserMapper {
             "SELECT count(1)" +
             "  FROM user" +
             "<where>" +
-            "<if test='user.uid != null and user.uid.length > 0'>" +
-            "AND uid like #{user,uid}" +
-            "</if>" +
-            "<if test='user.nickName != null and user.nickName.length > 0'>" +
-            "AND nick_name like '%${user.nickName}%" +
-            "</if>" +
-            "<if test='user.state != null and user.state != -1'>" +
-            "AND state = #{user.state}" +
-            "</if>" +
+            "   <if test='user.uid != null and user.uid.length > 0'>" +
+            "       AND uid like #{user,uid}" +
+            "   </if>" +
+            "   <if test='user.nickName != null and user.nickName.length > 0'>" +
+            "       AND nick_name like '%${user.nickName}%'" +
+            "   </if>" +
+            "   <if test='user.state != null and user.state != -1'>" +
+            "       AND state = #{user.state}" +
+            "   </if>" +
             "</where>" +
             "</script>")
     int countSelectByWhere(@Param("user") User user);
