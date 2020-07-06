@@ -1,6 +1,8 @@
 package com.iedu.demo.demo.controller;
 
+import com.iedu.demo.demo.entity.Music;
 import com.iedu.demo.demo.entity.User;
+import com.iedu.demo.demo.service.MusicService;
 import com.iedu.demo.demo.tools.Message;
 import com.iedu.demo.demo.tools.TableData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import java.util.List;
 public class Usercontroller {
     @Autowired
     private  UserService service;
+    private MusicService service2;
 
     @RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET})
     public String login(String uid,String pwd,String nickName) {
@@ -45,6 +48,20 @@ public class Usercontroller {
         date.setCode(0);
         date.setMsg("");
         date.setCount(service.searchCount(user));
+        date.setData(result);
+
+        return date;
+    }
+
+    @RequestMapping(value="/search2")
+    @ResponseBody
+    public TableData search2(Music music, int page, int limit) {
+
+        TableData date = new TableData();
+        List<Music> result = service2.search(music, page, limit);
+        date.setCode(0);
+        date.setMsg("");
+        date.setCount(service2.searchCount(music));
         date.setData(result);
 
         return date;
