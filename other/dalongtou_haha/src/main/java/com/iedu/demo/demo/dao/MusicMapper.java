@@ -39,7 +39,7 @@ public interface MusicMapper {
             "   <if test='music.m_man != null and music.m_man.length > 0'>" +
             "       AND music_man like #{music.m_man}" +
             "   </if>" +
-            "   <if test= 'music.m_mark != null and music.m_mark != -1' >" +
+            "   <if test= 'music.m_mark != null' >" +
             "       AND music_mark = #{music.m_mark}" +
             "   </if>" +
             "</where>" +
@@ -61,7 +61,7 @@ public interface MusicMapper {
             "   <if test='music.m_man != null and music.m_man.length > 0'>" +
             "       AND music_man like #{music.m_man}" +
             "   </if>" +
-            "   <if test= 'music.m_mark != null and music.m_mark != -1' >" +
+            "   <if test= 'music.m_mark != null' >" +
             "       AND music_mark = #{music.m_mark}" +
             "   </if>" +
             "</where>" +
