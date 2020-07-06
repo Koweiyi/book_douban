@@ -1,4 +1,4 @@
-#register-form{
+#register-form, #user-edit-form{
     margin-right: 30%;
     margin-left: 30%;
     margin-top: 15%;
@@ -75,11 +75,11 @@
     width:350px;
     height:auto;
     overflow:hidden;
-    margin:15% auto 0 auto;
+    margin:12% auto 0 auto;
     padding-left: 10%;
     padding-right: 10%;
     padding-top: 4%;
-    padding-bottom: 4%;
+    padding-bottom: 0;
     box-shadow:0 -15px 30px #0d957a;
     border-radius:5px;
     z-index: 1000;
@@ -209,3 +209,9 @@
     text-decoration: underline;
 }
 
+#login-form{
+    margin: 35px 0 0 auto;
+}
+.layui-tab{
+    margin-top: 0;
+}

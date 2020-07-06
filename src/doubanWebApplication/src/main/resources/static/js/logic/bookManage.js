@@ -15,8 +15,10 @@ layui.use(['laydate', 'jquery', 'table', 'form'], function(){
         page: true,
         limit: 30,
         height: 500,
-        theme : "#1e9fff",
+        toolbar : true,
+        defaultToolbar:['exports', 'print'],
         cols:[[
+            {type:'checkbox'},
             {field: 'id', title: "ID", sort: true, width: 100, align: "center"},
             {field: 'bookName', title: '书名', align: 'center'},
             {field: 'bookAuthor', title: '作者', align: 'center'},

@@ -21,3 +21,8 @@ mybatis:
 logging:
   level:
     com.iedu.demo.doubandemo.dao: debug
+
+server:
+  port: 8080
+  session:
+    timeout: 7200

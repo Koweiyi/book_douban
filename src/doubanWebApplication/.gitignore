@@ -34,3 +34,5 @@ build/
 /.mvn/
 /src/main/resources/static/js/layui/
 /src/main/resources/static/css/font/
+/src/main/resources/static/js/surports/jparticle.jquery.js
+/src/main/resources/static/js/surports/
