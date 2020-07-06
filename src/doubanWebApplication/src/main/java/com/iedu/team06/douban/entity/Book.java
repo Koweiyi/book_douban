@@ -4,14 +4,16 @@ import lombok.Data;
 
 @Data
 public class Book {
-    private String ID;
+    private String id;
     private String bookName;
     private String bookAuthor;
     private String publisher;
-    private String data;
+    private String date;
     private String price;
     private String tags;
     private String intro;
+    private String page;
+    private String isbn;
     private String rate;
     private String ratePl;
     private String fiveStar;
@@ -19,4 +21,6 @@ public class Book {
     private String threeStar;
     private String twoStar;
     private String oneStar;
+    private String pic;
+    private String picSha1;
 }

@@ -2,12 +2,13 @@ package com.iedu.team06.douban.controller;
 
 import com.iedu.team06.douban.entity.User;
 import com.iedu.team06.douban.service.UserService;
+import com.iedu.team06.douban.tools.EditUserData;
 import com.iedu.team06.douban.tools.TableData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -17,11 +18,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/login")
-    public String login(String uid, String pwd){
+    @PostMapping(value = "/login")
+    public String login(@RequestParam("uid") String uid, @RequestParam("pwd") String pwd, HttpSession session){
 
-        if (userService.login(uid, pwd) != null)
+        User user = userService.login(uid, pwd);
+        if (user != null){
+            session.setAttribute("LoginUser", user);
             return "redirect:/html/index.html";
+        }
         return "redirect:/html/login.html";
     }
 
@@ -44,4 +48,13 @@ public class UserController {
 
         return tableData;
     }
+
+    @RequestMapping(value = "/edit")
+    @ResponseBody
+    public User edit(EditUserData editUserData){
+
+        User u = userService.edit(editUserData);
+        return u;
+    }
+
 }

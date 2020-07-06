@@ -1,6 +1,7 @@
 package com.iedu.team06.douban.service;
 
 import com.iedu.team06.douban.entity.User;
+import com.iedu.team06.douban.tools.EditUserData;
 
 import java.util.List;
 
@@ -11,4 +12,6 @@ public interface UserService {
     User addUser(User user);
 
     List<User> search(User user);
+
+    User edit(EditUserData editUserData);
 }
