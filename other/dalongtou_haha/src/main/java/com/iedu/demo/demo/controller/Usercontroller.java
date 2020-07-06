@@ -2,13 +2,14 @@ package com.iedu.demo.demo.controller;
 
 import com.iedu.demo.demo.entity.Music;
 import com.iedu.demo.demo.entity.User;
-import com.iedu.demo.demo.service.MusicService;
+
 import com.iedu.demo.demo.tools.Message;
 import com.iedu.demo.demo.tools.TableData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.iedu.demo.demo.service.UserService;
+import com.iedu.demo.demo.service.MusicService;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,6 +20,8 @@ import java.util.List;
 public class Usercontroller {
     @Autowired
     private  UserService service;
+
+    @Autowired
     private MusicService service2;
 
     @RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET})
