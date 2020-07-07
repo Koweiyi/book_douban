@@ -1,4 +1,4 @@
-package com.iedu.demo.demo.entity;
+package com.iedu.team06.douban.entity;
 
 import lombok.Data;
 
@@ -11,9 +11,8 @@ public class User {
     private String nickName;
     private int state;
 
-    /*public User(String uid, String pwd){
+    public User(String uid, String pwd){
         this.uid = uid;
         this.pwd = pwd;
-
-    }*/
+    }
 }
