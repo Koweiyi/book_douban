@@ -83,7 +83,7 @@ class MusicSpider(scrapy.Spider):
         print("come into detail_table")
         detailItem = MusicDetailItem()
         detailItem['music_id'] = ''
-
+        detailItem['music_url'] = ''
         detailItem['music_name'] = ''
         detailItem['music_rename'] = ''
         detailItem['music_man'] = ''
@@ -109,6 +109,7 @@ class MusicSpider(scrapy.Spider):
                     .replace("\xa0", "").replace("\n", "").rstrip()
         detailItem['music_man'] = "|".join(response.css('#info span>a').xpath('string()').extract())
         detailItem['music_id'] = str(response.url).split("/")[-2]
+        detailItem['music_url'] = response.url.extract_first()
 
 
         # for i in range(0, len(info)):
