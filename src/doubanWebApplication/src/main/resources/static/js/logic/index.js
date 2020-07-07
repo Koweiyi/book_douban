@@ -8,40 +8,28 @@ layui.use(['element', 'layer', 'jquery'], function () {
             title: '安全退出',
             content: '您真的要退出当前用户吗？',
             btn:['确认', '取消'],
+            btnAlign:'c',
             yes: function (index, layero) {
-                window.location.href = "/html/login.html";
-            },
-            btn2: function (index, layero) {
-
-            },
-            cancel: function(){
-
+                window.location.href="/logic/user/logout";
             }
         });
     })
 
-    // 配置tab实践在下面无法获取到菜单元素
     $('.site-demo-active').on('click', function () {
         var dataid = $(this);
-        //这时会判断右侧.layui-tab-title属性下的有lay-id属性的li的数目，即已经打开的tab项数目
         if ($(".layui-tab-title li[lay-id]").length <= 0) {
-            //如果比零小，则直接打开新的tab项
             active.tabAdd(dataid.attr("data-url"), dataid.attr("data-id"), dataid.attr("data-title"));
         } else {
-            //否则判断该tab项是否以及存在
-            var isData = false; //初始化一个标志，为false说明未打开该tab项 为true则说明已有
+            var isData = false;
             $.each($(".layui-tab-title li[lay-id]"), function () {
-                //如果点击左侧菜单栏所传入的id 在右侧tab项中的lay-id属性可以找到，则说明该tab项已经打开
                 if ($(this).attr("lay-id") == dataid.attr("data-id")) {
                     isData = true;
                 }
             })
             if (isData == false) {
-                //标志为false 新增一个tab项
                 active.tabAdd(dataid.attr("data-url"), dataid.attr("data-id"), dataid.attr("data-title"));
             }
         }
-        //最后不管是否新增tab，最后都转到要打开的选项页面上
         active.tabChange(dataid.attr("data-id"));
     });
 
@@ -70,4 +58,5 @@ layui.use(['element', 'layer', 'jquery'], function () {
         $("iframe").css("height",h+"px");
     }
 
+    element.tabAdd("/html/welcome.html","100","欢迎");
 });
