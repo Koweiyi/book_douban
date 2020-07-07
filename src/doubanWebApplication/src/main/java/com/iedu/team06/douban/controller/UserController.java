@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -22,14 +23,20 @@ public class UserController {
     private UserService userService;
 
     @PostMapping(value = "/login")
-    public String login(@RequestParam("uid") String uid, @RequestParam("pwd") String pwd, HttpSession session){
+    public String login(@RequestParam("uid") String uid, @RequestParam("pwd") String pwd, Model model){
 
         User user = userService.login(uid, pwd);
         if (user != null){
-            session.setAttribute("LoginUser", user);
+            model.addAttribute("LoginUser", user);
             return "redirect:/html/index.html";
         }
         return "redirect:/html/login.html";
+    }
+
+    @RequestMapping(value = "/LoginUser")
+    @ResponseBody
+    public User LoginUser(Model model){
+        return  (User) model.getAttribute("LoginUser");
     }
 
     @RequestMapping(value = "/add")
@@ -64,10 +71,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "logout")
-    public String logout(Model model, HttpSession session){
+    public String logout(HttpSession session, SessionStatus sessionStatus){
 
+        session.invalidate();
+        sessionStatus.setComplete();
         return "redirect:/html/login.html";
-
     }
 
     @RequestMapping(value = "/resetPwd")

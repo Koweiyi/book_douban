@@ -58,5 +58,14 @@ layui.use(['element', 'layer', 'jquery'], function () {
         $("iframe").css("height",h+"px");
     }
 
-    element.tabAdd("/html/welcome.html","100","欢迎");
+    let initLoginUser = function () {
+        $.post('/logic/user/LoginUser',{},
+            function (result) {
+                $('#spanNickName').html(result.nickName)
+            })
+    };
+
+    initLoginUser();
+
+    // element.tabAdd("/html/welcome.html","100","欢迎");
 });

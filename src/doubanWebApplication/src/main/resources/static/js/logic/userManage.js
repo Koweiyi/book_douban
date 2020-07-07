@@ -107,11 +107,12 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
             //         "</html>\n",
             // });
             let index = layer.open({
-                type:1,
                 title:"警告",
-                content:"您将重置当前用户：" + object.data.uid + "的密码。</br>" +
-                    "该操作不可逆，请慎重考虑! ",
+                width:200,
+                content:"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您将重置当前用户：" + object.data.uid + "的密码。</br>" +
+                    "<span style='color: #ff0000;'><i class='layui-icon layui-icon-tips'></i>该操作不可逆，请慎重考虑!</span> ",
                 btn:["确认","取消"],
+                btnAlign:"c",
                 yes: function () {
                     $.post(
                         '/logic/user/resetPwd',
@@ -148,6 +149,19 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
     });
 
     $('#btnRefresh').click(function (event) {
+        $('#uid').val("");
+        $('#nickName').val("");
 
+        set_select_checked("selState", "-1");
     })
+    function set_select_checked(selectId, checkValue){
+        var select = document.getElementById("selState");
+
+        for (var i = 0; i < select.options.length; i++){
+            if (select.options[i].value == checkValue){
+                select.options[i].selected = true;
+                break;
+            }
+        }
+    }
 });
