@@ -16,6 +16,9 @@ public interface UserMapper {
     @Select("select id, uid, nick_name, state from user where uid = #{uid} and pwd = #{pwd}")
     public User login(@Param("uid") String uid, @Param("pwd") String pwd);
 
+    @Select("select * from user where id = #{id}")
+    public User selectByid(@Param("id") String id);
+
     @Select("select * from user where uid = #{uid}")
     public User selectByUid(@Param("uid") String uid);
 
@@ -28,10 +31,10 @@ public interface UserMapper {
     int editByID(@Param("edit") EditUserData editUserData);
 
     @Update("update user" +
-            "   set uid = #{user.uid}" +
-            "       pwd = #{user.pwd}" +
-            "       nick_name = #{user.nickName}" +
+            "   set uid = #{user.uid}," +
+            "       pwd = #{user.pwd}," +
+            "       nick_name = #{user.nickName}," +
             "       state = #{user.state}" +
             "   where id = #{user.id}")
-    int update(@Param("user") User oldUser);
+    int update(@Param("user") User user);
 }

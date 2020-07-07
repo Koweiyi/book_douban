@@ -71,6 +71,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/resetPwd")
+    @ResponseBody
     public Message resetPwd(String id){
         Message message = new Message();
         message.setError(true);

@@ -114,7 +114,7 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
                 btn:["确认","取消"],
                 yes: function () {
                     $.post(
-                        'logic/user/resetPwd',
+                        '/logic/user/resetPwd',
                         {
                             'id': object.data.id
                         },
