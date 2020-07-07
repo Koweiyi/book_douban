@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="/js/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/css/main.css" media="all">
+<!--    <script src="jquery.js"></script>-->
+</head>
+<body onload="createCode()">
+<div class="layui-canvs"></div>
+<div class="layui-layout layui-layout-login">
+    <h1>
+        <strong>豆瓣数据管理系统</strong>
+    </h1>
+    <form class="" id="login-form">
+        <div class="login-block">
+            <div class="layui-user-icon larry-login">
+                <input class="login_txtbx" type="text" id="uid" placeholder="账号" required lau-verify="reauired">
+            </div>
+            <div class="layui-pwd-icon larry-login">
+                <input type="password" id="pwd" class="login_txtbx" placeholder="密码" required lau-verify="reauired">
+            </div>
+
+            <div class="layui-val-icon larry-login">
+                <div class="layui-code-box">
+                    <input type="text" id="code" name="code" required lay-verify="requried" placeholder="验证码" maxlength="4" class="login_txtbx">
+                    <input  class="verifyImg" id="verifyImg" onclick="createCode()">
+                </div>
+            </div>
+            <div id="login-btn-block">
+<!--                <button id="btnLogin" class="layui-btn" >登录</button>-->
+                <button type="button" class="layui-btn" id="btnLogin"  onclick="validate()">登录</button>
+            </div>
+            <div id="login-form-register">
+                <span>没有账号：</span>
+                <a href="/html/register.html">
+                    <i class="layui-icon layui-icon-link"></i>点我注册
+                </a>
+            </div>
+        </div>
+        <div class="layui-login-text">
+            <p>©&nbsp;team06</p>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="/js/layui/layui.all.js"></script>
+<script type = "text/javascript" src="/js/logic/code.js" ></script>
+<script type="text/javascript" src="/js/logic/login.js"></script>
+<script type="text/javascript" src="/js/surports/jparticle.jquery.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $(".layui-canvs").jParticle({
+            background: "#282828",
+            color: "#E6E6E6"
+        });
+    });
+</script>
+</body>
+</html>
