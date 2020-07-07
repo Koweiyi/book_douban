@@ -14,7 +14,7 @@ class DoubanMusicPipeline:
 
     def __init__(self):
         try:
-            self.connect = pymysql.connect(
+            self.connect = pymysql.Connect(
                 host=settings.MYSQL_HOST,
                 port=settings.MYSQL_PORT,
                 db=settings.MYSQL_DBNAME,
@@ -25,11 +25,12 @@ class DoubanMusicPipeline:
                 cursorclass=pymysql.cursors.DictCursor
             )
             self.cursor = self.connect.cursor()
-            # self.cursor.execute("SELECT VERSION()")
-            # data = self.cursor.fetchone()
-            # print(data)
+            self.cursor.execute("SELECT VERSION()")
+            data = self.cursor.fetchone()
+            print(data)
         except:
             print("数据库连接失败")
+            print()
 
     def process_item(self, item, spider):
 
@@ -113,26 +114,49 @@ class DoubanMusicPipeline:
                             ''', (item['music_id']))
         film = self.cursor.fetchone()
 
-        sql_insert1 = '''UPDATE dalongtou_music 
-                        SET
-                        music_name = \"%s\",
-                        music_man = \"%s\",
-                        music_rename = \"%s\",
-                        music_sect = \"%s\",
-                        music_album = \"%s\",
-                        music_media = \"%s\",
-                        music_time = \"%s\",
-                        music_mark = \"%s\",
-                        music_vote = \"%s\",
-                        music_star1 = \"%s\",
-                        music_star2 = \"%s\",
-                        music_star3 = \"%s\",
-                        music_star4 = \"%s\",
-                        music_star5 = \"%s\"
-                        WHERE music_id = \"%s\"'''
+        sql_insert1 = '''UPDATE dalongtou_music
+                            SET 
+                                music_name = \"%s\",
+                                music_man = \"%s\",
+                                music_rename = \"%s\",
+                                music_sect = \"%s\",
+                                music_album = \"%s\",
+                                music_media = \"%s\",
+                                music_time = \"%s\",
+                                music_mark = \"%s\",
+                                music_vote = \"%s\",
+                                music_star1 = \"%s\",
+                                music_star2 = \"%s\",
+                                music_star3 = \"%s\",
+                                music_star4 = \"%s\",
+                                music_star5 = \"%s\"
+                                WHERE music_id = \"%s\"'''
+
+        sql_insert1_1 = '''INSERT INTO dalongtou_music( 
+                            music_name ,
+                            music_man ,
+                            music_rename,
+                            music_sect ,
+                            music_album ,
+                            music_media ,
+                            music_time ,
+                            music_mark ,
+                            music_vote ,
+                            music_star1 ,
+                            music_star2 ,
+                            music_star3 ,
+                            music_star4 ,
+                            music_star5 )
+                            VALUE (\"%s\", \"%s\", \"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\", \"%s\")'''
 
         if film is None:
             print("报错！报错！！！！！！！！！！！！music表: music_id找不到，插入detail")
+            self.cursor.execute(sql_insert1_1, (
+                item['music_name'], item['music_man'], item['music_rename'],
+                item['music_sect'], item['music_album'], item['music_media'],
+                item['music_time'], item['music_mark'], item['music_vote'],
+                item['music_star1'], item['music_star2'], item['music_star3'],
+                item['music_star4'], item['music_star5'], item['music_id']))
         else:
             self.cursor.execute(sql_insert1, (
                 item['music_name'], item['music_man'], item['music_rename'],
@@ -164,6 +188,6 @@ class DoubanMusicPipeline:
             self.connect.commit()
 
         self.cursor.execute(sql_insert3, (
-        item['music_comment'], item['music_comment_star'], item['music_id'], item['music_comment_name']))
+            item['music_comment'], item['music_comment_star'], item['music_id'], item['music_comment_name']))
         self.connect.commit()
         pass

@@ -21,7 +21,7 @@ class MusicTableItem(scrapy.Item):
 
 class MusicDetailItem(scrapy.Item):
     music_id = scrapy.Field()
-
+    music_url = scrapy.Field()
     music_name = scrapy.Field()
     music_man = scrapy.Field()
     music_rename = scrapy.Field()
