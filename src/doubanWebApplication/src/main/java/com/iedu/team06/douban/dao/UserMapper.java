@@ -26,4 +26,12 @@ public interface UserMapper {
 
     @Update("update user set uid = #{edit.newUid}, pwd = #{edit.newPwd}, nick_name = #{edit.newNickName} where id = #{edit.id}")
     int editByID(@Param("edit") EditUserData editUserData);
+
+    @Update("update user" +
+            "   set uid = #{user.uid}" +
+            "       pwd = #{user.pwd}" +
+            "       nick_name = #{user.nickName}" +
+            "       state = #{user.state}" +
+            "   where id = #{user.id}")
+    int update(@Param("user") User oldUser);
 }

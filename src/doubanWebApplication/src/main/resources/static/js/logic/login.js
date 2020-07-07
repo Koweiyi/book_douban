@@ -6,3 +6,4 @@ layui.use(['jquery'],function(){
     $(".layui-canvs").height($(window).height());
 
 });
+

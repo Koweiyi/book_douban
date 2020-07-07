@@ -26,8 +26,8 @@ public class BookServiceImpl implements BookService {
                 book.setBookAuthor("%" + book.getBookAuthor() + "%");
             if(!"".equals(book.getTags().trim()))
                 book.setTags("%" + book.getTags() + "%");
-//            if (!"".equals(book.getDate().trim()))
-//                book.setDate("%" + book.getDate() + "%");
+            if (!"".equals(book.getDate().trim()))
+                book.setDate("%" + book.getDate() + "%");
         }
 
         if (page > 0 && limit > 0)

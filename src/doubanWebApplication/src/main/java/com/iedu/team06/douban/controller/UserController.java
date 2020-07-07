@@ -3,9 +3,11 @@ package com.iedu.team06.douban.controller;
 import com.iedu.team06.douban.entity.User;
 import com.iedu.team06.douban.service.UserService;
 import com.iedu.team06.douban.tools.EditUserData;
+import com.iedu.team06.douban.tools.Message;
 import com.iedu.team06.douban.tools.TableData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/logic/user")
+@SessionAttributes("LoginUser")
 public class UserController {
 
     @Autowired
@@ -30,9 +33,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/add")
-    @ResponseBody
-    public User addUser(User user){
-        return userService.addUser(user);
+    public String addUser(User user, String rePwd){
+
+        if(user.getPwd().equals(rePwd)){
+            if(userService.addUser(user))
+                return "redirect:/html/login.html";
+        }
+        return "redirect/html/register.html";
     }
 
     @RequestMapping(value = "/search")
@@ -52,9 +59,27 @@ public class UserController {
     @RequestMapping(value = "/edit")
     @ResponseBody
     public User edit(EditUserData editUserData){
-
         User u = userService.edit(editUserData);
         return u;
     }
 
+    @RequestMapping(value = "logout")
+    public String logout(Model model, HttpSession session){
+
+        return "redirect:/html/login.html";
+
+    }
+
+    @RequestMapping(value = "/resetPwd")
+    public Message resetPwd(String id){
+        Message message = new Message();
+        message.setError(true);
+        message.setContent("服务器错误，请重新尝试！");
+
+        if(userService.resetPwd(id)){
+            message.setError(false);
+            message.setContent("密码重置已完成！");
+        }
+        return message;
+    }
 }

@@ -15,7 +15,10 @@ public interface BookMapper {
     public List<Book> selectAll();
 
     @Select("select * from books where id = #{ID}")
-    public Book selectById(String ID);
+    public Book selectById(@ Param("ID") String ID);
+
+    @Select("select(count(1) from books)")
+    public int bookCount();
 
 
 
@@ -33,7 +36,7 @@ public interface BookMapper {
             "      and tags like #{book.tags}" +
             "   </if>" +
             "   <if test = 'book.date != null and book.date.length > 0'>" +
-            "      and date = #{book.date}" +
+            "      and date like #{book.date}" +
             "   </if>" +
             "   <if test = 'book.isbn != null and book.isbn.length > 0'>" +
             "      and isbn = #{book.isbn}" +

@@ -11,28 +11,19 @@
     <div class="layui-row" id="divSearch">
         <div class="layui-form"  lay-filter="test1">
             <div class="layui-form-item layui-inline">
-                <label class="layui-form-label">
-                    用户名
-                </label>
                 <div class="layui-inline">
                     <input type="text" name="uid" id="uid" placeholder="需要检索的用户名" class="layui-input"/>
                 </div>
             </div>
             <div class="layui-form-item layui-inline">
-                <label class="layui-form-label">
-                    昵称
-                </label>
                 <div class="layui-inline">
                     <input type="text" name="nickName" id="nickName" placeholder="需要检索的昵称" class="layui-input"/>
                 </div>
             </div>
             <div class="layui-form-item layui-inline">
-                <label class="layui-form-label">
-                    状态
-                </label>
                 <div class="layui-inline">
                     <select name="state" id="selState" class="layui-input">
-                        <option value="-1" selected>全部</option>
+                        <option value="-1" selected>状态</option>
                         <option value="0">未激活</option>
                         <option value="1">正常</option>
                         <option value="2">已屏蔽</option>
@@ -61,11 +52,11 @@
         <table class="layui-tab" id="tblResult" lay-filter="tblResult"></table>
     </div>
 
-    <script type="text/html" id="barDemo">
-        <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail"><i class="layui-icon layui-icon-file"></i>查看</button>
-        <button class="layui-btn layui-btn-xs" lay-event="edit"><span><i class="layui-icon layui-icon-edit"></i></span>编辑</button>
-        <button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><span><i class="layui-icon layui-icon-delete"></i></span>删除</button>
-    </script>
+<!--    <script type="text/html" id="barDemo">-->
+<!--        <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail"><i class="layui-icon layui-icon-file"></i>查看</button>-->
+<!--        <button class="layui-btn layui-btn-xs" lay-event="edit"><span><i class="layui-icon layui-icon-edit"></i></span>编辑</button>-->
+<!--        <button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><span><i class="layui-icon layui-icon-delete"></i></span>删除</button>-->
+<!--    </script>-->
 
 </body>
 </html>
