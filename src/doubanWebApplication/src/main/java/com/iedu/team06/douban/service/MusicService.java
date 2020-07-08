@@ -1,6 +1,6 @@
-package com.iedu.demo.demo.service;
+package com.iedu.team06.douban.service;
 
-import com.iedu.demo.demo.entity.Music;
+import com.iedu.team06.douban.entity.Music;
 
 import java.util.List;
 

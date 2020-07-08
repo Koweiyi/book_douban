@@ -144,6 +144,9 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
                 'uid' : $('#uid').val(),
                 'nickName' : $('#nickName').val(),
                 'state' : $('#selState').val()
+            },
+            page :{
+                curr:1
             }
         })
     });

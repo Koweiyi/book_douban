@@ -1,4 +1,4 @@
-package com.iedu.demo.demo.entity;
+package com.iedu.team06.douban.entity;
 
 import lombok.Data;
 

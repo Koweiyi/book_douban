@@ -1,6 +1,6 @@
-package com.iedu.demo.demo.dao;
+package com.iedu.team06.douban.dao;
 
-import com.iedu.demo.demo.entity.Music;
+import com.iedu.team06.douban.entity.Music;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 

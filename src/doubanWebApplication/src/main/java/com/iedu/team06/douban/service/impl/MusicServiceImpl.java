@@ -1,8 +1,8 @@
-package com.iedu.demo.demo.service.impl;
+package com.iedu.team06.douban.service.impl;
 
-import com.iedu.demo.demo.dao.MusicMapper;
-import com.iedu.demo.demo.entity.Music;
-import com.iedu.demo.demo.service.MusicService;
+import com.iedu.team06.douban.dao.MusicMapper;
+import com.iedu.team06.douban.entity.Music;
+import com.iedu.team06.douban.service.MusicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

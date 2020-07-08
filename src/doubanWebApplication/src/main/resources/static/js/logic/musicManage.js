@@ -82,7 +82,7 @@ layui.use(['jquery','form','table','layer'], function () {
 
     $('#btnSearch').click( function(event) {
         table. reload('tblResult',{
-            url:'/logic/user/search2',
+            url:'/logic/music/search2',
             method: 'post',
             where: {
                 'm_name' : $('#m_name').val(),

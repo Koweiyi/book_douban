@@ -38,8 +38,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> search(User user) {
-        return mapper.selectAll();
+    public List<User> search(User user, int page, int limit) {
+
+        if(user != null && !"".equals(user.getUid().trim())) {
+            user.setUid("%" + user.getUid() + "%");
+        }
+
+        if(page > 0 && limit > 0)
+            return mapper.selectByWhere(user,(page - 1) * limit, limit);
+
+        return mapper.selectByWhere(user,null,null);
+
+
+    }
+
+    @Override
+    public int searchCount(User user) {
+        return mapper.countSelectByWhere(user);
     }
 
     @Override
