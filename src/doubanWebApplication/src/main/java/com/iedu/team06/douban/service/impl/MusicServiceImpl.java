@@ -14,31 +14,21 @@ public class MusicServiceImpl implements MusicService {
     @Autowired
     private MusicMapper mapper;
 
-    /*@Override
-    public User login(String uid, String pwd){
-
-        User user = mapper.login(uid,pwd);
-        if (user != null && user.getState() == 1)
-            return user;
-        return null;
-
-    }*/
-    /*@Override
-    public Music addMusic(Music music){
-        if (mapper.seceltByM_name(music.getM_name())==null){
-            music.setM_mark("0");
-            mapper.addMusic(music);
-            return music;
-        }
-        return null;
-    }*/
 
     @Override
     public List<Music> search(Music music, int page, int limit) {
 
-        if(music != null && !"".equals(music.getM_name().trim())) {
-            music.setM_name("%" + music.getM_name() + "%");
+        if(music != null && !"".equals(music.getMusicName().trim())) {
+            music.setMusicName("%" + music.getMusicName() + "%");
         }
+
+        if(music != null && !"".equals(music.getMusicMan().trim())) {
+            music.setMusicMan("%" + music.getMusicMan() + "%");
+        }
+
+        /*if(music != null && !"".equals(music.getmusicmark().trim())) {
+            music.setmusicmark("%" + music.getmusicmark() + "%");
+        }*/
 
         if(page > 0 && limit > 0)
             return mapper.selectByWhere(music,(page - 1) * limit, limit);
@@ -52,12 +42,4 @@ public class MusicServiceImpl implements MusicService {
         return mapper.countSelectByWhere(music);
     }
 
-    /*@Override
-    public boolean resetPwd(int id){
-        String defaultPwd = "000000";
-
-        if(mapper.updatePwd(id,defaultPwd)==1)
-            return true;
-        return false;
-    }*/
 }

@@ -4,23 +4,23 @@ import lombok.Data;
 
 @Data
 public class Music {
-    private int id;
-    private String m_id;
-    private String m_name;
-    private String m_man;
-    private String m_mark;
-    private String m_rename;
-    private String m_sect;
-    private String m_album;
-    private String m_media;
-    private String m_time;
-    private String m_vote;
-    private String m_star5;
-    private String m_star4;
-    private String m_star3;
-    private String m_star2;
-    private String m_star1;
-    private String m_url;
+    //private int id;
+    private String musicId;
+    private String musicName;
+    private String musicMan;
+    private String musicMark;
+    private String musicRename;
+    private String musicSect;
+    private String musicAlbum;
+    private String musicMedia;
+    private String musicTime;
+    private String musicVote;
+    private String musicStar5;
+    private String musicStar4;
+    private String musicStar3;
+    private String musicStar2;
+    private String musicStar1;
+    private String musicUrl;
 
 
 

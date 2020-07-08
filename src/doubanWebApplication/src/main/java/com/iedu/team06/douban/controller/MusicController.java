@@ -18,7 +18,6 @@ public class MusicController {
     @Autowired
     private MusicService musicService;
 
-
     @RequestMapping(value="/search2")
     @ResponseBody
     public TableData search2(Music music, int page, int limit) {
