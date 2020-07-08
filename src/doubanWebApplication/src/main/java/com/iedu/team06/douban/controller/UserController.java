@@ -63,6 +63,15 @@ public class UserController {
         return tableData;
     }
 
+    @RequestMapping(value = "/indexUser")
+    @ResponseBody
+    public Message indexUser(String uid){
+        Message message = new Message();
+        message.setContent("");
+        message.setError(userService.searchOne(uid) != null);
+        return message;
+    }
+
     @RequestMapping(value = "/edit")
     @ResponseBody
     public User edit(EditUserData editUserData){

@@ -19,29 +19,28 @@
     <h1>
         <strong>注册新用户</strong>
     </h1>
-    <form action="/logic/user/add" method="post" class="layui-form layui-form-pane" id="login-form">
+    <div class="layui-form layui-form-pane" id="login-form">
         <div class="login-block">
             <div class="layui-user-icon larry-login">
-                <input class="login_txtbx" type="text" name="uid", id="uid", placeholder="用户名" required lau-verify="reauired">
+                <input class="login_txtbx" type="text" name="uid", id="uid", placeholder="用户名" required>
             </div>
             <div class="layui-user-icon larry-login">
-                <input class="login_txtbx" type="text" name="nickName" , id="nickName", placeholder="昵称" required lau-verify="reauired">
+                <input class="login_txtbx" type="text" name="nickName" , id="nickName", placeholder="昵称" required>
             </div>
             <div class="layui-pwd-icon larry-login">
-                <input type="password" name="pwd", id="pwd", class="login_txtbx" placeholder="密码" required lau-verify="reauired">
+                <input type="password" name="pwd", id="pwd", class="login_txtbx" placeholder="密码" required layui-verify="reauired">
             </div>
             <div class="layui-pwd-icon larry-login">
-                <input type="password" name="rePwd", id="rePwd" class="login_txtbx" placeholder="确认密码" required lau-verify="reauired">
+                <input type="password" name="rePwd", id="rePwd" class="login_txtbx" placeholder="确认密码" required layui-verify="reauired">
             </div>
 
             <div class="layui-val-icon larry-login">
                 <div class="layui-code-box">
-                    <input type="text" id="code" name="code" placeholder="验证码" maxlength="4" class="login_txtbx">
-                    <img src="images/verifyimg.png" alt="" class="verifyImg" id="verifyImg" onclick="javascript:this.src='xxx'+Math.random();">
+                    <input type="text" id="code" name="code" required layui-verify="reauired" placeholder="验证码" maxlength="4" class="login_txtbx">
                 </div>
             </div>
             <div id="login-btn-block">
-                <button id="btnRegister" type="submit" class="layui-btn" style="width: 100%;">注册</button>
+                <button id="btnRegister" class="layui-btn" style="width: 100%;" lay-filter="btnRegister">注册</button>
             </div>
             <div id="login-form-register">
                 <span>已有账号：</span>
@@ -53,8 +52,7 @@
         <div class="layui-login-text">
             <p>©&nbsp;team06</p>
         </div>
-    </form>
-<script type="text/javascript" src="/js/logic/addUser.js"></script>
+    </div>
 </div>
 <script type="text/javascript" src="/js/layui/layui.all.js"></script>
 <script type="text/javascript" src="/js/logic/login.js"></script>
@@ -67,5 +65,6 @@
         });
     });
 </script>
+<script type="text/javascript" src="/js/logic/addUser.js"></script>
 </body>
 </html>

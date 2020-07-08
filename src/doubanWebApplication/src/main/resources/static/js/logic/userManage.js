@@ -130,6 +130,11 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
         }
 
         else if("stateManage" === object.event){
+            let index = layer.open({
+                type:1,
+                title:"用户权限管理",
+                content:""
+            });
 
         }
     })
