@@ -13,7 +13,7 @@ public interface UserMapper {
     @Select("select * from user limit 0, 30")
     public List<User> selectAll();
 
-    @Select("select id, uid, nick_name, state from user where uid = #{uid} and pwd = #{pwd}")
+    @Select("select id, uid, nick_name, state,profile_url from user where uid = #{uid} and pwd = #{pwd}")
     public User login(@Param("uid") String uid, @Param("pwd") String pwd);
 
     @Select("select * from user where id = #{id}")

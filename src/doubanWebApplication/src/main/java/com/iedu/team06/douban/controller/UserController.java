@@ -70,7 +70,7 @@ public class UserController {
         return u;
     }
 
-    @RequestMapping(value = "logout")
+    @RequestMapping(value = "/logout")
     public String logout(HttpSession session, SessionStatus sessionStatus){
 
         session.invalidate();

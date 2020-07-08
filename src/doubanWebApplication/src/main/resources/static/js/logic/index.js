@@ -1,7 +1,15 @@
+var user;
 layui.use(['element', 'layer', 'jquery'], function () {
     var element = layui.element;
     var layer = layui.layer;
     var $ = layui.$;
+
+
+    $.post('/logic/user/LoginUser',{},function (result) {
+        user = result;
+    })
+
+    // $("#spanNickName").html(user.nickName);
 
     $(".index-exist").on('click', function () {
         layer.open({
@@ -14,10 +22,16 @@ layui.use(['element', 'layer', 'jquery'], function () {
             }
         });
     })
-
     $('.site-demo-active').on('click', function () {
         var dataid = $(this);
-        if ($(".layui-tab-title li[lay-id]").length <= 0) {
+
+        if(user.state != 3 && dataid.attr("data-id") == "4"){
+            layer.open({
+                title: '提示',
+                content: '您还不是管理员用户，无权进入管理员平台！',
+            });
+            return;
+        } else if ($(".layui-tab-title li[lay-id]").length <= 0) {
             active.tabAdd(dataid.attr("data-url"), dataid.attr("data-id"), dataid.attr("data-title"));
         } else {
             var isData = false;
@@ -57,14 +71,33 @@ layui.use(['element', 'layer', 'jquery'], function () {
         var h = $(window).height();
         $("iframe").css("height",h+"px");
     }
+    var user;
 
-    let initLoginUser = function () {
+    var initLoginUser = function () {
         $.post('/logic/user/LoginUser',{},
             function (result) {
                 $('#spanNickName').html(result.nickName)
-            })
-    };
 
+                if(result.state != 3){
+                    // $('#user-manage').attr("disabled", true);
+                    // $("#user-manage").css("pointer-events","none");
+                    // $('#user-manage-dd').css("display","none");
+                    $("#user-manage").css("color","gray");
+                    $("#spanUserManage").html("<i class='layui-icon layui-icon-close-fill'></i>");
+                    $('#spanUserManage').css("color","darkred");
+                    $("#imgHeader").attr("src",result.profileUrl);
+                }
+                else{
+                    $("#spanUserManage").html("<i class='layui-icon layui-icon-auz'></i>");
+                    $('#spanUserManage').css("color","darkblue");
+                    $('#imgHeader').attr("src",result.profileUrl);
+                }
+
+
+            })
+        // $('#spanNickName').html(user.nickName)
+
+    };
     initLoginUser();
 
     // element.tabAdd("/html/welcome.html","100","欢迎");
