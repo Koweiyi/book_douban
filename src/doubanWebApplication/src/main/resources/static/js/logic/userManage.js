@@ -47,65 +47,6 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
 
     table.on('tool(tblResult)', function (object) {
         if ("reSetPwd" === object.event) {
-            // layer.open({
-            //     type: 1,
-            //     title: "编辑",
-            //     area: ['50%', '50%'],
-            //     btn: false,
-            //     height: 400,
-            //     content: "<!DOCTYPE html>\n" +
-            //         "<html lang=\"en\">\n" +
-            //         "<head>\n" +
-            //         "    <meta charset=\"UTF-8\">\n" +
-            //         "    <title>Title</title>\n" +
-            //         "    <link rel=\"stylesheet\" href=\"/css/main.css\", media=\"all\">\n" +
-            //         "    <link rel=\"stylesheet\" href=\"/js/layui/css/layui.css\">\n" +
-            //         "</head>\n" +
-            //         "<body>\n" +
-            //         "\n" +
-            //         "<form class=\"layui-form layui-form-pane\" id=\"edit-user-form\">\n" +
-            //         "    <ul>\n" +
-            //         "        <li class=\"layui-form-item\">\n" +
-            //         "            <label class=\"layui-form-label\">id：</label>\n" +
-            //         "            <div class=\"layui-input-block\">\n" +
-            //         "                <input type=\"text\" readonly=\"readonly\" class=\"layui-input\" id=\"id\" placeholder=" + object.data.id + " value=" + object.data.id + " name=\"id\">\n" +
-            //         "            </div>\n" +
-            //         "        </li>\n" +
-            //         "        <li class=\"layui-form-item\">\n" +
-            //         "            <label class=\"layui-form-label\">旧密码：</label>\n" +
-            //         "            <div class=\"layui-input-block\">\n" +
-            //         "                <input type=\"password\" class=\"layui-input\" id=\"oldPwd\" placeholder=\"*********\" required lay-verify=\"required\" name=\"oldPwd\">\n" +
-            //         "            </div>\n" +
-            //         "        </li>\n" +
-            //         "        <li class=\"layui-form-item\">\n" +
-            //         "            <label class=\"layui-form-label\">用户名：</label>\n" +
-            //         "            <div class=\"layui-input-block\">\n" +
-            //         "                <input type=\"text\" class=\"layui-input\" id=\"newUid\"  name=\"newUid\">\n" +
-            //         "            </div>\n" +
-            //         "        </li>\n" +
-            //         "        <li class=\"layui-form-item\">\n" +
-            //         "            <label class=\"layui-form-label\">昵称：</label>\n" +
-            //         "            <div class=\"layui-input-block\">\n" +
-            //         "                <input type=\"text\" class=\"layui-input\" id=\"newNickName\" required  name=\"newNickName\">\n" +
-            //         "            </div>\n" +
-            //         "        </li>\n" +
-            //         "        <li class=\"layui-form-item\">\n" +
-            //         "            <label class=\"layui-form-label\">密码：</label>\n" +
-            //         "            <div class=\"layui-input-block\">\n" +
-            //         "                <input type=\"password\" class=\"layui-input\" id=\"newPwd\" placeholder=\"输入新密码\" name=\"newPwd\">\n" +
-            //         "            </div>\n" +
-            //         "        </li>\n" +
-            //         "        <li class=\"layui-form-item\">\n" +
-            //         "            <button id=\"btnEdit\" class=\"layui-btn\" lay-submit lay-filter=\"editAndCommit\">编辑用户</button>\n" +
-            //         "        </li>\n" +
-            //         "    </ul>\n" +
-            //         "</form>\n" +
-            //         "\n" +
-            //         "<script type=\"text/javascript\" src=\"/js/layui/layui.all.js\"></script>\n" +
-            //         "<script type=\"text/javascript\" src=\"/js/logic/editUser.js\"></script>\n" +
-            //         "</body>\n" +
-            //         "</html>\n",
-            // });
             let index = layer.open({
                 title:"警告",
                 width:200,
@@ -128,92 +69,51 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
                 }
             });
         }
-        if('info' === obj.event) {
-            $.post('/logic/user/' + obj.data.id,
-                {},
-                function(result) {
-                    //填充必要的值
-                    $('#spanUidForupdate').html(result.uid);
-                    $('#updateNickName').val(result.nickName);
+        else if("stateManage" === object.event){
 
-                    layer.open({
-                        type: 1
-                        , offset: 'auto'
-                        , content: $('#divUserInfo')
-                        , btn: ['保存', '取消']
-                        , btnAlign: 'c'
-                        , shade: 0
-                        , yes: function (index, lo) {
-                            $.post('/logic/user/update',
-                                {
-                                    'id': result.id,
-                                    'nickName': $('#updateNickName').val()
-                                },
-                                function (result) {
-                                    if (!result.error) {
-                                        layer.msg(result.msg);
-                                        layer.close(index);
-                                    } else {
-                                        layer.msg('您输入的内容有误，请检查后重新提交');
+                $.post('/logic/user/' + object.data.id,{},
+                    function (result) {
+                        $('#spanEditUid').html(result.uid);
+                        // $('#selectState').options[parseInt(result.state)].selected = true;
+
+                        layer.open({
+                            type:1,
+                            title:"用户权限管理",
+                            content: $('#divUserInfo'),
+                            area: ['34%', '55%'],
+                            btn: ["设置", "取消"],
+                            btnAlign: "c",
+                            yes: function (index, lo) {
+                                $.post('/logic/user/setState',
+                                    {
+                                        'id': result.id,
+                                        'state': $("#selectState").val()
+                                    },
+                                    function (result) {
+                                        if(!result.error){
+                                            layer.msg("用户权限设置成功！");
+                                            table.reload('tblResult', {
+                                                url:'/logic/user/search',
+                                                method:'post',
+                                                where:{
+                                                    'uid' : $('#uid').val(),
+                                                    'nickName' : $('#nickName').val(),
+                                                    'state' : $('#selState').val()
+                                                }
+                                            })
+                                            layer.close(index);
+                                        }else{
+                                            layer.msg("用户权限设置失败！")
+                                        }
                                     }
-                                }
-                            );
-                        }
-                        , btn2: function () {
-                            layer.closeAll();
-                        }
-                    });
-                }
-        );
-}
-
-
-
-else if("stateManage" === object.event){
-
-            $.post('/logic/user/' + object.data.id,{},
-                function (result) {
-                    $('#spanEditUid').html(result.uid);
-                    // $('#selectState').options[parseInt(result.state)].selected = true;
-
-                    layer.open({
-                        type:1,
-                        title:"用户权限管理",
-                        content: $('#divUserInfo'),
-                        area: ['34%', '55%'],
-                        btn: ["设置", "取消"],
-                        btnAlign: "c",
-                        yes: function (index, lo) {
-                            $.post('/logic/user/setState',
-                                {
-                                    'id': result.id,
-                                    'state': $("#selectState").val()
-                                },
-                                function (result) {
-                                    if(!result.error){
-                                        layer.msg("用户权限设置成功！");
-                                        table.reload('tblResult', {
-                                            url:'/logic/user/search',
-                                            method:'post',
-                                            where:{
-                                                'uid' : $('#uid').val(),
-                                                'nickName' : $('#nickName').val(),
-                                                'state' : $('#selState').val()
-                                            }
-                                        })
-                                        layer.close(index);
-                                    }else{
-                                        layer.msg("用户权限设置失败！")
-                                    }
-                                }
-                            );
-                        },
-                        btn2: function () {
-                            layer.closeAll();
-                        }
-                    });
-                }
-            );
+                                );
+                            },
+                            btn2: function () {
+                                layer.closeAll();
+                            }
+                        });
+                    }
+                );
         }
     });
 
