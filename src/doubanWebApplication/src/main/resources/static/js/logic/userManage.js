@@ -128,11 +128,94 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
                 }
             });
         }
+        if('info' === obj.event) {
+            $.post('/logic/user/' + obj.data.id,
+                {},
+                function(result) {
+                    //填充必要的值
+                    $('#spanUidForupdate').html(result.uid);
+                    $('#updateNickName').val(result.nickName);
 
-        else if("stateManage" === object.event){
+                    layer.open({
+                        type: 1
+                        , offset: 'auto'
+                        , content: $('#divUserInfo')
+                        , btn: ['保存', '取消']
+                        , btnAlign: 'c'
+                        , shade: 0
+                        , yes: function (index, lo) {
+                            $.post('/logic/user/update',
+                                {
+                                    'id': result.id,
+                                    'nickName': $('#updateNickName').val()
+                                },
+                                function (result) {
+                                    if (!result.error) {
+                                        layer.msg(result.msg);
+                                        layer.close(index);
+                                    } else {
+                                        layer.msg('您输入的内容有误，请检查后重新提交');
+                                    }
+                                }
+                            );
+                        }
+                        , btn2: function () {
+                            layer.closeAll();
+                        }
+                    });
+                }
+        );
+}
 
+
+
+else if("stateManage" === object.event){
+
+            $.post('/logic/user/' + object.data.id,{},
+                function (result) {
+                    $('#spanEditUid').html(result.uid);
+                    // $('#selectState').options[parseInt(result.state)].selected = true;
+
+                    layer.open({
+                        type:1,
+                        title:"用户权限管理",
+                        content: $('#divUserInfo'),
+                        area: ['34%', '55%'],
+                        btn: ["设置", "取消"],
+                        btnAlign: "c",
+                        yes: function (index, lo) {
+                            $.post('/logic/user/setState',
+                                {
+                                    'id': result.id,
+                                    'state': $("#selectState").val()
+                                },
+                                function (result) {
+                                    if(!result.error){
+                                        layer.msg("用户权限设置成功！");
+                                        table.reload('tblResult', {
+                                            url:'/logic/user/search',
+                                            method:'post',
+                                            where:{
+                                                'uid' : $('#uid').val(),
+                                                'nickName' : $('#nickName').val(),
+                                                'state' : $('#selState').val()
+                                            }
+                                        })
+                                        layer.close(index);
+                                    }else{
+                                        layer.msg("用户权限设置失败！")
+                                    }
+                                }
+                            );
+                        },
+                        btn2: function () {
+                            layer.closeAll();
+                        }
+                    });
+                }
+            );
         }
-    })
+    });
 
 
     $('#btnSearch').click(function (event) {

@@ -10,6 +10,7 @@ public class User {
     private String pwd;
     private String nickName;
     private int state;
+    private String profileUrl;
 
     public User(String uid, String pwd){
         this.uid = uid;

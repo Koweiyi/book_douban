@@ -251,3 +251,12 @@
 #spanNickName{
     color: darkseagreen;
 }
+
+#divUserInfo{
+    display: none;
+    /*padding-left: 5%;*/
+    /*padding-right: 5%;*/
+    /*padding-top: 3%;*/
+    width: 420px;
+    height: 300px;
+}
