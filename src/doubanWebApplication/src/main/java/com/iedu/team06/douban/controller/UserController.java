@@ -100,4 +100,27 @@ public class UserController {
         }
         return message;
     }
+
+    @RequestMapping("/{id}")
+    @ResponseBody
+    public User info(@PathVariable("id") int id){
+        User user = userService.getUserById(Integer.toString(id));
+        return user;
+    }
+
+    @RequestMapping(value = "/setState")
+    @ResponseBody
+    public Message setState(String id, int state){
+        Message message = new Message();
+        message.setError(true);
+        message.setContent("");
+
+        if(userService.setState(id, state)){
+            message.setError(false);
+        }
+        return message;
+    }
+
+
+
 }
