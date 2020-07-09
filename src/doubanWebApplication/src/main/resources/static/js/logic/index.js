@@ -9,8 +9,6 @@ layui.use(['element', 'layer', 'jquery'], function () {
         user = result;
     })
 
-    // $("#spanNickName").html(user.nickName);
-
     $(".index-exist").on('click', function () {
         layer.open({
             title: '安全退出',
@@ -22,6 +20,9 @@ layui.use(['element', 'layer', 'jquery'], function () {
             }
         });
     })
+
+
+
     $('.site-demo-active').on('click', function () {
         var dataid = $(this);
 
@@ -95,10 +96,12 @@ layui.use(['element', 'layer', 'jquery'], function () {
 
 
             })
-        // $('#spanNickName').html(user.nickName)
-
     };
     initLoginUser();
 
-    // element.tabAdd("/html/welcome.html","100","欢迎");
+    let initTab = function () {
+        active.tabAdd("/html/welcome.html", "10", "欢迎界面");
+        active.tabChange("10");
+    }
+    initTab();
 });
