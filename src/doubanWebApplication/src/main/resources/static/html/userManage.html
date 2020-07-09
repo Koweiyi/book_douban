@@ -7,6 +7,24 @@
     <link rel="stylesheet" href="/css/userManage.css">
 </head>
 <body>
+<!--用户详情界面-->
+<div id="divUserInfo" style="display: none;margin: 10px">
+    <div class="layui-form layui-form-pane" layui-filter="userInfoEdit">
+        <div class="layui-form-item">
+            <label class="layui-lable">用户名:</label>
+            <div class="layui-input-block">
+                <span id="spanUidForUpdate"></span>
+            </div>
+        </div>
+        <div class="layui-form-item ">
+            <label class="layui-lable">用户昵称: </label>
+            <div class="layui-input-block">
+                <input type="text" name="nickName" id="updateNickName "
+                       required placeholder="输入用户名" class="layui-input" />
+            </div>
+        </div>
+    </div>
+</div>
     <!--检索功能-->
     <div class="layui-row" id="divSearch">
         <div class="layui-form"  lay-filter="test1">

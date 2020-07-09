@@ -36,6 +36,7 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
                 templet: function (rowData) {
                     let btnPwdReSet='<button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="reSetPwd"><span><i class="layui-icon layui-icon-refresh"></i></span>密码重置</button>';
                     let btnStateManage = '<button class="layui-btn layui-btn-xs" lay-event="stateManage"><span><i class="layui-icon layui-icon-edit"></i></span>状态管理</button>'
+
                     return btnPwdReSet + btnStateManage;
                 }
             }
