@@ -19,5 +19,9 @@ public interface UserService {
 
     User edit(EditUserData editUserData);
 
-    boolean resetPwd(String id);
+    boolean resetPwd(int id);
+
+    User findUserInfo(int id);
+
+    boolean updateUserInfo(User user);
 }

@@ -80,7 +80,7 @@ public class UserController {
 
     @RequestMapping(value = "/resetPwd")
     @ResponseBody
-    public Message resetPwd(String id){
+    public Message resetPwd(int id){
         Message message = new Message();
         message.setError(true);
         message.setContent("服务器错误，请重新尝试！");
@@ -91,4 +91,30 @@ public class UserController {
         }
         return message;
     }
+
+    @RequestMapping("/{id}")
+    @ResponseBody
+    public User info(@PathVariable("id") int id) {
+        User user = userService.findUserInfo(id);
+
+        return user;
+    }
+
+    @RequestMapping("/update")
+    @ResponseBody
+    public Message update(User user){
+        Message msg = new Message();
+        msg.setError(true);
+        msg.setContent("服务器错误");
+
+        if(user !=null && user.getId() != 0){
+            if (userService.updateUserInfo(user)){
+                msg.setError(false);
+                msg.setContent("密码已经更新");
+                return msg;
+            }
+        }
+        return msg;
+    }
+
 }

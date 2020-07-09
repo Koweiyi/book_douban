@@ -17,7 +17,7 @@ public interface UserMapper {
     public User login(@Param("uid") String uid, @Param("pwd") String pwd);
 
     @Select("select * from user where id = #{id}")
-    public User selectByid(@Param("id") String id);
+    public User selectByid(@Param("id") int id);
 
     @Select("select * from user where uid = #{uid}")
     public User selectByUid(@Param("uid") String uid);

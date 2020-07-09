@@ -72,14 +72,33 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean resetPwd(String id) {
-        String defaultPwd = "000000";
+    public boolean resetPwd(int id) {
         User oldUser = mapper.selectByid(id);
         if(oldUser != null){
-            oldUser.setPwd(defaultPwd);
-            return mapper.update(oldUser) == 1;
+            oldUser.setPwd("000000");
+            return mapper.update(oldUser) == 1 ? true : false;
         }
         return false;
     }
+
+    @Override
+    public User findUserInfo(int id){
+        return mapper.selectByid(id);
+    }
+
+    @Override
+    public boolean updateUserInfo(User user){
+
+        if (user != null && user.getId() != 0){
+            User oldUserInfo = mapper.selectByid(user.getId());
+            if (oldUserInfo != null){
+                oldUserInfo.setNickName(user.getNickName());
+                return mapper.update(oldUserInfo) == 1 ? true : false;
+            }
+            return false;
+        }
+        return false;
+    }
+
 
 }
