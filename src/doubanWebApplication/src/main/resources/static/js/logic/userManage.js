@@ -130,14 +130,52 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
         }
 
         else if("stateManage" === object.event){
-            let index = layer.open({
-                type:1,
-                title:"用户权限管理",
-                content:""
-            });
 
+            $.post('/logic/user/' + object.data.id,{},
+                function (result) {
+                    $('#spanEditUid').html(result.uid);
+                    // $('#selectState').options[parseInt(result.state)].selected = true;
+
+                    layer.open({
+                        type:1,
+                        title:"用户权限管理",
+                        content: $('#divUserInfo'),
+                        area: ['34%', '55%'],
+                        btn: ["设置", "取消"],
+                        btnAlign: "c",
+                        yes: function (index, lo) {
+                            $.post('/logic/user/setState',
+                                {
+                                    'id': result.id,
+                                    'state': $("#selectState").val()
+                                },
+                                function (result) {
+                                    if(!result.error){
+                                        layer.msg("用户权限设置成功！");
+                                        table.reload('tblResult', {
+                                            url:'/logic/user/search',
+                                            method:'post',
+                                            where:{
+                                                'uid' : $('#uid').val(),
+                                                'nickName' : $('#nickName').val(),
+                                                'state' : $('#selState').val()
+                                            }
+                                        })
+                                        layer.close(index);
+                                    }else{
+                                        layer.msg("用户权限设置失败！")
+                                    }
+                                }
+                            );
+                        },
+                        btn2: function () {
+                            layer.closeAll();
+                        }
+                    });
+                }
+            );
         }
-    })
+    });
 
 
     $('#btnSearch').click(function (event) {

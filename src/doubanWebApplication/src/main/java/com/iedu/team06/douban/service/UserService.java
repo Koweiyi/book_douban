@@ -18,4 +18,8 @@ public interface UserService {
     User edit(EditUserData editUserData);
 
     boolean resetPwd(String id);
+
+    User getUserById(String id);
+
+    boolean setState(String id, int state);
 }

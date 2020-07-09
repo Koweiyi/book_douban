@@ -59,10 +59,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean resetPwd(String id) {
         String defaultPwd = "000000";
-        User oldUser = mapper.selectByid(id);
+        User oldUser = mapper.selectById(id);
         if(oldUser != null){
             oldUser.setPwd(defaultPwd);
             return mapper.update(oldUser) == 1;
+        }
+        return false;
+    }
+
+    @Override
+    public User getUserById(String id) {
+        return mapper.selectById(id);
+    }
+
+    @Override
+    public boolean setState(String id, int state) {
+        User oldUser = mapper.selectById(id);
+        if(oldUser != null){
+            oldUser.setState(state);
+            return  mapper.update(oldUser) == 1;
         }
         return false;
     }

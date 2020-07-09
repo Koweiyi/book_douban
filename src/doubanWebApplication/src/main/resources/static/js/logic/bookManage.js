@@ -39,6 +39,14 @@ layui.use(['laydate', 'jquery', 'table', 'form'], function(){
         data:[]
     });
 
+    table.on('tool(tblBookResult)', function (object) {
+        if("detail" === object.event){
+            layer.msg("查看按钮被点击了");
+        }else if("edit" === object.event){
+            layer.msg("编辑按钮被点击了");
+        }
+    });
+
 
 
     $('#btnBookSearch').click(function (event) {
