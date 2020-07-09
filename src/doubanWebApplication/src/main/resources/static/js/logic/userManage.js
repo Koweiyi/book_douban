@@ -128,8 +128,48 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
                 }
             });
         }
+        if('info' === obj.event) {
+            $.post('/logic/user/' + obj.data.id,
+                {},
+                function(result) {
+                    //填充必要的值
+                    $('#spanUidForupdate').html(result.uid);
+                    $('#updateNickName').val(result.nickName);
 
-        else if("stateManage" === object.event){
+                    layer.open({
+                        type: 1
+                        , offset: 'auto'
+                        , content: $('#divUserInfo')
+                        , btn: ['保存', '取消']
+                        , btnAlign: 'c'
+                        , shade: 0
+                        , yes: function (index, lo) {
+                            $.post('/logic/user/update',
+                                {
+                                    'id': result.id,
+                                    'nickName': $('#updateNickName').val()
+                                },
+                                function (result) {
+                                    if (!result.error) {
+                                        layer.msg(result.msg);
+                                        layer.close(index);
+                                    } else {
+                                        layer.msg('您输入的内容有误，请检查后重新提交');
+                                    }
+                                }
+                            );
+                        }
+                        , btn2: function () {
+                            layer.closeAll();
+                        }
+                    });
+                }
+        );
+}
+
+
+
+else if("stateManage" === object.event){
 
         }
     })
