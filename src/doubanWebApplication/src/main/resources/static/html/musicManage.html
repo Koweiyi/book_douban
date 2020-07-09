@@ -10,12 +10,13 @@
 <!--检索功能-->
 <div class="layui-row" id="divSearch">
     <div class="layui-form">
+
         <div class= "layui-form-item layui-inline">
             <label class="layui-form-label">
                 音乐名:
             </label>
             <div class="layui-inline">
-                <input type="text" name="m_name" id="m_name" placeholder="需要检索的音乐名" class="layui-input" />
+                <input type="text" name="musicName" id="musicName" placeholder="需要检索的音乐名" class="layui-input" />
             </div>
         </div>
 
@@ -24,8 +25,7 @@
                 作者:
             </label>
             <div class="layui-inline">
-                <input type="text" name= "m_man" id="m_man"
-                       placeholder= "需要检索的乐曲作者" class="layui-input"/>
+                <input type="text" name= "musicMan" id="musicMan" placeholder= "需要检索的乐曲作者" class="layui-input"/>
             </div>
         </div>
 
@@ -34,10 +34,11 @@
                 评分:
             </label>
             <div class="layui-inline">
-                <input type="text" name= "m_mark" id="m_mark"
+                <input type="text" name= "musicMark" id="musicMark"
                        placeholder= "需要检索的乐曲评分" class="layui-input"/>
             </div>
         </div>
+
         <!--<div class="layui-form-item layui-inline">
             <label class="layui-form-label">
                 评分:
@@ -62,10 +63,10 @@
 </div>
 
 <div class="layui-row" id="result">
-    <table id="tblResult" lay-filter="tblResult"></table>
+    <table id="MusictblResult" lay-filter="MusictblResult"></table>
 </div>
 
 </body>
 </html>
-<script type="text/javascript" src="/js/layui2/layui.all.js"></script>
+<script type="text/javascript" src="/js/layui/layui.all.js"></script>
 <script type="text/javascript" src="/js/logic/musicManage.js"></script>

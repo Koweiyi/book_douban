@@ -51,16 +51,16 @@ public class UserController {
 
     @RequestMapping(value = "/search")
     @ResponseBody
-    public TableData search(User user){
+    public TableData search(User user,int page, int limit){
 
-        TableData tableData = new TableData();
-        List<User> list = userService.search(user);
-        tableData.setCode(0);
-        tableData.setMsg("");
-        tableData.setCount(list.size());
-        tableData.setData(list);
+        TableData date = new TableData();
+        List<User> result = userService.search(user, page, limit);
+        date.setCode(0);
+        date.setMsg("");
+        date.setCount(userService.searchCount(user));
+        date.setData(result);
 
-        return tableData;
+        return date;
     }
 
     @RequestMapping(value = "/indexUser")
@@ -79,7 +79,7 @@ public class UserController {
         return u;
     }
 
-    @RequestMapping(value = "/logout")
+    @RequestMapping(value = "logout")
     public String logout(HttpSession session, SessionStatus sessionStatus){
 
         session.invalidate();
@@ -120,7 +120,5 @@ public class UserController {
         }
         return message;
     }
-
-
 
 }

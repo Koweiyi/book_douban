@@ -1,6 +1,6 @@
-package com.iedu.demo.demo.dao;
+package com.iedu.team06.douban.dao;
 
-import com.iedu.demo.demo.entity.Music;
+import com.iedu.team06.douban.entity.Music;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -9,62 +9,46 @@ import java.util.List;
 @Repository
 public interface MusicMapper {
 
-    @Select("select * from dalongtou_music limit 0, 30")
+    @Select("select * from dalongtou_music ")
     public List<Music> selectAll();
 
-    /*@Select("select * from user where uid = #{uid} and pwd = #{pwd} and state = 1")
-    public Music login(@Param("uid") String uid, @Param("pwd") String pwd);*/
-
-    @Select("select * from dalongtou_music where music_name = #{m_name}")
-    public Music seceltByM_name(@Param("m_name") String m_name);
-
-    /*@Insert("insert into dalongtou_music(uid,pwd,nick_name,state) " +
-            "   values(#{user.uid},#{user.pwd},#{user.nickName},#{user.state})")
-    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
-    public int addUser(@Param("user") Music user);*/
-
-    /*@Update("update dalongtou_music set pwd = #{newPwd} where id = #{id}")
-    int updatePwd(@Param("id") int id, @Param("newPwd") String newPwd);*/
-
-    @Select("select id, music_name, music_man, music_mark from dalongtou_music where id = #{id}")
-    public Music selectById(@Param("id") int id);
-
-    @Select("<script>"+
-            "SELECT id, music_name, music_man, music_mark " +
-            "FROM dalongtou_music" +
-            "<where>"+
-            "   <if test='music.m_name != null and music.m_name.length > 0'>" +
-            "       AND music_name like #{music.m_name}" +
+    @Select("<script>" + "select music_id, music_name, music_rename, music_man, music_sect," +
+            "music_album, music_media, music_time, music_mark, music_vote, music_star5," +
+            "music_star4, music_star3, music_star2, music_star1, music_url " +
+            " from dalongtou_music " +
+            "<where>" +
+            "   <if test='music.musicName != null and music.musicName.length > 0'>" +
+            "       and music_name like #{music.musicName}" +
             "   </if>" +
-            "   <if test='music.m_man != null and music.m_man.length > 0'>" +
-            "       AND music_man like #{music.m_man}" +
+            "   <if test='music.musicMan != null and music.musicMan.length > 0'>" +
+            "       and music_man like #{music.musicMan}" +
             "   </if>" +
-            "   <if test= 'music.m_mark != null' >" +
-            "       AND music_mark = #{music.m_mark}" +
+            "   <if test= 'music.musicMark != null and music.musicMark.length > 0'>" +
+            "       and music_mark = #{music.musicMark}" +
             "   </if>" +
             "</where>" +
             "   <if test='start != null and limit != null'>" +
             "       limit #{start}, #{limit}" +
             "   </if>" +
-            "</script>" )
-    public List<Music> selectByWhere ( @Param("music") Music music ,
-                                      @Param("start") Integer start ,
-                                      @Param("limit") Integer limit);
+            "</script>")
+    public List<Music> selectByWhere(@Param("music") Music music,
+                                     @Param("start") Integer start,
+                                     @Param("limit") Integer limit);
 
     @Select("<script>" +
-            "SELECT count(1)" +
-            "   FROM dalongtou_music" +
+            "select count(1)" +
+            "   from dalongtou_music " +
             "<where>" +
-            "   <if test='music.m_name != null and music.m_name.length > 0'>" +
-            "       AND music_name like #{music.m_name}" +
+            "   <if test='music.musicName != null and music.musicName.length > 0'>" +
+            "       and music_name like #{music.musicName}" +
             "   </if>" +
-            "   <if test='music.m_man != null and music.m_man.length > 0'>" +
-            "       AND music_man like #{music.m_man}" +
+            "   <if test='music.musicMan != null and music.musicMan.length > 0'>" +
+            "       and music_man like #{music.musicMan}" +
             "   </if>" +
-            "   <if test= 'music.m_mark != null' >" +
-            "       AND music_mark = #{music.m_mark}" +
+            "   <if test= 'music.musicMark != null' >" +
+            "       and music_mark = #{music.musicMark}" +
             "   </if>" +
             "</where>" +
             "</script>")
-    int countSelectByWhere (@Param("music") Music music);
+    int countSelectByWhere(@Param("music") Music music);
 }
