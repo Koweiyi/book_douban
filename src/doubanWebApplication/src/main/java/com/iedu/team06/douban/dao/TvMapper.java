@@ -11,12 +11,12 @@ import java.util.List;
 @Repository
 public interface TvMapper {
 
-    @Select("select * from sxy_douban_mivie limit 0, 30")
+    @Select("select * from sxy_douban_movie limit 0, 30")
     public List<Tv> selectAll();
 
     @Select("<script>" +
-            "SELECT id,tag,title,url,author,star5,star4,star3,star2,star1,type,time,short1,short2,short3" +
-            "  FROM sxy_douban_mivie" +
+            "SELECT id,tag,rate,title,url,author,star5,star4,star3,star2,star1,type,time,short1,short2,short3" +
+            "  FROM sxy_douban_movie" +
             "<where>" +
             "   <if test='tv.title != null and tv.title.length > 0'>" +
             "       AND title like #{tv,title}" +
@@ -35,7 +35,7 @@ public interface TvMapper {
 
     @Select("<script>" +
             "SELECT count(1)" +
-            "  FROM sxy_douban_mivie" +
+            "  FROM sxy_douban_movie" +
             "<where>" +
             "   <if test='tv.title != null and tv.title.length > 0'>" +
             "       AND title like #{tv,title}" +
@@ -48,10 +48,9 @@ public interface TvMapper {
     int countSelectByWhere2(@Param("tv") Tv tv);
 
     @Select(
-            "SELECT rate AS score," +
-            "COUNT(1) AS count "+
-            "FROM sxy_douban_movie" +
-            "WHERE rate <> '' "+
+            "SELECT rate AS score,COUNT(1) as count "+
+            "FROM sxy_douban_movie " +
+            "WHERE rate <> '' " +
             "GROUP BY rate " +
             "ORDER BY rate + 0 DESC" )
     public List<TvsocreCount> countByScore();

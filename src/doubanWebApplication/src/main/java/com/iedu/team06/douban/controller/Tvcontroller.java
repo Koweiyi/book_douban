@@ -9,11 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.iedu.team06.douban.service.TvService;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/logic/tv")
 @SessionAttributes
 public class Tvcontroller {
@@ -37,7 +38,7 @@ public class Tvcontroller {
     }
 
     @RequestMapping(value = "/count/scorecount")
-    public List<TvsocreCount> tvsocreCount(){
+    public List<TvsocreCount> scoreCount(){
         return countService.scoreCount();
     }
 
