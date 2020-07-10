@@ -1,7 +1,7 @@
 package com.iedu.team06.douban.dao;
 
 import com.iedu.team06.douban.entity.Book;
-import org.apache.ibatis.annotations.Options;
+import com.iedu.team06.douban.tools.BookScoreCount;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -17,10 +17,18 @@ public interface BookMapper {
     @Select("select * from books where id = #{ID}")
     public Book selectById(@ Param("ID") String ID);
 
-    @Select("select(count(1) from books)")
+    @Select("select count(1) from books")
     public int bookCount();
 
+    @Select("SELECT COUNT(DISTINCT(book_author)) FROM books;")
+    public int authorCount();
 
+    @Select("SELECT rate AS score, count(1) AS count\n" +
+            "\tFROM `books` \n" +
+            "\tWHERE rate <> \"\"\n" +
+            "\tGROUP BY rate\n" +
+            "\tORDER BY rate + 0 DESC;")
+    public List<BookScoreCount> bookScoreCount();
 
     @Select("<script>" +
             "select id, book_name, book_author, publisher, date, price, page, tags, isbn, tags, rate" +
@@ -72,4 +80,7 @@ public interface BookMapper {
             "   limit 0, 100" +
             "</script>")
     int countSelectByWhere(@Param("book") Book book);
+
+    @Select("SELECT COUNT(DISTINCT(publisher)) FROM books")
+    int punlisherCount();
 }

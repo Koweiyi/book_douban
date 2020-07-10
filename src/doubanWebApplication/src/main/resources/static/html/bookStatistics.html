@@ -3,10 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/js/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/bookStatistics.css">
 </head>
 <body>
 
-图书数据分析页面
+<div class="layui-container">
+
+    <!--第一行，各种数据量-->
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-lg6 book-row1-col">
+            <div class="book-row-col-item">
+                <div class="item-img">
+                    <img src="/imgs/bookicon.jpg" width="60" height="68">
+                </div>
+                <div class="item-text">
+                    <div style="width: 100%">
+                        <b><span class="item-text-title">图书</span></b>
+                    </div>
+                    <div style="width: 100%">
+                        <b>
+                            <span class="item-text-count" id="spanBookCount">8247</span>
+                        </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-lg6 book-row1-col">
+            <div class="book-row-col-item">
+                <div class="item-img">
+                    <img src="/imgs/authoricon.jpg" width="65" height="68" style="margin-top: 9%">
+                </div>
+                <div class="item-text">
+                    <div style="width: 100%">
+                        <b><span class="item-text-title">作者</span></b>
+                    </div>
+                    <div style="width: 100%">
+                        <b>
+                            <span class="item-text-count" id="spanAuthorCount">5534</span>
+                        </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-lg6 book-row1-col">
+            <div class="book-row-col-item">
+                <div class="item-img" style="margin-top: 9%;">
+                    <img src="/imgs/publisher.jpg" width="60" height="68">
+                </div>
+                <div class="item-text">
+                    <div style="width: 100%">
+                        <b><span class="item-text-title">出版社</span></b>
+                    </div>
+                    <div style="width: 100%">
+                        <b>
+                            <span class="item-text-count" id="spanPublisherCount">2463</span>
+                        </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-lg6 book-row1-col">
+            <div class="book-row-col-item">
+                <div class="item-img">
+                    <img src="/imgs/like.jpg" width="60" height="68" style="margin-left: 10%">
+                </div>
+                <div class="item-text" style="margin-right: 15%">
+                    <div style="width: 100%">
+                        <b><span class="item-text-title">我想看</span></b>
+                    </div>
+                    <div style="width: 100%">
+                        <b>
+                            <span class="item-text-count">33</span>
+                        </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-lg6 book-row1-col">
+            <div class="book-row-col-item">
+                <div class="item-img">
+                    <img src="/imgs/shoucang.jpg" width="70" height="68" style="margin-left: 8%">
+                </div>
+                <div class="item-text" style="margin-right: 15%">
+                    <div style="width: 100%">
+                        <b><span class="item-text-title">我已看</span></b>
+                    </div>
+                    <div style="width: 100%">
+                        <b>
+                            <span class="item-text-count">10</span>
+                        </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--第二行，折线图-->
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-lg6 book-row2-col">
+            <div class="book-row-col-item">
+                <div id="bookCount" style="width: 100%; height: 100%"></div>
+            </div>
+        </div>
+<!--        <div class="layui-col-lg6 book-row2-col">-->
+<!--            <div class="book-row-col-item">-->
+
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+
+    <!--第三行，饼状图-->
+    <div class="layui-row layui-col-space10">
+
+    </div>
+</div>
 
 </body>
 </html>
+<script type="text/javascript" src="/js/layui/layui.all.js"></script>
+<script src="https://cdn.bootcss.com/echarts/4.8.0/echarts.min.js"></script>
+<script type="text/javascript" src="/js/logic/bookStatistics.js"></script>
