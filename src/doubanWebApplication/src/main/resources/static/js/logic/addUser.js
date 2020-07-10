@@ -6,31 +6,19 @@ layui.use(['layer','form','jquery'], function () {
     $("#btnRegister").click(function (event) {
 
         if($("#uid").val() == ""){
-            layer.open({
-                title:"提示",
-                content:"请填写用户名！"
-            });
+            layer.msg("请填写用户名！");
             return;
         }
         if($("#nickName").val() == ""){
-            layer.open({
-                title:"提示",
-                content:"请填写昵称！"
-            });
+            layer.msg("请填写昵称！");
             return;
         }
         if($("#pwd").val() == ""){
-            layer.open({
-                title:"提示",
-                content:"请填写密码！"
-            });
+            layer.msg("请填写密码！");
             return;
         }
         if($("#rePwd").val() == ""){
-            layer.open({
-                title:"提示",
-                content:"请填写确认密码！"
-            });
+            layer.msg("请填写确认密码！");
             return;
         }
 
@@ -42,20 +30,14 @@ layui.use(['layer','form','jquery'], function () {
             },
             function (result) {
                 if(result.error){
-                    layer.open({
-                       title:"提示",
-                       content:"当前用户名已经被注册！"
-                    });
+                    layer.msg("当前用户名已经被注册！");
                     return;
                 }
             }
         )
 
         if($("#rePwd").val()!=$("#pwd").val()){
-            layer.open({
-               title:"提示",
-               content:"两次密码输入不一致，请重新输入！"
-            });
+            layer.msg("两次密码输入不一致，请重新输入！");
             $("#rePwd").val("");
             $("#pwd").val("");
             return;
@@ -79,13 +61,7 @@ layui.use(['layer','form','jquery'], function () {
                         }
                     });
                 }else{
-                    layer.open({
-                        title:"提示",
-                        content:"服务器错误，注册失败！",
-                        yes:function () {
-                            window.location.href="/html/register.html";
-                        }
-                    });
+                    layer.msg("服务器错误，注册失败！");
                 }
             }
 
