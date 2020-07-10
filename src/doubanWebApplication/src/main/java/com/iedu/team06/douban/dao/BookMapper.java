@@ -2,6 +2,8 @@ package com.iedu.team06.douban.dao;
 
 import com.iedu.team06.douban.entity.Book;
 import com.iedu.team06.douban.tools.BookScoreCount;
+import com.iedu.team06.douban.tools.DictElem;
+import com.iedu.team06.douban.tools.ValueNameElem;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -83,4 +85,26 @@ public interface BookMapper {
 
     @Select("SELECT COUNT(DISTINCT(publisher)) FROM books")
     int punlisherCount();
+
+    @Select("SELECT price as K,count(1) as V\n" +
+            "\tFROM books\n" +
+            "\tWHERE price IS NOT NULL and price \n" +
+            "\tGROUP BY price\n" +
+            "\tHAVING price + 0 <= 300\n" +
+            "\tORDER BY price + 0")
+    List<DictElem> priceCount();
+
+    @Select("SELECT tags as name, count(1) as value\n" +
+            "\tfrom books\n" +
+            "\tgroup by tags\n" +
+            "\tORDER BY count(1) desc\n" +
+            "\tLIMIT 0, 6")
+    List<ValueNameElem> tagCount();
+
+    @Select("SELECT publisher as name , COUNT(1) as value\n" +
+            "\tFROM books\n" +
+            "\tGROUP BY publisher\n" +
+            "\tORDER BY COUNT(1) desc\n" +
+            "\tlimit 0, 5")
+    List<ValueNameElem> publisherClassify();
 }

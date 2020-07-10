@@ -3,9 +3,7 @@ package com.iedu.team06.douban.controller;
 import com.iedu.team06.douban.entity.Book;
 import com.iedu.team06.douban.service.BookCountService;
 import com.iedu.team06.douban.service.BookService;
-import com.iedu.team06.douban.tools.BookScoreCount;
-import com.iedu.team06.douban.tools.CountMessage;
-import com.iedu.team06.douban.tools.TableData;
+import com.iedu.team06.douban.tools.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +41,12 @@ public class BookController {
         return bookCountSeivice.scoreCount();
     }
 
+    @RequestMapping(value = "/count/priceCount")
+    @ResponseBody
+    public List<DictElem> priceCount(){
+        return  bookCountSeivice.priceCount();
+    }
+
     @RequestMapping(value = "/count/allBookCount")
     @ResponseBody
     public CountMessage allBookCount(){
@@ -65,6 +69,18 @@ public class BookController {
         CountMessage countMessage = new CountMessage();
         countMessage.setCount(bookCountSeivice.publisherCount());
         return countMessage;
+    }
+
+    @RequestMapping(value = "/count/tagCount")
+    @ResponseBody
+    public List<ValueNameElem> tagCount(){
+        return bookCountSeivice.tagCount();
+    }
+
+    @RequestMapping(value = "/count/publisherClassify")
+    @ResponseBody
+    public List<ValueNameElem> publisherClassify(){
+        return  bookCountSeivice.publisherClassify();
     }
 
 }
