@@ -100,8 +100,8 @@ layui.use(['element', 'layer', 'jquery'], function () {
     initLoginUser();
 
     let initTab = function () {
-        active.tabAdd("/html/welcome.html", "10", "欢迎界面");
-        active.tabChange("10");
+        active.tabAdd("/html/welcome.html", "-1", "欢迎界面");
+        active.tabChange("-1");
     }
     initTab();
 });

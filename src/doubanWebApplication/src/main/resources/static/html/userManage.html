@@ -53,26 +53,22 @@
         <table class="layui-tab" id="tblResult" lay-filter="tblResult"></table>
     </div>
 
-<div id ="divUserInfo" >
-    <div class="layui-form layui-form-pane" lay-filter="userInfoEdit">
+<div id ="divUserInfo" style="margin-left: 7%; margin-right: 7%; margin-top: 7%;">
+    <div class="layui-form layui-form-pane" lay-filter="userInfoEdit" id="divUserInfo-form">
         <div class="layui-form-item">
             <label>用户名：</label>
             <div class="layui-input-block">
-                <span style="color: darkblue" id="spanEditUid"></span>
+                <span style="color: darkblue; font-size: 23px" id="spanEditUid"></span>
             </div>
         </div>
         <div class="layui-form-item">
             <label>设置该用户为：</label>
             <div class="layui-input-block">
                 <select class="layui-select" id="selectState" name="selectState">
-                    <option value="0"><span style='color: yellowgreen'>
-                            <i class='layui-icon layui-icon-tips'></i><b>未激活用户</b></span></option>
-                    <option value="1"><span style='color: green'>
-                            <i class='layui-icon layui-icon-ok-circle'></i><b>正常用户</b></span></option>
-                    <option value="2"><span style='color: red'>
-                        <i class='layui-icon layui-icon-close-fill'></i><b>屏蔽用户</b></span></option>
-                    <option value="3"><span style='color: darkblue'>
-                        <i class='layui-icon layui-icon-auz'></i><b>管理员</b></span></option>
+                    <option value="0">未激活用户</option>
+                    <option value="1">正常用户</option>
+                    <option value="2">屏蔽用户</option>
+                    <option value="3">管理员</option>
                 </select>
             </div>
         </div>

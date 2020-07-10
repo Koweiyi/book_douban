@@ -52,7 +52,7 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
                 title:"警告",
                 width:200,
                 content:"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您将重置当前用户：" + object.data.uid + "的密码。</br>" +
-                    "<span style='color: #ff0000;'><i class='layui-icon layui-icon-tips'></i>该操作不可逆，请慎重考虑!</span> ",
+                    "<span style='color: #ff0000;'><i class='layui-icon layui-icon-tips'></i></span>该操作不可逆，请慎重考虑!",
                 btn:["确认","取消"],
                 btnAlign:"c",
                 yes: function () {
@@ -81,7 +81,7 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
                             type:1,
                             title:"用户权限管理",
                             content: $('#divUserInfo'),
-                            area: ['34%', '55%'],
+                            area: ['45%', '57%'],
                             btn: ["设置", "取消"],
                             btnAlign: "c",
                             yes: function (index, lo) {
