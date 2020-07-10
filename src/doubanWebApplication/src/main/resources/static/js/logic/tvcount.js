@@ -8,36 +8,37 @@ layui.use(['jquery','layer'],function () {
         {},
         function (result) {
             console.log(result);
-
             let score = [];
             let count = [];
-
             let pieCount = [];
 
             //为图表组装数据
             for (i = 0;i < result.length;i++){
                 score.push(result[i].score);
                 count.push(result[i].count);
-
                 if(i <= 10)
                     pieCount.push({'value':result[i].count,'name':result[i].score});
             }
             let option = {
+                title: {
+                    text: '电视剧分数分析'
+                },
+                tooltip: {},
+                legend: {
+                    data:['评分']
+                },
                 xAxis: {
-                    type: 'category',
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    data: score
                 },
-                yAxis: {
-                    type: 'value'
-                },
+                yAxis: {},
                 series: [{
-                    data: [820, 932, 901, 934, 1290, 1330, 1320],
-                    type: 'line'
+                    name: '销量',
+                    type: 'bar',
+                    data: count
                 }]
             };
             myChart.setOption(option);
         }
-
     )
 
 

@@ -8,6 +8,7 @@ public class Tv {
     private int id;
     private String title;
     private String tag;
+    private String rate;
     private String url;
     private String author;
     private String star5;

@@ -4,7 +4,13 @@ layui.use(['jquery', 'form', 'table', 'layer'], function () {
         form = layui.form,
         table = layui.table
     layer = layui.layer;
-
+    $.post(
+        "/logic/tv/count/scorecount",
+        {},
+        function (result) {
+            console.log(result);
+        }
+    )
     table.render({
         elem: '#tblResult2',
         page: true,
@@ -12,6 +18,7 @@ layui.use(['jquery', 'form', 'table', 'layer'], function () {
         cols: [[
             {field:'id', title:'编号', align:'center'},
             {field:'tag', title: 'tag', align: 'center'},
+            {field:'rate', title: 'rate', align: 'center'},
             {field:'title', title: '电影名', align: 'center'},
             {field:'url', title:'地址', align:'center'},
             {field:'author', title: '导演', align: 'center'},
@@ -41,6 +48,7 @@ layui.use(['jquery', 'form', 'table', 'layer'], function () {
             where: {
                 'id' : $('#id').val(),
                 'tag' : $('#tag').val(),
+                'rate' : $('#rate').val(),
                 'title' : $('#title').val(),
                 'url' : $('#url').val(),
                 'author' : $('#author').val(),

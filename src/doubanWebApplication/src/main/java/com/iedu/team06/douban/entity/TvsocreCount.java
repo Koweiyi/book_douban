@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class TvsocreCount {
 
-    public String score;
-    public int count;
+    private String score;
+    private int count;
 }
