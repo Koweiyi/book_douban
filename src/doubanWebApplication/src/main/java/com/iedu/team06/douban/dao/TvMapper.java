@@ -45,4 +45,8 @@ public interface TvMapper {
             "</where>" +
             "</script>")
     int countSelectByWhere2(@Param("tv") Tv tv);
+
+//    @Select(
+//            "SELECT "
+//    )
 }

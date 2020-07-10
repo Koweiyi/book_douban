@@ -1,6 +1,8 @@
 package com.iedu.team06.douban.controller;
 
 import com.iedu.team06.douban.entity.Tv;
+import com.iedu.team06.douban.entity.TvsocreCount;
+import com.iedu.team06.douban.service.TvCountService;
 import com.iedu.team06.douban.tools.TableData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ public class Tvcontroller {
     @Autowired
     private  TvService service;
 
+    @Autowired
+    private TvCountService countService;
+
     @RequestMapping(value="/search2")
     @ResponseBody
     public TableData search2(Tv tv, int page, int limit) {
@@ -29,6 +34,11 @@ public class Tvcontroller {
         date.setData(result);
 
         return date;
+    }
+
+    @RequestMapping(value = "/count/scorecount")
+    public List<TvsocreCount> tvsocreCount(){
+        return countService.scoreCount();
     }
 
 
