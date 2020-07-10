@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/js/layui/css/layui.css">
+    <script src="https://cdn.bootcss.com/echarts/4.8.0/echarts.min.js"></script>
+    <script src="https://echarts-www.cdn.bcebos.com/zh/asset/theme/shine.js"></script>
+    <script type="text/javascript" src="/js/layui/layui.all.js"></script>
+    <script type="text/javascript" src="/js/logic/tvcount.js"></script>
 
 </head>
 <body bgcolor="#f0f8ff">
@@ -78,9 +82,34 @@
                 <div class="layui-card-body">
                     <div class="layui-row">
                         <div class="layui-col-sm8">
-                            <div class="layui-carousel layadmin-carousel layadmin-dataview" style="width: 100%; height: 280px;" lay-anim="fade" lay-filter="LAY-index-pagetwo" data-anim="fade">
-                                <div id="tvcount">
-                            //echarts表格
+                            <div class="layui-carousel layadmin-carousel layadmin-dataview" id="main" style="width: 100%; height: 280px;" lay-anim="fade" lay-filter="LAY-index-pagetwo" data-anim="fade">
+                                    <script type="text/javascript">
+                                        // 基于准备好的dom，初始化echarts实例
+                                        var myChart = echarts.init(document.getElementById('main'));
+
+                                        // 指定图表的配置项和数据
+                                        var option = {
+                                            title: {
+                                                text: 'ECharts 入门示例'
+                                            },
+                                            tooltip: {},
+                                            legend: {
+                                                data:['销量']
+                                            },
+                                            xAxis: {
+                                                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                                            },
+                                            yAxis: {},
+                                            series: [{
+                                                name: '销量',
+                                                type: 'bar',
+                                                data: [5, 20, 36, 10, 10, 20]
+                                            }]
+                                        };
+
+                                        // 使用刚指定的配置项和数据显示图表。
+                                        myChart.setOption(option);
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -107,17 +136,16 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </div>
 
     </div>
 </div>
+
 </body>
 </html>
 
-<style src="https://cdn.bootcss.com/echarts/4.8.0/echarts.min.js"></style>
-<style src="https://echarts-www.cdn.bcebos.com/zh/asset/theme/shine.js"></style>
-<style type="text/javascript" src="/js/layui/layui.all.js"></style>
-<style type="text/javascript" src="/js/logic/tvcount.js"></style>

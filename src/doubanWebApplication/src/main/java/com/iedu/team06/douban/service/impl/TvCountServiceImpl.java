@@ -15,7 +15,7 @@ public class TvCountServiceImpl implements TvCountService {
 
     @Override
     public List<TvsocreCount> scoreCount(){
-        //return tvMapper.countByScore();
-        return null;
+        return tvMapper.countByScore();
+
     }
 }

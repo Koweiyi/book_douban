@@ -2,9 +2,7 @@ layui.use(['jquery','layer'],function () {
 
     let $ = layui.$,
         layer = layui.layer;
-
-    let myChart = echarts.int(document.getElementById('tvcount'))
-
+    let myChart = echarts.init(document.getElementById('tvcount'));
     $.post(
         "/logic/tv/count/scorecount",
         {},
@@ -33,10 +31,11 @@ layui.use(['jquery','layer'],function () {
                     type: 'value'
                 },
                 series: [{
-                    data: count,
+                    data: [820, 932, 901, 934, 1290, 1330, 1320],
                     type: 'line'
                 }]
             };
+            myChart.setOption(option);
         }
 
     )
@@ -44,4 +43,4 @@ layui.use(['jquery','layer'],function () {
 
 
 
-})
+});

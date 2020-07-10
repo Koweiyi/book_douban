@@ -1,6 +1,7 @@
 package com.iedu.team06.douban.dao;
 
 import com.iedu.team06.douban.entity.Tv;
+import com.iedu.team06.douban.entity.TvsocreCount;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -46,7 +47,13 @@ public interface TvMapper {
             "</script>")
     int countSelectByWhere2(@Param("tv") Tv tv);
 
-//    @Select(
-//            "SELECT "
-//    )
+    @Select(
+            "SELECT rate AS score," +
+            "COUNT(1) AS count "+
+            "FROM sxy_douban_movie" +
+            "WHERE rate <> '' "+
+            "GROUP BY rate " +
+            "ORDER BY rate + 0 DESC" )
+    public List<TvsocreCount> countByScore();
+
 }
