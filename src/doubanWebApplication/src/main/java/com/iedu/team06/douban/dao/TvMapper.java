@@ -2,6 +2,7 @@ package com.iedu.team06.douban.dao;
 
 import com.iedu.team06.douban.entity.Tv;
 import com.iedu.team06.douban.entity.TvsocreCount;
+import com.iedu.team06.douban.entity.Tvtimecount;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -54,5 +55,13 @@ public interface TvMapper {
             "GROUP BY rate " +
             "ORDER BY rate + 0 DESC" )
     public List<TvsocreCount> countByScore();
+
+    @Select(
+            "SELECT substring(time,1,4) AS time,COUNT(1) as count "+
+                    "FROM sxy_douban_movie " +
+                    "WHERE time <> '' " +
+                    "GROUP BY time " +
+                    "ORDER BY time + 0 DESC" )
+    public List<Tvtimecount> countBytime();
 
 }
