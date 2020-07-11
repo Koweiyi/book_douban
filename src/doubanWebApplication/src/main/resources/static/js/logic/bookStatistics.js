@@ -356,20 +356,18 @@ layui.use(['jquery','layer'],function () {
                 }
             };
             let option = {
-                backgroundColor: {
-                    image: bgPatternImg,
-                    repeat: 'repeat'
-                },
+                // backgroundColor: {
+                //     image: bgPatternImg,
+                //     repeat: 'repeat'
+                // },
                 title: {
-                    text: '饼图纹理',
-                    textStyle: {
-                        color: '#235894'
-                    }
+                    subtext: '所有图书评论星级统计',
                 },
                 tooltip: {},
                 series: [{
-                    name: 'pie',
+                    name: '评论星级',
                     type: 'pie',
+                    radius: ['0', '57%'],
                     selectedMode: 'single',
                     selectedOffset: 30,
                     clockwise: true,
