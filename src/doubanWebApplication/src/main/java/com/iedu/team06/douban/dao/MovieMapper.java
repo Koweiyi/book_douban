@@ -14,9 +14,9 @@ public interface MovieMapper {
     public List<Movie> selectAll();
 
     @Select("<script>" + "select dbid, other_title, direct, country,"+
-            "movie_time, movie_type, vote_num,"+
-            "five_star, four_star, three_star, two_star, one_star"+
-            "from hzc_movie_detail" +
+            " movie_time, movie_type, vote_num,"+
+            " five_star, four_star, three_star, two_star, one_star"+
+            " from hzc_movie_detail" +
             "<where>"+
             "<if test='movie.direct != null and movie.direct.length > 0'>"+
             "       and direct like #{movie.direct}" +
@@ -46,7 +46,7 @@ public interface MovieMapper {
             "   <if test='movie.country != null and movie.country.length > 0'>" +
             "       and country like #{movie.country}" +
             "   </if>" +
-            "   <if test= 'music.dbid != null' >" +
+            "   <if test= 'movie.dbid != null' >" +
             "       and dbid = #{movie.dbid}" +
             "   </if>" +
             "</where>" +
