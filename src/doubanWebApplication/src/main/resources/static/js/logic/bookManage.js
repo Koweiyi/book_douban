@@ -139,7 +139,7 @@ layui.use(['laydate', 'jquery', 'table', 'form'], function(){
         $('#tags').val("");
         $('#isbn').val("");
     })
-
 });
+
 
 
