@@ -1,7 +1,6 @@
 package com.iedu.team06.douban.dao;
 
 import com.iedu.team06.douban.entity.Movie;
-import com.iedu.team06.douban.entity.Music;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
