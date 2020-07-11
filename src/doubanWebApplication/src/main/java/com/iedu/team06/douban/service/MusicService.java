@@ -1,6 +1,7 @@
 package com.iedu.team06.douban.service;
 
 import com.iedu.team06.douban.entity.Music;
+import com.iedu.team06.douban.entity.MusicscoreCount;
 
 import java.util.List;
 
@@ -11,6 +12,8 @@ public interface MusicService {
     /*Music addMusic(Music music);*/
 
     List<Music> search(Music music, int page, int limit);
+
+    List<MusicscoreCount> scoreCount();
 
     int searchCount(Music music);
 

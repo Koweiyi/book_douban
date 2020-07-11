@@ -26,7 +26,7 @@ layui.use(['element', 'layer', 'jquery'], function () {
     $('.site-demo-active').on('click', function () {
         var dataid = $(this);
 
-        if(user.state != 3 && dataid.attr("data-id") == "4"){
+        if(user.state != 3 && dataid.attr("data-id") == "100"){
             layer.open({
                 title: '提示',
                 content: '您还不是管理员用户，无权进入管理员平台！',

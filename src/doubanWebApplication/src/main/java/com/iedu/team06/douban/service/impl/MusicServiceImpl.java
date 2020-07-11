@@ -2,6 +2,7 @@ package com.iedu.team06.douban.service.impl;
 
 import com.iedu.team06.douban.dao.MusicMapper;
 import com.iedu.team06.douban.entity.Music;
+import com.iedu.team06.douban.entity.MusicscoreCount;
 import com.iedu.team06.douban.service.MusicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,13 @@ public class MusicServiceImpl implements MusicService {
     @Override
     public int searchCount(Music music){
         return mapper.countSelectByWhere(music);
+    }
+
+    @Override
+    public List<MusicscoreCount> scoreCount(){
+
+        return mapper.countByScore();
+
     }
 
 }

@@ -1,6 +1,7 @@
 package com.iedu.team06.douban.dao;
 
 import com.iedu.team06.douban.entity.Music;
+import com.iedu.team06.douban.entity.MusicscoreCount;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -51,4 +52,13 @@ public interface MusicMapper {
             "</where>" +
             "</script>")
     int countSelectByWhere(@Param("music") Music music);
+
+    @Select(" SELECT music_mark AS score, "+
+            "COUNT(1) AS count " +
+            "FROM dalongtou_music " +
+            "WHERE music_mark <> '' " +
+            "GROUP BY music_mark " +
+            "ORDER BY music_mark + 0 DESC ")
+            public List<MusicscoreCount> countByScore();
+
 }
