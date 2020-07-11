@@ -2,11 +2,13 @@ package com.iedu.team06.douban.dao;
 
 import com.iedu.team06.douban.entity.Book;
 import com.iedu.team06.douban.tools.BookScoreCount;
+import com.iedu.team06.douban.tools.Comment;
 import com.iedu.team06.douban.tools.DictElem;
 import com.iedu.team06.douban.tools.ValueNameElem;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -116,4 +118,12 @@ public interface BookMapper {
 
     @Select("select * from starClassify")
     List<ValueNameElem> starClassify();
+
+    @Select("select * " +
+            "\t from books\n" +
+            "\t where id = #{id}")
+    Book getBookById(@Param("id") int id);
+
+    @Select("select * from book_comment where ID = #{id}")
+    List<Comment> getCommentsById(@Param("id") int id);
 }

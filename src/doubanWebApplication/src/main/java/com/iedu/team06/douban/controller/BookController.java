@@ -6,6 +6,7 @@ import com.iedu.team06.douban.service.BookService;
 import com.iedu.team06.douban.tools.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -99,5 +100,14 @@ public class BookController {
     @ResponseBody
     public List<ValueNameElem> starClassify(){
         return bookCountSeivice.starClassify();
+    }
+
+    @RequestMapping("/{id}")
+    @ResponseBody
+    public BookDetail bookDetail(@PathVariable("id") int id){
+        BookDetail bookDetail = new BookDetail();
+        bookDetail.setBook(bookService.getBookById(id));
+        bookDetail.setComments(bookService.getCommentsById(id));
+        return bookDetail;
     }
 }

@@ -3,6 +3,7 @@ package com.iedu.team06.douban.service.impl;
 import com.iedu.team06.douban.dao.BookMapper;
 import com.iedu.team06.douban.entity.Book;
 import com.iedu.team06.douban.service.BookService;
+import com.iedu.team06.douban.tools.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +42,15 @@ public class BookServiceImpl implements BookService {
 //        int res = bookMapper.countSelectByWhere(book);
 //        return  res > 100 ? 100 : res;
         return bookMapper.countSelectByWhere(book);
+    }
+
+    @Override
+    public Book getBookById(int id) {
+        return bookMapper.getBookById(id);
+    }
+
+    @Override
+    public List<Comment> getCommentsById(int id) {
+        return bookMapper.getCommentsById(id);
     }
 }
