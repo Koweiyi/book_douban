@@ -1,6 +1,8 @@
 package com.iedu.team06.douban.service.impl;
 
 import com.iedu.team06.douban.entity.Tv;
+import com.iedu.team06.douban.entity.TvsocreCount;
+import com.iedu.team06.douban.entity.Tvtimecount;
 import com.iedu.team06.douban.service.TvService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,18 @@ public class TvServiceImpl implements TvService {
     public int search2Count(Tv tv) {
 
         return mapper.countSelectByWhere2(tv);
+    }
+
+    @Override
+    public List<TvsocreCount> scoreCount(){
+        return mapper.countByScore();
+
+    }
+
+    @Override
+    public List<Tvtimecount> timeCount(){
+        return mapper.countBytime();
+
     }
 
 }
