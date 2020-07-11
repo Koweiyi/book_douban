@@ -2,6 +2,7 @@ package com.iedu.team06.douban.dao;
 
 import com.iedu.team06.douban.entity.Music;
 import com.iedu.team06.douban.entity.MusicscoreCount;
+import com.iedu.team06.douban.entity.MusicusersiteCount;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -59,6 +60,14 @@ public interface MusicMapper {
             "WHERE music_mark <> '' " +
             "GROUP BY music_mark " +
             "ORDER BY music_mark + 0 DESC ")
-            public List<MusicscoreCount> countByScore();
+    List<MusicscoreCount> countByScore();
+
+    @Select("select COUNT(music_comment_star) as count, " +
+            "       music_user_site as site " +
+            "    from dalongtou_music_comment " +
+            "    where music_comment_star = '5' and music_user_site <> 'null' " +
+            "    group by music_user_site " +
+            "    order by count desc")
+    List<MusicusersiteCount> countBysite();
 
 }

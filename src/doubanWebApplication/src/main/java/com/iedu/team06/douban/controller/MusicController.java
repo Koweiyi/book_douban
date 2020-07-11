@@ -3,6 +3,7 @@ package com.iedu.team06.douban.controller;
 
 import com.iedu.team06.douban.entity.Music;
 import com.iedu.team06.douban.entity.MusicscoreCount;
+import com.iedu.team06.douban.entity.MusicusersiteCount;
 import com.iedu.team06.douban.service.MusicService;
 import com.iedu.team06.douban.tools.TableData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,12 @@ public class MusicController {
     public List<MusicscoreCount> musicscoreCount(){
 
         return musicService.scoreCount();
+    }
+
+    @RequestMapping(value="/chart2")
+    public List<MusicusersiteCount> musicusersiteCount(){
+
+        return musicService.siteCount();
     }
 
 

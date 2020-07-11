@@ -1,15 +1,15 @@
 layui.use(['jquery','form','table','layer'], function () {
     var $ = layui.jquery,
-        form = layui.form,
+        //form = layui.form,
         table = layui.table;
-    layer = layui.layer;
+        //layer = layui.layer;
 
     table.render({
         elem: '#tblResult',
         page: true,
         limit: 6,
         cols: [[
-            {field:'m_name',title:'音乐名',align:'center'},
+            {field: 'm_name',title:'音乐名',align:'center'},
             {field: 'm_man',title:'作者',align:'center'},
             {field: 'm_mark',title:'评分',align:'center'},
             /*{field: 'state', title:'用户状态',align:'center',
@@ -86,7 +86,7 @@ layui.use(['jquery','form','table','layer'], function () {
             method: 'post',
             where: {
                 'm_name' : $('#m_name').val(),
-                'm_nam' : $('#m_man').val(),
+                'm_mam' : $('#m_man').val(),
                 'm_mark' : $('#m_mark').val()
             },
             page: {
