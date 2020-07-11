@@ -25,4 +25,4 @@ logging:
 server:
   port: 8080
   session:
-    timeout: 7200
+    timeout: 21600

@@ -83,4 +83,21 @@ public class BookController {
         return  bookCountSeivice.publisherClassify();
     }
 
+    @RequestMapping(value = "/count/dateClassify")
+    @ResponseBody
+    public List<ValueNameElem> dateClassify(){
+        return bookCountSeivice.dateClassify();
+    }
+
+    @RequestMapping(value = "/count/authorClassify")
+    @ResponseBody
+    public List<ValueNameElem> authorClassify(){
+        return bookCountSeivice.authorClassify();
+    }
+
+    @RequestMapping(value = "/count/starClassify")
+    @ResponseBody
+    public List<ValueNameElem> starClassify(){
+        return bookCountSeivice.starClassify();
+    }
 }

@@ -50,4 +50,19 @@ public class BookCountServiceImpl implements BookCountService {
     public List<ValueNameElem> publisherClassify() {
         return  mapper.publisherClassify();
     }
+
+    @Override
+    public List<ValueNameElem> dateClassify() {
+        return mapper.dateClassify();
+    }
+
+    @Override
+    public List<ValueNameElem> authorClassify() {
+        return mapper.authorClassify();
+    }
+
+    @Override
+    public List<ValueNameElem> starClassify() {
+        return mapper.starClassify();
+    }
 }

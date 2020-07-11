@@ -20,4 +20,10 @@ public interface BookCountService {
     List<ValueNameElem> tagCount();
 
     List<ValueNameElem> publisherClassify();
+
+    List<ValueNameElem> dateClassify();
+
+    List<ValueNameElem> authorClassify();
+
+    List<ValueNameElem> starClassify();
 }

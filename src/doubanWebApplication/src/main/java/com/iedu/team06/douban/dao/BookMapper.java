@@ -107,4 +107,13 @@ public interface BookMapper {
             "\tORDER BY COUNT(1) desc\n" +
             "\tlimit 0, 5")
     List<ValueNameElem> publisherClassify();
+
+    @Select("SELECT * from dateClassify")
+    List<ValueNameElem> dateClassify();
+
+    @Select("select * from authorClassify")
+    List<ValueNameElem> authorClassify();
+
+    @Select("select * from starClassify")
+    List<ValueNameElem> starClassify();
 }
