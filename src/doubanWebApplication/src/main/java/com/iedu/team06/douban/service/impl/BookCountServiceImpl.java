@@ -65,4 +65,14 @@ public class BookCountServiceImpl implements BookCountService {
     public List<ValueNameElem> starClassify() {
         return mapper.starClassify();
     }
+
+    @Override
+    public int bookLikeClunt(String uid) {
+        return mapper.bookLikeCount(uid);
+    }
+
+    @Override
+    public int bookLookedClunt(String uid) {
+        return mapper.bookLookedCount(uid);
+    }
 }

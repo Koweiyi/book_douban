@@ -168,4 +168,12 @@ public interface BookMapper {
             "         critic = #{uid}" +
             "   limit 0, 1")
     Comment getMyComment(@Param("id") int id, @Param("uid") String uid);
+
+    @Select("SELECT count(1) FROM `user_item_like`\n" +
+            "\twhere user_uid = #{uid}")
+    int bookLikeCount(@Param("uid") String uid);
+
+    @Select("SELECT count(1) FROM `user_item_looked`\n" +
+            "\twhere user_uid = #{uid}")
+    int bookLookedCount(@Param("uid") String uid);
 }

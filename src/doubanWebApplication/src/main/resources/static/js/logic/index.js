@@ -5,7 +5,9 @@ layui.use(['element', 'layer', 'jquery'], function () {
     var $ = layui.$;
 
 
-    $.post('/logic/user/LoginUser',{},function (result) {
+    $.post('/logic/user/LoginUser',
+        {},
+        function (result) {
         user = result;
     })
 
