@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电影查询</title>
+    <link rel="stylesheet" href="/js/layui/css/layui.css">
+</head>
+<body>
+
+
+<div class="layui-row" id="divSearch">
+    <div class="layui-form">
+
+        <div class= "layui-form-item layui-inline">
+            <label class="layui-form-label">
+                导演：
+            </label>
+            <div class="layui-inline">
+                <input type="text" name="direct" id="direct" placeholder="检索导演" class="layui-input" />
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">
+                国家：
+            </label>
+            <div class="layui-inline">
+                <input type="text" name="country" id="country" placeholder= "检索国家" class="layui-input"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">
+                dbid：
+            </label>
+            <div class="layui-inline">
+                <input type="text" name= "dbid" id="dbid" placeholder= "检索唯一dbid" class="layui-input"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-inline">
+            <div class="layui-inline">
+                <button id="btnSearch" class="layui-btn layui-btn-success">
+                    <i class="layui-icon layui-icon-search"></i>检索
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="layui-row" id="result">
+    <table id="MovietblResult" lay-filter="MovietblResult"></table>
+</div>
+
+
+</body>
+</html>
+<script type="text/javascript" src="/js/layui/layui.all.js"></script>
+<script type="text/javascript" src="/js/logic/movieManage.js"></script>
