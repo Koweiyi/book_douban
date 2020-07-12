@@ -8,6 +8,7 @@ layui.use(['jquery','form','table','layer'], function () {
         elem: '#MovietblResult',
         page: true,
         limit: 10,
+        height: 500,
         cols: [[
             {field: 'dbid',title:'dbid',align:'center',width:'7.5%'},
             {field: 'otherTitle',title:'电影又名',align:'center',width:'15%'},
