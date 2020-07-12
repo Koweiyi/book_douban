@@ -26,6 +26,10 @@ public class MovieServiceImpl implements MovieService {
             movie.setCountry("%" + movie.getCountry() + "%");
         }
 
+//        if(movie != null && !"".equals(movie.getDbid().trim())){
+//            movie.setDbid("%" + movie.getDbid() + "%");
+//        }
+
         if(page > 0 && limit > 0)
             return mapper.selectByWhere(movie,(page - 1) * limit, limit);
 
