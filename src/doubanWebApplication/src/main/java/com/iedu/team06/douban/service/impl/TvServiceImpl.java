@@ -2,7 +2,6 @@ package com.iedu.team06.douban.service.impl;
 
 import com.iedu.team06.douban.entity.Tv;
 import com.iedu.team06.douban.entity.TvsocreCount;
-import com.iedu.team06.douban.entity.Tvtimecount;
 import com.iedu.team06.douban.service.TvService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,13 +34,54 @@ public class TvServiceImpl implements TvService {
     @Override
     public List<TvsocreCount> scoreCount(){
         return mapper.countByScore();
-
     }
 
+
     @Override
-    public List<Tvtimecount> timeCount(){
+    public List<TvsocreCount> timeCount(){
         return mapper.countBytime();
 
     }
 
+    @Override
+    public List<TvsocreCount> star5Count(){
+        return mapper.countBystar5();
+
+    }
+
+    @Override
+    public List<TvsocreCount> star4Count(){
+        return mapper.countBystar4();
+
+    }
+
+    @Override
+    public List<TvsocreCount> star3Count(){
+        return mapper.countBystar3();
+
+    }
+
+    @Override
+    public List<TvsocreCount> star2Count(){
+        return mapper.countBystar2();
+
+    }
+
+    @Override
+    public List<TvsocreCount> star1Count(){
+        return mapper.countBystar1();
+
+    }
+
+    @Override
+    public List<TvsocreCount> tagCount(){
+        return mapper.countBytag();
+
+    }
+
+    @Override
+    public List<TvsocreCount> authorCount(){
+        return mapper.countByauthor();
+
+    }
 }

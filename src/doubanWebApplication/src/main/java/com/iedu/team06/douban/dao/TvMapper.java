@@ -2,7 +2,6 @@ package com.iedu.team06.douban.dao;
 
 import com.iedu.team06.douban.entity.Tv;
 import com.iedu.team06.douban.entity.TvsocreCount;
-import com.iedu.team06.douban.entity.Tvtimecount;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -57,11 +56,67 @@ public interface TvMapper {
     public List<TvsocreCount> countByScore();
 
     @Select(
-            "SELECT substring(time,1,4) AS time,COUNT(1) as count "+
+            "SELECT substring(time,1,4) AS timecount,COUNT(1) as count "+
                     "FROM sxy_douban_movie " +
                     "WHERE time <> '' " +
-                    "GROUP BY time " +
-                    "ORDER BY time + 0 DESC" )
-    public List<Tvtimecount> countBytime();
+                    "GROUP BY timecount " +
+                    "ORDER BY timecount + 0 DESC" )
+    public List<TvsocreCount> countBytime();
+
+    @Select(
+            "SELECT substring(star5,1,2) AS starcount5,COUNT(1) as count " +
+                "FROM sxy_douban_movie "  +
+                    "WHERE star5 <> '' " +
+            "GROUP BY starcount5 " +
+            "ORDER BY starcount5 + 0 DESC " )
+    public List<TvsocreCount> countBystar5();
+
+    @Select(
+            "SELECT substring(star4,1,2) AS starcount4,COUNT(1) as count " +
+                    "FROM sxy_douban_movie "  +
+                    "WHERE star4 <> '' " +
+                    "GROUP BY starcount4 " +
+                    "ORDER BY starcount4 + 0 DESC " )
+    public List<TvsocreCount> countBystar4();
+
+    @Select(
+            "SELECT substring(star3,1,2) AS starcount3,COUNT(1) as count " +
+                    "FROM sxy_douban_movie "  +
+                    "WHERE star3 <> '' " +
+                    "GROUP BY starcount3 " +
+                    "ORDER BY starcount3 + 0 DESC " )
+    public List<TvsocreCount> countBystar3();
+
+    @Select(
+            "SELECT substring(star2,1,2) AS starcount2,COUNT(1) as count " +
+                    "FROM sxy_douban_movie "  +
+                    "WHERE star2 <> '' " +
+                    "GROUP BY starcount2 " +
+                    "ORDER BY starcount2 + 0 DESC " )
+    public List<TvsocreCount> countBystar2();
+
+    @Select(
+            "SELECT substring(star1,1,2) AS starcount1,COUNT(1) as count " +
+                    "FROM sxy_douban_movie "  +
+                    "WHERE star1 <> '' " +
+                    "GROUP BY starcount1 " +
+                    "ORDER BY starcount1 + 0 DESC " )
+    public List<TvsocreCount> countBystar1();
+
+    @Select(
+            "SELECT tag AS tag,COUNT(1) as count " +
+                    "FROM sxy_douban_movie "  +
+                    "WHERE tag <> '' " +
+                    "GROUP BY tag " +
+                    "ORDER BY tag + 0 DESC " )
+    public List<TvsocreCount> countBytag();
+
+    @Select(
+            "SELECT author AS author,COUNT(1) as count " +
+                    "FROM sxy_douban_movie "  +
+                    "WHERE author <> '' " +
+                    "GROUP BY author " +
+                    "ORDER BY COUNT(1) + 0 DESC " )
+    public List<TvsocreCount> countByauthor();
 
 }
