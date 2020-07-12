@@ -53,4 +53,33 @@ public class BookServiceImpl implements BookService {
     public List<Comment> getCommentsById(int id) {
         return bookMapper.getCommentsById(id);
     }
+
+    @Override
+    public void addLike(String userUid, String itemId, int i) {
+        if(bookMapper.selectLike(userUid,itemId) == null)
+            bookMapper.addLike(userUid, itemId, i);
+    }
+
+    @Override
+    public void removeLike(String userUid, String itemId, int i) {
+        bookMapper.removeLike(userUid, itemId, i);
+    }
+
+    @Override
+    public void removeLooked(String userUid, String itemId, int i) {
+        bookMapper.removeLooked(userUid, itemId, i);
+    }
+
+    @Override
+    public void addLooked(String userUid, String itemId, int i) {
+        if (bookMapper.selectLooked(userUid, itemId) == null)
+            bookMapper.addLooked(userUid, itemId, i);
+    }
+
+    @Override
+    public void addComment(String itemId, String userUid, String comment, String format, String rate) {
+        if(bookMapper.selectComment(itemId, userUid, format) == null)
+            bookMapper.addComment(itemId, userUid, comment, format, rate);
+    }
+
 }

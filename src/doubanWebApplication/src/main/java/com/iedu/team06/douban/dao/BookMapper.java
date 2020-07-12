@@ -1,12 +1,8 @@
 package com.iedu.team06.douban.dao;
 
 import com.iedu.team06.douban.entity.Book;
-import com.iedu.team06.douban.tools.BookScoreCount;
-import com.iedu.team06.douban.tools.Comment;
-import com.iedu.team06.douban.tools.DictElem;
-import com.iedu.team06.douban.tools.ValueNameElem;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import com.iedu.team06.douban.tools.*;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -126,4 +122,44 @@ public interface BookMapper {
 
     @Select("select * from book_comment where ID = #{id}")
     List<Comment> getCommentsById(@Param("id") int id);
+
+    @Insert("insert into user_item_like " +
+            "   values(#{uid}, #{item}, #{type}) ")
+    void addLike(@Param("uid") String userUid, @Param("item") String itemId, @Param("type") int i);
+
+    @Delete("delete from user_item_like where" +
+            "   user_id = #{uid} and" +
+            "   item_id = #{item} and" +
+            "   type = #{type}")
+    void removeLike(@Param("uid") String userUid, @Param("item") String itemId, @Param("type") int i);
+
+    @Delete("delete from user_item_looked where" +
+            "   user_id = #{uid} and" +
+            "   item_id = #{item} and" +
+            "   type = #{type}")
+    void removeLooked(@Param("uid") String userUid, @Param("item") String itemId, @Param("type") int i);
+
+    @Insert("insert into user_item_looked " +
+            "   values(#{uid}, #{item}, #{type})")
+    void addLooked(@Param("uid") String userUid, @Param("item") String itemId, @Param("type") int i);
+
+    @Insert("insert into book_comment(ID,critic, date, content, star_num) " +
+            "   values(#{itemId}, #{critic}, #{date}, #{content}, #{star_num})")
+    void addComment(@Param("itemId") String itemId, @Param("critic") String userUid, @Param("content") String comment, @Param("date") String format, @Param("star_num") String rate);
+
+    @Select("select * from user_item_like" +
+            "   where user_uid = #{uid} and" +
+            "         item_id = #{iId}")
+    LikeOrLooked selectLike(@Param("uid") String userUid, @Param("iId") String itemId);
+
+    @Select("select * from user_item_looked" +
+            "   where user_uid = #{uid} and" +
+            "         item_id = #{iId}")
+    LikeOrLooked selectLooked(@Param("uid") String userUid, @Param("iId") String itemId);
+
+    @Select("select * from book_comment" +
+            "   where ID = #{iId} and" +
+            "         critic = #{uid} and" +
+            "         date = #{date}")
+    Comment selectComment(@Param("iId") String itemId, @Param("uid") String userUid, @Param("date") String format);
 }

@@ -15,4 +15,14 @@ public interface BookService {
     Book getBookById(int id);
 
     List<Comment> getCommentsById(int id);
+
+    void addLike(String userUid, String itemId, int i);
+
+    void removeLike(String userUid, String itemId, int i);
+
+    void removeLooked(String userUid, String itemId, int i);
+
+    void addLooked(String userUid, String itemId, int i);
+
+    void addComment(String itemId, String userUid, String comment, String format, String rate);
 }

@@ -197,6 +197,50 @@
     </div>
 </div>
 
+<!--编辑页面-->
+<div id="divBookEdit" style="display: none;">
+    <div class="layui-container" style="height: 100%">
+        <div class="layui-row" style="align-content: center">
+            <div class="row" style="text-align: center">
+                <span style="font-size: 20px"><b>图书编辑</b></span>
+            </div>
+
+            <div class="layui-form layui-form-pane" id="divBookEdit-form" style="margin-left: 18%">
+                <div class="layui-form-item layui-inline" style="margin-top: 10px;width: 83%">
+                    <label class="layui-form-label">我的评分</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" placeholder="我对这本书的评分是" id="inputRate"/>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-inline">
+                    <label class="layui-form-label">我喜欢</label>
+                    <div class="layui-input-block">
+                        <select class="layui-select" id="selectLike">
+                            <option value="1">加入喜欢</option>
+                            <option value="0">没有感觉</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-inline">
+                    <label class="layui-form-label">我已看</label>
+                    <div class="layui-input-block">
+                        <select class="layui-select" id="selectLooked">
+                            <option value="1">加入已看</option>
+                            <option value="0">尚未阅读</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item layui-form-text" style="width: 83%; margin-top: 10px">
+                    <div class="layui-input-block">
+                        <textarea name="desc" id="textareaComment" placeholder="添加我的评论" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
 <script type="text/javascript" src="/js/layui/layui.all.js"></script>

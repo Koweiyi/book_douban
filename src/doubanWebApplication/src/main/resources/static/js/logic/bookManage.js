@@ -1,5 +1,5 @@
+var user;
 layui.use(['laydate', 'jquery', 'table', 'form'], function(){
-
     var laydate = layui.laydate,
         form = layui.form,
         $ = layui.jquery,
@@ -38,6 +38,14 @@ layui.use(['laydate', 'jquery', 'table', 'form'], function(){
         ]],
         data:[]
     });
+
+    $.post(
+        '/logic/user/LoginUser',
+        {},
+        function (result) {
+            user = result;
+        }
+    )
 
     table.on('tool(tblBookResult)', function (object) {
         if("detail" === object.event){
@@ -107,12 +115,57 @@ layui.use(['laydate', 'jquery', 'table', 'form'], function(){
                 }
 
             )
-        }else if("edit" === object.event){
-            layer.msg("编辑按钮被点击了");
+        }
+        else if("edit" === object.event){
+            layer.open({
+               type:1,
+               title:"图书编辑页面",
+                offset: '30px',
+                area:['40%', '56%'],
+                content:$('#divBookEdit'),
+                btn:['确认编辑','放弃编辑'],
+                btnAlign: 'c',
+                yes: function () {
+
+                    $.post(
+                        '/logic/book/edit',
+                        {
+                            rate: $('#inputRate').val(),
+                            like: $('#selectLike').val(),
+                            looked: $('#selectLooked').val(),
+                            comment: $('#textareaComment').val(),
+                            userUid: user.uid,
+                            itemId: object.data.id,
+                        },
+                        function (result) {
+                            if(!result.error){
+                                $('#inputRate').val("");
+                                $('#textareaComment').val("");
+                                let index = layer.open({
+                                    title:"提示",
+                                    content:"您对该图书的编辑已成功！",
+                                    btn:["继续编辑","退出编辑"],
+                                    btnAlign: "c",
+                                    yes: function () {
+                                        layer.close(index);
+                                    },
+                                    btn2: function () {
+                                        layer.closeAll();
+                                    }
+                                })
+                            }
+                            else{
+                                layer.msg(result.content);
+                            }
+                        }
+                    )
+                },
+                btn2: function () {
+                    layer.closeAll()
+                }
+            });
         }
     });
-
-
 
     $('#btnBookSearch').click(function (event) {
 
