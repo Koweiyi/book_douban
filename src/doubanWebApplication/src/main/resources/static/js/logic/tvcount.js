@@ -5,12 +5,8 @@ layui.use(['jquery','layer'],function () {
     let myChart = echarts.init(document.getElementById('tvcount'));
     let myChart2 = echarts.init(document.getElementById('tvcount2'));
     let myChart3 = echarts.init(document.getElementById('tvcount3'));
-    // let myChart4 = echarts.init(document.getElementById('tvcount4'));
-    // let myChart5 = echarts.init(document.getElementById('tvcount5'));
-    // let myChart6 = echarts.init(document.getElementById('tvcount6'));
-    // let myChart7 = echarts.init(document.getElementById('tvcount7'));
-    // let myChart8 = echarts.init(document.getElementById('tvcount2'));
-    // let myChart9 = echarts.init(document.getElementById('tvcount2'));
+    let myChart4 = echarts.init(document.getElementById('tvcount4'));
+    let myChart5 = echarts.init(document.getElementById('tvcount5'));
     $.post(
         "/logic/tv/count/scorecount",
         {},
@@ -281,171 +277,171 @@ layui.use(['jquery','layer'],function () {
 
 
 
- //
- //    $.post(
- //        "/logic/tv/count/tagcount",
- //        {},
- //        function (result) {
- //            console.log(result);
- //            let time = [];
- //            let count = [];
- //            let pieCount = [];
- //
- //            //为图表组装数据
- //            for (i = 0;i < result.length;i++){
- //
- //                if(i <= 10){
- //                    time.push(result[i].score);
- //                    count.push(result[i].count);
- //                }
- //                //pieCount.push({'value':result[i].count,'name':result[i].score});
- //            }
- //            let option8 = {
- //                title: {
- //                    text: '电影生产分布',
- //                    subtext: '豆瓣数据'
- //                },
- //                tooltip: {
- //                    trigger: 'axis',
- //                    axisPointer: {
- //                        type: 'cross'
- //                    }
- //                },
- //                toolbox: {
- //                    show: true,
- //                    feature: {
- //                        saveAsImage: {}
- //                    }
- //                },
- //                xAxis: {
- //                    type: 'category',
- //                    boundaryGap: false,
- //                    data: [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]
- //                },
- //                yAxis: {
- //                    type: 'value',
- //                    axisLabel: {
- //                        formatter: '{value} 部'
- //                    },
- //                    axisPointer: {
- //                        snap: true
- //                    }
- //                },
- //                visualMap: {
- //                    show: false,
- //                    dimension: 0,
- //                    pieces: [{
- //                        lte: 8,
- //                        color: 'green'
- //                    }, {
- //                        gt: 8,
- //                        lte: 10,
- //                        color: 'red'
- //                    }]
- //                },
- //                series: [
- //                    {
- //                        name: '电影产量',
- //                        type: 'line',
- //                        smooth: true,
- //                        data: count,
- //                        markArea: {
- //                            data: [ [{
- //                                name: '高峰',
- //                                xAxis: '2018'
- //                            }, {
- //                                xAxis: '2020'
- //                            }] ]
- //                        }
- //                    }
- //                ]
- //            };
- //            myChart8.setOption(option8);
- //        }
- //    )
- //
- //    $.post(
- //        "/logic/tv/count/authorcount",
- //        {},
- //        function (result) {
- //            console.log(result);
- //            let time = [];
- //            let count = [];
- //            let pieCount = [];
- //
- //            //为图表组装数据
- //            for (i = 0;i < result.length;i++){
- //
- //                if(i <= 10){
- //                    time.push(result[i].score);
- //                    count.push(result[i].count);
- //                }
- //                //pieCount.push({'value':result[i].count,'name':result[i].score});
- //            }
- //            let option9 = {
- //                title: {
- //                    text: '电影生产分布',
- //                    subtext: '豆瓣数据'
- //                },
- //                tooltip: {
- //                    trigger: 'axis',
- //                    axisPointer: {
- //                        type: 'cross'
- //                    }
- //                },
- //                toolbox: {
- //                    show: true,
- //                    feature: {
- //                        saveAsImage: {}
- //                    }
- //                },
- //                xAxis: {
- //                    type: 'category',
- //                    boundaryGap: false,
- //                    data: [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]
- //                },
- //                yAxis: {
- //                    type: 'value',
- //                    axisLabel: {
- //                        formatter: '{value} 部'
- //                    },
- //                    axisPointer: {
- //                        snap: true
- //                    }
- //                },
- //                visualMap: {
- //                    show: false,
- //                    dimension: 0,
- //                    pieces: [{
- //                        lte: 8,
- //                        color: 'green'
- //                    }, {
- //                        gt: 8,
- //                        lte: 10,
- //                        color: 'red'
- //                    }]
- //                },
- //                series: [
- //                    {
- //                        name: '电影产量',
- //                        type: 'line',
- //                        smooth: true,
- //                        data: count,
- //                        markArea: {
- //                            data: [ [{
- //                                name: '高峰',
- //                                xAxis: '2018'
- //                            }, {
- //                                xAxis: '2020'
- //                            }] ]
- //                        }
- //                    }
- //                ]
- //            };
- //            myChart9.setOption(option9);
- //        }
- //    )
- //
- //
- //
+
+    $.post(
+        "/logic/tv/count/tagcount",
+        {},
+        function (result) {
+            console.log(result);
+            let time = [];
+            let count = [];
+            let pieCount = [];
+
+            //为图表组装数据
+            for (i = 0;i < result.length;i++){
+
+                if(i <= 10){
+                    time.push(result[i].score);
+                    count.push(result[i].count);
+                }
+                //pieCount.push({'value':result[i].count,'name':result[i].score});
+            }
+            let option4 = {
+                title: {
+                    text: '电影生产分布',
+                    subtext: '豆瓣数据'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross'
+                    }
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value} 部'
+                    },
+                    axisPointer: {
+                        snap: true
+                    }
+                },
+                visualMap: {
+                    show: false,
+                    dimension: 0,
+                    pieces: [{
+                        lte: 8,
+                        color: 'green'
+                    }, {
+                        gt: 8,
+                        lte: 10,
+                        color: 'red'
+                    }]
+                },
+                series: [
+                    {
+                        name: '电影产量',
+                        type: 'line',
+                        smooth: true,
+                        data: count,
+                        markArea: {
+                            data: [ [{
+                                name: '高峰',
+                                xAxis: '2018'
+                            }, {
+                                xAxis: '2020'
+                            }] ]
+                        }
+                    }
+                ]
+            };
+            myChart4.setOption(option4);
+        }
+    )
+
+    $.post(
+        "/logic/tv/count/authorcount",
+        {},
+        function (result) {
+            console.log(result);
+            let time = [];
+            let count = [];
+            let pieCount = [];
+
+            //为图表组装数据
+            for (i = 0;i < result.length;i++){
+
+                if(i <= 10){
+                    time.push(result[i].score);
+                    count.push(result[i].count);
+                }
+                //pieCount.push({'value':result[i].count,'name':result[i].score});
+            }
+            let option5 = {
+                title: {
+                    text: '电影生产分布',
+                    subtext: '豆瓣数据'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross'
+                    }
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value} 部'
+                    },
+                    axisPointer: {
+                        snap: true
+                    }
+                },
+                visualMap: {
+                    show: false,
+                    dimension: 0,
+                    pieces: [{
+                        lte: 8,
+                        color: 'green'
+                    }, {
+                        gt: 8,
+                        lte: 10,
+                        color: 'red'
+                    }]
+                },
+                series: [
+                    {
+                        name: '电影产量',
+                        type: 'line',
+                        smooth: true,
+                        data: count,
+                        markArea: {
+                            data: [ [{
+                                name: '高峰',
+                                xAxis: '2018'
+                            }, {
+                                xAxis: '2020'
+                            }] ]
+                        }
+                    }
+                ]
+            };
+            myChart5.setOption(option5);
+        }
+    )
+
+
+
 });
