@@ -127,14 +127,14 @@ public interface BookMapper {
             "   values(#{uid}, #{item}, #{type}) ")
     void addLike(@Param("uid") String userUid, @Param("item") String itemId, @Param("type") int i);
 
-    @Delete("delete from user_item_like where" +
-            "   user_id = #{uid} and" +
+    @Delete("delete from user_item_like" +
+            "   where user_uid = #{uid} and" +
             "   item_id = #{item} and" +
             "   type = #{type}")
     void removeLike(@Param("uid") String userUid, @Param("item") String itemId, @Param("type") int i);
 
-    @Delete("delete from user_item_looked where" +
-            "   user_id = #{uid} and" +
+    @Delete("delete from user_item_looked" +
+            "   where user_uid = #{uid} and" +
             "   item_id = #{item} and" +
             "   type = #{type}")
     void removeLooked(@Param("uid") String userUid, @Param("item") String itemId, @Param("type") int i);
@@ -162,4 +162,10 @@ public interface BookMapper {
             "         critic = #{uid} and" +
             "         date = #{date}")
     Comment selectComment(@Param("iId") String itemId, @Param("uid") String userUid, @Param("date") String format);
+
+    @Select("select * from book_comment" +
+            "   where ID = #{id} and" +
+            "         critic = #{uid}" +
+            "   limit 0, 1")
+    Comment getMyComment(@Param("id") int id, @Param("uid") String uid);
 }

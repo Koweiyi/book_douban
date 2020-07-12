@@ -82,4 +82,9 @@ public class BookServiceImpl implements BookService {
             bookMapper.addComment(itemId, userUid, comment, format, rate);
     }
 
+    @Override
+    public Comment getMyComment(int id, String uid) {
+        return bookMapper.getMyComment(id, uid);
+    }
+
 }

@@ -51,7 +51,7 @@ layui.use(['laydate', 'jquery', 'table', 'form'], function(){
         if("detail" === object.event){
             $.post(
                 '/logic/book/' + object.data.id,
-                {},
+                {uid : user.uid},
                 function (result) {
 
                     $('#imgBookInfo').attr("src","/imgs/" + result.book.picSha1);
@@ -103,7 +103,16 @@ layui.use(['laydate', 'jquery', 'table', 'form'], function(){
                     }
 
                     $('#spanBookIntro').html(result.book.intro);
-                    $('#spanComment1').html(result.comments[0].content);
+                    $('#spanComment1').html(result.comments[result.comments.length - 2].content);
+
+                    if(result.myComment != null){
+                        $("#spanMyRate").html(result.myComment.starNum);
+                        $('#spanMyComment').html(result.myComment.content);
+                        $('#divUserComment').css("display", "block");
+                    }
+                    else{
+                        $('#divUserComment').css("display","none");
+                    }
                     let index = layer.open({
                         type:1,
                         title:"图书详情信息",

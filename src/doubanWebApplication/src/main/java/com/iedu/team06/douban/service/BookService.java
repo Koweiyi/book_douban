@@ -25,4 +25,6 @@ public interface BookService {
     void addLooked(String userUid, String itemId, int i);
 
     void addComment(String itemId, String userUid, String comment, String format, String rate);
+
+    Comment getMyComment(int id, String uid);
 }

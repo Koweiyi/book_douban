@@ -108,10 +108,11 @@ public class BookController {
 
     @RequestMapping("/{id}")
     @ResponseBody
-    public BookDetail bookDetail(@PathVariable("id") int id){
+    public BookDetail bookDetail(@PathVariable("id") int id, String uid){
         BookDetail bookDetail = new BookDetail();
         bookDetail.setBook(bookService.getBookById(id));
         bookDetail.setComments(bookService.getCommentsById(id));
+        bookDetail.setMyComment(bookService.getMyComment(id, uid));
         return bookDetail;
     }
 
