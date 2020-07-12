@@ -36,3 +36,7 @@ build/
 /src/main/resources/static/css/font/
 /src/main/resources/static/js/surports/jparticle.jquery.js
 /src/main/resources/static/js/surports/
+/out/
+/src/main/resources/static/imgs/
+/src/main/resources/static/js/echarts/
+/src/main/resources/static/html/test.html

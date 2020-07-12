@@ -16,7 +16,7 @@
 }
 
 #btnLogin{
-
+    width: 100%;
     padding-left: 10%;
     padding-right: 10%;
 }
@@ -36,8 +36,8 @@
 }
 
 #bookResult{
-    padding-left:  70px;
-    padding-right: 70px;
+    padding-left:  30px;
+    padding-right: 30px;
 }
 
 #bookAuthor, #bookName, #tags{
@@ -106,7 +106,7 @@
     overflow:hidden;
     position:relative;
 }
-.larry-login .login_txtbx{
+.larry-login .login_txtbx {
     font-size:14px;
     height:26px;
     line-height:26px;
@@ -215,3 +215,49 @@
 .layui-tab{
     margin-top: 0;
 }
+
+#login-form-register{
+    margin-top: 5px;
+}
+
+#verifyImg
+{
+    font-family:Arial;
+    font-style:italic;
+    font-weight:bold;
+    font-size: 26px;
+    border:0;
+    width: 30%;
+    letter-spacing:6px;
+    padding-left: 5%;
+    color: beige;
+    background: #555555;
+}
+
+#login-form-register span{
+    color: steelblue;
+}
+
+#login-form-register a{
+    color: #E9E7E7;
+}
+
+#edit-user-form{
+    margin-top: 0;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#spanNickName{
+    color: darkseagreen;
+}
+
+#divUserInfo{
+    display: none;
+}
+
+#divBookInfo{
+    display: none;
+}
+
+

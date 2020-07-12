@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电视剧管理</title>
+    <link rel="stylesheet" href="/js/layui/css/layui.css">
+</head>
+<body>
+<!--检索功能-->
+<div class="layui-row" id="divSearch">
+    <div class="layui-form">
+        <div class= "layui-form-item layui-inline">
+            <label class="layui-form-label">
+                影片名称:
+            </label>
+            <div class="layui-inline">
+                <input type="text" name="title" id="title" placeholder="需要检索的电影名" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">
+                导演:
+            </label>
+            <div class="layui-inline">
+                <input type="text" name= "author" id="author"
+                       placeholder= "需要检索的导演" class="layui-input"/>
+            </div>
+        </div>
+<!--        <div class="layui-form-item layui-inline">-->
+<!--            <label class="layui-form-label">-->
+<!--                发布年限：-->
+<!--            </label>-->
+<!--            <div class="layui-inline">-->
+<!--                <select name="state" id="selState" class="layui-input">-->
+<!--                    <option value="-1" selected>2020</option>-->
+<!--                    <option value>2019</option>-->
+<!--                    <option value="1"> 2018</option>-->
+<!--                    <option value="2">2017</option>-->
+<!--                </select>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="layui-form-item layui-inline">
+            <div class="layui-inline">
+                <button id="btnSearch2" class="layui-btn layui-btn-success">
+                    <i class="layui-icon layui-icon-search"></i>检索
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="layui-row" id="result">
+    <table id="tblResult2" lay-filter="tblResult2"></table>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="/js/layui/layui.all.js"></script>
+<script type=" text/javascript" src="/js/logic/tv.js"></script>
