@@ -5,7 +5,9 @@ layui.use(['element', 'layer', 'jquery'], function () {
     var $ = layui.$;
 
 
-    $.post('/logic/user/LoginUser',{},function (result) {
+    $.post('/logic/user/LoginUser',
+        {},
+        function (result) {
         user = result;
     })
 
@@ -26,7 +28,7 @@ layui.use(['element', 'layer', 'jquery'], function () {
     $('.site-demo-active').on('click', function () {
         var dataid = $(this);
 
-        if(user.state != 3 && dataid.attr("data-id") == "100"){
+        if(user.state != 3 && dataid.attr("data-id") == "10"){
             layer.open({
                 title: '提示',
                 content: '您还不是管理员用户，无权进入管理员平台！',
@@ -100,8 +102,8 @@ layui.use(['element', 'layer', 'jquery'], function () {
     initLoginUser();
 
     let initTab = function () {
-        active.tabAdd("/html/welcome.html", "10", "欢迎界面");
-        active.tabChange("10");
+        active.tabAdd("/html/welcome.html", "-1", "欢迎界面");
+        active.tabChange("-1");
     }
     initTab();
 });

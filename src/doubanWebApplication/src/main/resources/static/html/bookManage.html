@@ -5,6 +5,7 @@
     <title>书籍管理</title>
     <link rel="stylesheet" href="/js/layui/css/layui.css", media="all">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/viewBook.css">
 </head>
 <body>
 <div class="layui-row" id="bookSearch">
@@ -70,6 +71,186 @@
 <div class="layui-row" id="bookResult">
     <table id="tblBookResult" lay-filter="tblBookResult"></table>
 </div>
+
+<!--详情信息-->
+<div id="divBookInfo">
+    <div class="layui-container" style="width: 100%">
+        <div class="layui-row layui-col-space10">
+            <div class="layui-col-lg1" style="width: 100%;text-align: center;">
+                <span style="font-size: 20px;margin-left: 22px" id="spamBookName"><b>书籍封面</b></span>
+            </div>
+        </div>
+        <div class="layui-row layui-col-space10">
+            <div class="layui-col-lg1 row1-col1" style="width: 33.33%">
+                <div class="layui-row">
+                    <img id="imgBookInfo" width="152" height="185" >
+                </div>
+                <div class="layui-row">
+                    <span><b>读者评论：</b></span>
+                </div>
+                <div class="layui-row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span id="spanComment1"></span>
+                </div>
+                <div id="divUserComment">
+                    <div class="layui-row">
+                        <span><b>我的评分：</b></span>
+                        <span id="spanMyRate"></span>
+                    </div>
+                    <div class="layui-row">
+                        <span><b>我的评论：</b></span>
+                        <span id="spanMyComment"></span>
+                    </div>
+                </div>
+<!--                <div class="layui-row">-->
+<!--                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评论二:-->
+<!--                    <span id="spanComment2"></span>-->
+<!--                </div>-->
+<!--                <div class="layui-row">-->
+<!--                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评论三:-->
+<!--                    <span id="spanComment3"></span>-->
+<!--                </div>-->
+            </div>
+            <div class="layui-col-lg1" style="width: 66.64%">
+                <div class="layui-row">
+                    <div class="layui-col-lg1" style="width: 60%;">
+                        <ul>
+                            <li>
+                                <div>
+                                    作者: <span id="spamBookAuthor"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    页数: <span id="spamBookPage"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    价格: <span id="spamBookPrice"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    ISBN: <span id="spamBookIsbn"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    出版社: <span id="spamBookPublisher"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    出版日期: <span id="spamBookDate"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    豆瓣标签: <span id="spamBookTag"></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="layui-col-lg1" style="width: 40%;">
+                        <ul>
+                            <li>
+                                <div>
+                                    豆瓣评分: <span id="spamBookRate"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    评价人数: <span id="spamBookRatePl"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    五星比例: <span id="spamBookFiveStar"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    四星比例: <span id="spamBookFourStar"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    三星比例: <span id="spamBookThreeStar"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    二星比例: <span id="spamBookTwoStar"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    一星比例: <span id="spamBookOneStar"></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div style="width:95%; margin-right: 5%">
+                        <span style="font-size: 17px;"><b>内容简介：</b></span>
+                    </div>
+                    <div class="layui-row">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="spanBookIntro"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!--编辑页面-->
+<div id="divBookEdit" style="display: none;">
+    <div class="layui-container" style="height: 100%">
+        <div class="layui-row" style="align-content: center">
+            <div class="row" style="text-align: center">
+                <span style="font-size: 20px"><b>图书编辑</b></span>
+            </div>
+
+            <div class="layui-form layui-form-pane" id="divBookEdit-form" style="margin-left: 18%">
+                <div class="layui-form-item layui-inline" style="margin-top: 10px;width: 83%">
+                    <label class="layui-form-label">我的评分</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" placeholder="我对这本书的评分是" id="inputRate"/>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-inline">
+                    <label class="layui-form-label">我喜欢</label>
+                    <div class="layui-input-block">
+                        <select class="layui-select" id="selectLike">
+                            <option value="1">加入喜欢</option>
+                            <option value="0">没有感觉</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-inline">
+                    <label class="layui-form-label">我已看</label>
+                    <div class="layui-input-block">
+                        <select class="layui-select" id="selectLooked">
+                            <option value="1">加入已看</option>
+                            <option value="0">尚未阅读</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item layui-form-text" style="width: 83%; margin-top: 10px">
+                    <div class="layui-input-block">
+                        <textarea name="desc" id="textareaComment" placeholder="添加我的评论" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
 <script type="text/javascript" src="/js/layui/layui.all.js"></script>
