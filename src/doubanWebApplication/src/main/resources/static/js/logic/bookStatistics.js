@@ -10,6 +10,8 @@ layui.use(['jquery','layer'],function () {
     let authorChart = echarts.init(document.getElementById('authorClassify'));
     let starChart = echarts.init(document.getElementById('starClassify'));
 
+
+
     $.get(
         '/logic/book/count/allBookCount',
         {},
@@ -31,6 +33,33 @@ layui.use(['jquery','layer'],function () {
         {},
         function (result) {
             $("#spanPublisherCount").html(result.count);
+        }
+    )
+
+    $.get(
+        '/logic/user/LoginUser',
+        {},
+        function (result) {
+            if(result != null){
+                $.get(
+                    '/logic/book/count/bookLikeCount',
+                    {
+                        uid: result.uid
+                    },
+                    function (result) {
+                        $("#spanBookLike").html(result.count);
+                    }
+                )
+                $.get(
+                    '/logic/book/count/bookLookedCount',
+                    {
+                        uid: result.uid
+                    },
+                    function (result) {
+                        $("#spanBookLooked").html(result.count);
+                    }
+                )
+            }
         }
     )
 
@@ -94,7 +123,7 @@ layui.use(['jquery','layer'],function () {
         {},
         function (result) {
 
-            console.log(result);
+            // console.log(result);
 
             let price = [],
                 count = [];

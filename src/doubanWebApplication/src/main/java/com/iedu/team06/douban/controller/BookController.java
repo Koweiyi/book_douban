@@ -76,6 +76,30 @@ public class BookController {
         return countMessage;
     }
 
+    @RequestMapping(value = "/count/bookLikeCount")
+    @ResponseBody
+    public CountMessage bookLikeCount(String uid){
+        CountMessage countMessage = new CountMessage();
+        if(uid == null){
+            countMessage.setCount(0);
+            return countMessage;
+        }
+        countMessage.setCount(bookCountSeivice.bookLikeClunt(uid));
+        return countMessage;
+    }
+
+    @RequestMapping(value = "/count/bookLookedCount")
+    @ResponseBody
+    public CountMessage bookLookedCount(String uid){
+        CountMessage countMessage = new CountMessage();
+        if(uid == null){
+            countMessage.setCount(0);
+            return countMessage;
+        }
+        countMessage.setCount(bookCountSeivice.bookLookedClunt(uid));
+        return countMessage;
+    }
+
     @RequestMapping(value = "/count/tagCount")
     @ResponseBody
     public List<ValueNameElem> tagCount(){
@@ -108,10 +132,11 @@ public class BookController {
 
     @RequestMapping("/{id}")
     @ResponseBody
-    public BookDetail bookDetail(@PathVariable("id") int id){
+    public BookDetail bookDetail(@PathVariable("id") int id, String uid){
         BookDetail bookDetail = new BookDetail();
         bookDetail.setBook(bookService.getBookById(id));
         bookDetail.setComments(bookService.getCommentsById(id));
+        bookDetail.setMyComment(bookService.getMyComment(id, uid));
         return bookDetail;
     }
 
@@ -149,4 +174,6 @@ public class BookController {
         message.setError(false);
         return message;
     }
+
+
 }

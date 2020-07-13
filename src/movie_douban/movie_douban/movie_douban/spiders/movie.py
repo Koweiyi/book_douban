@@ -36,8 +36,8 @@ class MovieSpider(scrapy.Spider):
         for i in info['subjects']:
             print(i["title"])
             response.urljoin(i["url"])
-            #yield scrapy.Request(url=i["url"], callback=self.parse_detail)
-            yield scrapy.Request(url=i["url"], callback=self.parse_comment)
+            yield scrapy.Request(url=i["url"], callback=self.parse_detail)
+            #yield scrapy.Request(url=i["url"], callback=self.parse_comment)
 
         if self.page_count <= 25:
             next_url = '''https://movie.douban.com/j/search_subjects?

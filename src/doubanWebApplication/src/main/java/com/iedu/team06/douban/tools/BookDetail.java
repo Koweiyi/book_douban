@@ -9,4 +9,5 @@ import java.util.List;
 public class BookDetail {
     Book book;
     List<Comment> comments;
+    Comment myComment;
 }
