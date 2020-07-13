@@ -298,7 +298,7 @@ layui.use(['jquery','layer'],function () {
             }
             let option4 = {
                 title: {
-                    text: '电影生产分布',
+                    text: '类型分布',
                     subtext: '豆瓣数据'
                 },
                 tooltip: {
@@ -380,7 +380,7 @@ layui.use(['jquery','layer'],function () {
             }
             let option5 = {
                 title: {
-                    text: '电影生产分布',
+                    text: '导演影片生产量',
                     subtext: '豆瓣数据'
                 },
                 tooltip: {
