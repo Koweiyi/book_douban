@@ -291,7 +291,7 @@ layui.use(['jquery','layer'],function () {
             for (i = 0;i < result.length;i++){
 
                 if(i <= 10){
-                    time.push(result[i].score);
+                    time.push(result[i].tag);
                     count.push(result[i].count);
                 }
                 //pieCount.push({'value':result[i].count,'name':result[i].score});
@@ -316,7 +316,7 @@ layui.use(['jquery','layer'],function () {
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                    data: [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]
+                    data: time
                 },
                 yAxis: {
                     type: 'value',
@@ -373,7 +373,7 @@ layui.use(['jquery','layer'],function () {
             for (i = 0;i < result.length;i++){
 
                 if(i <= 10){
-                    time.push(result[i].score);
+                    time.push(result[i].author);
                     count.push(result[i].count);
                 }
                 //pieCount.push({'value':result[i].count,'name':result[i].score});
@@ -398,7 +398,7 @@ layui.use(['jquery','layer'],function () {
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                    data: [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]
+                    data: time
                 },
                 yAxis: {
                     type: 'value',
