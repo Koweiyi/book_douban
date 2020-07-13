@@ -122,8 +122,8 @@ class MovieDoubanPipeline(object):
     def process_movie_comment_item(self,item):
         try:
             self.cursor.execute('''
-                SELECT * FROM hzc_movie_comment WHERE dbid = %s
-                    ''',(item['dbid'],))
+                SELECT * FROM hzc_movie_comment WHERE dbid = %s AND comment_people = %s
+                    ''',(item['dbid'],item['comment_people']))
             film = self.cursor.fetchone()
             if film == None:
                 self.cursor.execute(
@@ -142,7 +142,7 @@ class MovieDoubanPipeline(object):
                             comment_time = %s,
                             comment_people = %s,
                             comment_star = %s
-                        WHERE dbid = %s
+                        WHERE dbid = %s AND comment_people = %s
                 ''',               (item['dbid'],
                                     item['content'],
                                     item['comment_time'],

@@ -11,11 +11,7 @@ class MovieSpider(scrapy.Spider):
     name = 'movie'
     allowed_domains = ['movie.douban.com']
     start_urls = ['''https://movie.douban.com/j/search_subjects?
-                        type=movie&
-                        tag=%E7%83%AD%E9%97%A8&
-                        sort=time&
-                        page_limit=20&
-                        page_start=0'''.replace('\n', '').replace(' ', '')]
+                        type=movie&tag=%E8%B1%86%E7%93%A3%E9%AB%98%E5%88%86&sort=recommend&page_limit=20&page_start=0'''.replace('\n', '').replace(' ', '')]
 #rules = ()
     __slots__ = ('__page_count',)
 
@@ -36,16 +32,12 @@ class MovieSpider(scrapy.Spider):
         for i in info['subjects']:
             print(i["title"])
             response.urljoin(i["url"])
-            yield scrapy.Request(url=i["url"], callback=self.parse_detail)
-            #yield scrapy.Request(url=i["url"], callback=self.parse_comment)
+            #yield scrapy.Request(url=i["url"], callback=self.parse_detail)
+            yield scrapy.Request(url=i["url"], callback=self.parse_comment)
 
         if self.page_count <= 25:
             next_url = '''https://movie.douban.com/j/search_subjects?
-                        type=movie&
-                        tag=%E7%83%AD%E9%97%A8&
-                        sort=time&
-                        page_limit=20&
-                        page_start={0}'''\
+                        type=movie&tag=%E8%B1%86%E7%93%A3%E9%AB%98%E5%88%86&sort=recommend&page_limit=20&page_start={0}'''\
                         .format((self.page_count * 20))\
                         .replace('\n', '').replace(' ', '')
             self.page_count += 1
