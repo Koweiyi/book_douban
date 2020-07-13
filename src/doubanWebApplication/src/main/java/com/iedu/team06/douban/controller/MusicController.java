@@ -46,5 +46,17 @@ public class MusicController {
         return musicService.siteCount();
     }
 
+    @RequestMapping(value="/chart3")
+    public List<MusicscoreCount> musicsectCount(){
+
+        return musicService.sectCount();
+    }
+
+    @RequestMapping(value="/chart4")
+    public List<MusicscoreCount> musicmanCount(){
+
+        return musicService.manCount();
+    }
+
 
 }

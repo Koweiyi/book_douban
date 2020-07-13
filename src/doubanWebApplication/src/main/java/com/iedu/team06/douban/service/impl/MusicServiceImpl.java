@@ -52,6 +52,20 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
+    public List<MusicscoreCount> sectCount(){
+
+        return mapper.countBySect();
+
+    }
+
+    @Override
+    public List<MusicscoreCount> manCount(){
+
+        return mapper.countByMan();
+
+    }
+
+    @Override
     public List<MusicusersiteCount> siteCount(){
 
         return mapper.countBysite();

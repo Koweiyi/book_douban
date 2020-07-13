@@ -62,6 +62,22 @@ public interface MusicMapper {
             "ORDER BY music_mark + 0 DESC ")
     List<MusicscoreCount> countByScore();
 
+    @Select(" SELECT music_sect AS score, "+
+            "COUNT(1) AS count " +
+            "FROM dalongtou_music " +
+            "WHERE music_sect <> '' and music_sect <> '流派' " +
+            "GROUP BY music_sect " +
+            "ORDER BY count DESC ")
+    List<MusicscoreCount> countBySect();
+
+    @Select(" select COUNT(music_mark) as count, " +
+            "                   music_man as score " +
+            "                from dalongtou_music " +
+            "                where music_mark+0 > 9 and music_mark <> 'null' " +
+            "                group by music_man " +
+            "                order by count desc ")
+    List<MusicscoreCount> countByMan();
+
     @Select("select COUNT(music_comment_star) as count, " +
             "       music_user_site as site " +
             "    from dalongtou_music_comment " +

@@ -16,6 +16,10 @@ public interface MusicService {
 
     List<MusicscoreCount> scoreCount();
 
+    List<MusicscoreCount> sectCount();
+
+    List<MusicscoreCount> manCount();
+
     List<MusicusersiteCount> siteCount();
 
     int searchCount(Music music);
