@@ -132,7 +132,7 @@ layui.use(['laydate', 'jquery', 'table', 'form'], function(){
                 offset: '30px',
                 area:['40%', '56%'],
                 content:$('#divBookEdit'),
-                btn:['确认编辑','放弃编辑'],
+                btn:['确认编辑','退出编辑'],
                 btnAlign: 'c',
                 yes: function () {
 
@@ -150,18 +150,7 @@ layui.use(['laydate', 'jquery', 'table', 'form'], function(){
                             if(!result.error){
                                 $('#inputRate').val("");
                                 $('#textareaComment').val("");
-                                let index = layer.open({
-                                    title:"提示",
-                                    content:"您对该图书的编辑已成功！",
-                                    btn:["继续编辑","退出编辑"],
-                                    btnAlign: "c",
-                                    yes: function () {
-                                        layer.close(index);
-                                    },
-                                    btn2: function () {
-                                        layer.closeAll();
-                                    }
-                                })
+                                layer.msg("您对该图书的编辑已成功！");
                             }
                             else{
                                 layer.msg(result.content);
