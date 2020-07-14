@@ -22,6 +22,31 @@ layui.use(['jquery', 'layer', 'form'],function () {
             return;
         }
 
+        let pwd = $("#login-user-pwd").val();
+
+        if(pwd.length <= 5){
+            layer.msg("密码长度不能小于六位！");
+            return;
+        }else{
+            let regPassword = {
+                regStr:/^[\w@#*]{6,16}$/,
+                numStr:/^[0-9]*$/,
+                letterStr:/^[a-zA-Z]*$/,
+            };
+            if(regPassword.numStr.test(pwd)){
+                layer.msg("密码不能为纯数字");
+                return;
+            }
+            if(regPassword.letterStr.test(pwd)){
+                layer.msg("密码不能为纯字母");
+                return;
+            }
+            if(!regPassword.regStr.test($("#pwd").val())){
+                layer.msg("密码不能包含@，#，*之外的特殊字符！");
+                return;
+            }
+        }
+
         let index = layer.open({
             type:1,
             title:"用户验证",
