@@ -1,8 +1,6 @@
 layui.use(['jquery','form','table','layer'], function () {
     var $ = layui.jquery,
-        form = layui.form,
-        table = layui.table,
-        layer = layui.layer;
+        table = layui.table;
 
     table.render({
         elem: '#MovietblResult',

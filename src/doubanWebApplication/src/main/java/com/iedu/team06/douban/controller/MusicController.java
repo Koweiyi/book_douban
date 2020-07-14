@@ -1,17 +1,19 @@
 package com.iedu.team06.douban.controller;
 
 
+import com.iedu.team06.douban.entity.Music;
+import com.iedu.team06.douban.entity.MusicscoreCount;
+import com.iedu.team06.douban.entity.MusicusersiteCount;
 import com.iedu.team06.douban.service.MusicService;
 import com.iedu.team06.douban.tools.TableData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.iedu.team06.douban.entity.Music;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/logic/music")
 public class MusicController {
 
@@ -31,4 +33,30 @@ public class MusicController {
 
         return date;
     }
+
+    @RequestMapping(value="/chart1")
+    public List<MusicscoreCount> musicscoreCount(){
+
+        return musicService.scoreCount();
+    }
+
+    @RequestMapping(value="/chart2")
+    public List<MusicusersiteCount> musicusersiteCount(){
+
+        return musicService.siteCount();
+    }
+
+    @RequestMapping(value="/chart3")
+    public List<MusicscoreCount> musicsectCount(){
+
+        return musicService.sectCount();
+    }
+
+    @RequestMapping(value="/chart4")
+    public List<MusicscoreCount> musicmanCount(){
+
+        return musicService.manCount();
+    }
+
+
 }

@@ -42,11 +42,9 @@ layui.use(['jquery','form','table','layer'], function () {
                 }},*/
             {field: 'caozuo', title: '操作',align:'center',
                 templet:function(rowData){
-                    /*var btnReset =  '<button class="layui-btn layui-btn-sm layui-btn-warm" lay-event="reset" >' +
-                        '<i class="layui-icon layui-icon-password" ></i>密码重置</button>'*/
-                    var btnInfo =   '<button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="info">' +
+                    let btnInfo =   '<button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="info">' +
                         '<i class="layui-icon layui-icon-about"></i>编辑详情</button>'
-                    var btnDisable ='<button class="layui-btn layui-btn-sm layui-btn-danger" lay-event= "like">' +
+                    let btnDisable ='<button class="layui-btn layui-btn-sm layui-btn-danger" lay-event= "like">' +
                         '<i class="layui-icon layui-icon-close"></i>加入喜欢</button> '
                     return btnInfo + btnDisable;
                 }
@@ -55,13 +53,13 @@ layui.use(['jquery','form','table','layer'], function () {
         data:[]
     });
 
-    table.on('tool(tblResult)', function (obj) {
+    table.on('tool(MusictblResult)', function (obj) {
 
         if('info' === obj.event) {
-            alert('歌曲名字:' + obj.data.musicname + "，ID:" + obj.data.id + "请进行编辑");
+            alert('别点我！');
         }
         if('like' === obj.event) {
-            alert(' 歌曲名字:'+ obj.data.musicname +"，ID: "+ obj.data.id +"已加入你的喜欢");
+            alert('别点我！');
         }
     });
 

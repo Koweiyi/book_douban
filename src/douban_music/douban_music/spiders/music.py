@@ -32,8 +32,8 @@ class MusicSpider(scrapy.Spider):
             yield scrapy.Request(url=response.url, callback=self.parse_table, dont_filter=True)
         elif b:
             yield scrapy.Request(url=response.url, callback=self.parse_detail, dont_filter=True)
-        elif c:
-            yield scrapy.Request(url=response.url, callback=self.parse_user, dont_filter=True)
+        # elif c:
+        #     yield scrapy.Request(url=response.url, callback=self.parse_user, dont_filter=True)
 
         pass
 
@@ -90,7 +90,7 @@ class MusicSpider(scrapy.Spider):
         detailItem['music_time'] = ''
         detailItem['music_sect'] = ''
         detailItem['music_album'] = ''
-        detailItem['music_sect'] = ''
+        detailItem['music_media'] = ''
         detailItem['music_mark'] = ''
         detailItem['music_vote'] = ''
         detailItem['music_comment'] = ''
@@ -109,7 +109,7 @@ class MusicSpider(scrapy.Spider):
                     .replace("\xa0", "").replace("\n", "").rstrip()
         detailItem['music_man'] = "|".join(response.css('#info span>a').xpath('string()').extract())
         detailItem['music_id'] = str(response.url).split("/")[-2]
-        detailItem['music_url'] = response.url.extract_first()
+        detailItem['music_url'] = response.url
 
 
         # for i in range(0, len(info)):
@@ -139,7 +139,7 @@ class MusicSpider(scrapy.Spider):
         detailItem['music_star2'] = response.xpath('//*[@id="interest_sectl"]/div/span[8]/text()').extract_first()
         detailItem['music_star1'] = response.xpath('//*[@id="interest_sectl"]/div/span[10]/text()').extract_first()
 
-        # 以下是爬取评论信息
+        以下是爬取评论信息
         def star(str):
             if str == "力荐":
                 return 5
@@ -174,6 +174,9 @@ class MusicSpider(scrapy.Spider):
                 user_href = li.xpath(
                     'div/h3/span[2]/a/@href').extract_first()
                 yield scrapy.Request(url=user_href, callback=self.parse_user, dont_filter=True)
+
+
+
         # comment_list = response.xpath('//*[@id="comments"]/ul/li')
         # li1 = comment_list[0]
         # li2 = comment_list[1]

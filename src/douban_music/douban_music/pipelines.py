@@ -20,7 +20,7 @@ class DoubanMusicPipeline:
                 db=settings.MYSQL_DBNAME,
                 user=settings.MYSQL_USER,
                 passwd=settings.MYSQL_PASSWD,
-                charset='utf8-mb4',
+                charset='utf8mb4',
                 use_unicode=True,
                 cursorclass=pymysql.cursors.DictCursor
             )
@@ -28,13 +28,12 @@ class DoubanMusicPipeline:
             self.cursor.execute("SELECT VERSION()")
             data = self.cursor.fetchone()
             print(data)
-        except:
-            print("数据库连接失败")
-            print()
+        except Exception as e:
+            print('Insert error:', e)
 
     def process_item(self, item, spider):
 
-        print("来了老弟")
+        # print("来了老弟")
 
         if isinstance(item, MusicDetailItem):
             self.process_musicdetail_item(item)
@@ -51,13 +50,13 @@ class DoubanMusicPipeline:
         return item
 
     def process_musictags_item(self, item):
-        print("come into tags process")
-        print(item['url'])
+        #print("come into tags process")
+        #print(item['url'])
 
         pass
 
     def process_musictable_item(self, item):
-        print("come into table process")
+        #print("come into table process")
         # self.cursor.ping()
         self.cursor.execute('''
                     SELECT * FROM dalongtou_music WHERE music_id = \"%s\"
@@ -78,9 +77,9 @@ class DoubanMusicPipeline:
         pass
 
     def process_musicuser_item(self, item):
-        print("come into user process")
-        print(item['music_user_site'])
-        print(item['music_user_time'])
+        #print("come into user process")
+        #print(item['music_user_site'])
+        #print(item['music_user_time'])
         # self.cursor.ping()
 
         self.cursor.execute('''
@@ -101,11 +100,11 @@ class DoubanMusicPipeline:
         pass
 
     def process_musicdetail_item(self, item):
-        print("come into detail process")
-        print(item['music_name'])
-        print(item['music_rename'])
-        print(item['music_time'])
-        print(item['music_mark'])
+        #print("come into detail process")
+        #print(item['music_name'])
+        #print(item['music_rename'])
+        #print(item['music_time'])
+        #print(item['music_mark'])
         # self.cursor.ping()
 
         # 录入music表
@@ -179,7 +178,7 @@ class DoubanMusicPipeline:
 
         sql_insert3 = '''UPDATE dalongtou_music_comment
                             SET music_comment = \"%s\",
-                            music_comment_star = \"%s\" 
+                            music_comment_star = \"%s\"
                             WHERE music_id = \"%s\" and music_user_name = \"%s\"'''
 
         if film is None:
