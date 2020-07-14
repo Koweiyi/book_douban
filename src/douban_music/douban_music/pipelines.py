@@ -38,14 +38,14 @@ class DoubanMusicPipeline:
         if isinstance(item, MusicDetailItem):
             self.process_musicdetail_item(item)
 
-        # elif isinstance(item, MusicUserItem):
-        #     self.process_musicuser_item(item)
+        elif isinstance(item, MusicUserItem):
+            self.process_musicuser_item(item)
 
         elif isinstance(item, MusicTableItem):
             self.process_musictable_item(item)
 
-        # elif isinstance(item, MusicTagsItem):
-        #     self.process_musictags_item(item)
+        elif isinstance(item, MusicTagsItem):
+            self.process_musictags_item(item)
 
         return item
 
@@ -167,26 +167,26 @@ class DoubanMusicPipeline:
 
         # 录入comment表
 
-        # self.cursor.execute('''
-        #                      SELECT * FROM dalongtou_music_comment WHERE music_user_name = \"%s\" and music_id = \"%s\"
-        #                     ''', (item['music_comment_name'], item['music_id']))
-        # film = self.cursor.fetchone()
-        #
-        # sql_insert2 = '''insert into dalongtou_music_comment(
-        #                                         music_id,music_user_name)
-        #                                         value (\"%s\",\"%s\")'''
-        #
-        # sql_insert3 = '''UPDATE dalongtou_music_comment
-        #                     SET music_comment = \"%s\",
-        #                     music_comment_star = \"%s\"
-        #                     WHERE music_id = \"%s\" and music_user_name = \"%s\"'''
-        #
-        # if film is None:
-        #     print("comment表: music_id找不到，插入comment")
-        #     self.cursor.execute(sql_insert2, (item['music_id'], item['music_comment_name']))
-        #     self.connect.commit()
-        #
-        # self.cursor.execute(sql_insert3, (
-        #     item['music_comment'], item['music_comment_star'], item['music_id'], item['music_comment_name']))
-        # self.connect.commit()
+        self.cursor.execute('''
+                             SELECT * FROM dalongtou_music_comment WHERE music_user_name = \"%s\" and music_id = \"%s\"
+                            ''', (item['music_comment_name'], item['music_id']))
+        film = self.cursor.fetchone()
+
+        sql_insert2 = '''insert into dalongtou_music_comment(
+                                                music_id,music_user_name)
+                                                value (\"%s\",\"%s\")'''
+
+        sql_insert3 = '''UPDATE dalongtou_music_comment
+                            SET music_comment = \"%s\",
+                            music_comment_star = \"%s\"
+                            WHERE music_id = \"%s\" and music_user_name = \"%s\"'''
+
+        if film is None:
+            print("comment表: music_id找不到，插入comment")
+            self.cursor.execute(sql_insert2, (item['music_id'], item['music_comment_name']))
+            self.connect.commit()
+
+        self.cursor.execute(sql_insert3, (
+            item['music_comment'], item['music_comment_star'], item['music_id'], item['music_comment_name']))
+        self.connect.commit()
         pass
