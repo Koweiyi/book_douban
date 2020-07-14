@@ -27,18 +27,24 @@ function validate(){
 
     if(uid=="" || pwd==""){
         layui.use(["layer"], function () {
-            alert("用户名和密码不能为空！");
+            layer.msg("用户名和密码不能为空！");
         });
         return;
     }
 
     if(inputCode.length <= 0) { //若输入的验证码长度为0
-        alert("请输入验证码！"); //则弹出请输入验证码
+        layui.use(["layer"], function () {
+            layer.msg("请填写验证码");
+        });
+        // alert("请输入验证码！"); //则弹出请输入验证码
         document.getElementById("code").value = "";//清空文本框
         createCode();
     }
     else if(inputCode != code ) { //若输入的验证码与产生的验证码不一致时
-        alert("验证码输入错误！@_@"); //则弹出验证码输入错误
+        layui.use(["layer"], function () {
+            layer.msg("验证码输入错误！@_@");
+        });
+        // alert("验证码输入错误！@_@"); //则弹出验证码输入错误
         document.getElementById("code").value = "";//清空文本框
         createCode();
     }else{

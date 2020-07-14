@@ -1,0 +1,32 @@
+#login-title{
+    margin-top: 9%;
+    text-align: center;
+}
+
+#span-login-title{
+    font-size: 23px;
+}
+.layui-col-lg1{
+    width: 70%;
+    margin-left: 26%;
+}
+
+#login-user-form{
+    width: 100%;
+}
+
+.layui-form-item{
+    width: 100%;
+}
+
+.layui-input-block{
+    width: 57%;
+}
+
+#login-user-main-body{
+    margin-top: 40px;
+}
+
+#login-user-form-yesBtn{
+    width: 69%;
+}
