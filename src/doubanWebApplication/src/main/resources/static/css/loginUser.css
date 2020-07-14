@@ -30,3 +30,21 @@
 #login-user-form-yesBtn{
     width: 69%;
 }
+
+#divUserTest{
+    display: none;
+}
+
+#divUserTest-container{
+    width: 100%;
+    height: 100%;
+}
+
+#divUserTest-lg1{
+    margin-left: 8%;
+    width: 92%;
+}
+
+#divUserTest-item{
+    width: 100%;
+}

@@ -24,4 +24,8 @@ public interface UserService {
     User getUserById(String id);
 
     boolean setState(String id, int state);
+
+    boolean userTest(String uid, String pwd);
+
+    boolean updateUser(String uid, String nickName, String pwd);
 }
