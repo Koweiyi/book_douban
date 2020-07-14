@@ -23,14 +23,19 @@ public class UserController {
     private UserService userService;
 
     @PostMapping(value = "/login")
-    public String login(@RequestParam("uid") String uid, @RequestParam("pwd") String pwd, Model model){
+    @ResponseBody
+    public Message login(@RequestParam("uid") String uid, @RequestParam("pwd") String pwd, Model model){
 
+        Message m = new Message();
+        m.setError(true);
         User user = userService.login(uid, pwd);
         if (user != null){
             model.addAttribute("LoginUser", user);
-            return "redirect:/html/index.html";
+            m.setError(false);
+//            return "redirect:/html/index.html";
         }
-        return "redirect:/html/login.html";
+//        return "redirect:/html/login.html";
+        return m;
     }
 
     @RequestMapping(value = "/LoginUser")

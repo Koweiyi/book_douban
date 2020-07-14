@@ -1,4 +1,6 @@
-var code ; //在全局定义验证码
+//在全局定义验证码
+let code;
+
 //产生验证码
 $(function(){
     createCode();
@@ -8,9 +10,9 @@ $(function(){
 });
 function createCode(){
     code = "";
-    var codeLength = 4;//验证码的长度
-    var checkCode = document.getElementById("verifyImg");
-    var random = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R',
+    let codeLength = 4;//验证码的长度
+    let checkCode = document.getElementById("verifyImg");
+    let random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R',
         'S','T','U','V','W','X','Y','Z');//随机数
     for(var i = 0; i < codeLength; i++) {//循环操作
         var index = Math.floor(Math.random()*36);//取得随机数的索引（0~35）
@@ -18,6 +20,55 @@ function createCode(){
     }
     checkCode.value = code;//把code值赋给验证码
 }
+
+
+layui.use(['jquery','layer'],function () {
+
+    let $ = layui.jquery;
+    let layer = layui.layer;
+
+    $("#btnLogin").click(function (event) {
+        if($("#uid").val() == ""){
+            layer.msg("请填写用户名！");
+            return;
+        }
+        if($("#pwd").val() == ""){
+            layer.msg("请填写密码！");
+            return;
+        }
+
+        if($("#code").val() === ""){
+            layer.msg("请填写验证码");
+            createCode();//创建新的验证码
+            return;
+        }
+
+        if($("#code").val().toUpperCase() != code){
+            layer.msg("验证码输入错误！@_@");
+            $("#code").val("");
+            createCode();//创建新的验证码
+            return
+        }
+
+        $.post(
+            '/logic/user/login',
+            {
+                uid: $("#uid").val(),
+                pwd: $("#pwd").val()
+            },function (result) {
+                if(!result.error){
+                    window.location.href = "/html/index.html";
+                }
+                else{
+                    layer.msg("用户名或密码错误！");
+                    createCode();
+                }
+            }
+        )
+
+    });
+
+});
 
 //校验验证码
 function validate(){
@@ -48,6 +99,24 @@ function validate(){
         document.getElementById("code").value = "";//清空文本框
         createCode();
     }else{
+        // layui.use(['jquery', 'layer'],function () {
+        //
+        //     let $ = layui.jquery;
+        //     let layer = layui.layer;
+        //
+        //     $.post(
+        //         '/logic/user/login',
+        //         {
+        //             uid: uid,
+        //             pwd: pwd
+        //         },
+        //         function (result) {
+        //             if(result == "redirect:/html/login.html"){
+        //                 layer.msg("用户名或密码错误！");
+        //             }
+        //         }
+        //     )
+        // });
         postcall("/logic/user/login", {"uid":uid, "pwd":pwd})
     }
 }

@@ -34,10 +34,33 @@ layui.use(['layer','form','jquery'], function () {
             layer.msg("请填写昵称！");
             return;
         }
-        if($("#pwd").val() == ""){
+        let pwd = $("#pwd").val();
+        if(pwd == ""){
             layer.msg("请填写密码！");
             return;
+        }else if(pwd.length < 6){
+            layer.msg("密码长度不能小于六位！");
+            return;
+        }else{
+            let regPassword =  {
+                regStr:/^[\w@#*]{6,16}$/,
+                numStr:/^[0-9]*$/,
+                letterStr:/^[a-zA-Z]*$/,
+            };
+            if(regPassword.numStr.test(pwd)){
+                layer.msg("密码不能为纯数字");
+                return;
+            }
+            if(regPassword.letterStr.test(pwd)){
+                layer.msg("密码不能为纯字母");
+                return;
+            }
+            if(!regPassword.regStr.test($("#pwd").val())){
+                layer.msg("密码不能包含@，#，*之外的特殊字符！");
+                return;
+            }
         }
+
         if($("#rePwd").val() == ""){
             layer.msg("请填写确认密码！");
             return;
