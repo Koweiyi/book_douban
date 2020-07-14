@@ -7,7 +7,7 @@ layui.use(['jquery','form','table','layer'], function () {
     table.render({
         elem: '#MusictblResult',
         page: true,
-        limit: 6,
+        limit: 10,
         cols: [[
             {field: 'musicId',title:'音乐ID',align:'center',width:'6.5%'},
             {field: 'musicName',title:'音乐名',align:'center',width:'6.5%'},
