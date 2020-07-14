@@ -71,11 +71,11 @@ layui.use(['jquery', 'layer', 'form'],function () {
                         }
                         else{
                             layer.msg("密码输入错误");
-                            $("#inputPwdTest").val("");
-                            layer.closeAll();
                         }
                     }
                 )
+                $("#inputPwdTest").val("");
+                layer.close(index);
             }
         })
     });
