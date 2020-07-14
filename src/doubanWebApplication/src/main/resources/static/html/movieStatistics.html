@@ -2,9 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>电影数据分析</title>
+    <link rel="stylesheet" href="/js/layui/css/layui.css">
 </head>
-<body>
+<body bgcolor="#E0FFFF">
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15" style="margin-top: 10px">
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    管理员
+                    <span class="layui-badge layui-bg-cyan layuiadmin-badge">♔</span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">clementine</p>
+                    <p>目标：
+                        <span class="layuiadmin-span-color"><i class="layui-icon"></i>电视剧</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    爬取量
+                    <span class="layui-badge layui-bg-blue layuiadmin-badge">总</span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">5305</p>
+                    <p>
+                        目标：
+                        <span class="layuiadmin-span-color">豆瓣电视剧 <i class="layui-icon"></i></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    爬取类型
+                    <span class="layui-badge layui-bg-green layuiadmin-badge">tag</span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    10
+                    <p class="layuiadmin-big-font"></p>
+                    <p>
 
+                        <span class="layuiadmin-span-color">取自：<i class="layui-icon">电视剧主页</i></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    短评数
+                    <span class="layui-badge layui-bg-orange layuiadmin-badge">月</span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+
+                    <p class="layuiadmin-big-font">15423</p>
+                    <p>
+                        短评目标:
+                        <span class="layuiadmin-span-color">对应电影取3条<i class="layui-icon"></i></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
+<script src="https://cdn.bootcss.com/echarts/4.8.0/echarts.min.js"></script>
+<script src="https://echarts-www.cdn.bcebos.com/zh/asset/theme/shine.js"></script>
+<script type="text/javascript" src="/js/logic/movieStatistics.js" ></script>
+<script type="text/javascript" src="/js/layui/layui.all.js" ></script>
