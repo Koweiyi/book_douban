@@ -112,13 +112,14 @@ layui.use(['layer','form','jquery'], function () {
             },
             function (returnData) {
                 if(returnData != null){
-                    layer.open({
-                        title:"恭喜",
-                        content:"您已经成功注册！",
-                        yes:function () {
-                            window.location.href="/html/login.html";
-                        }
-                    });
+                    layer.msg("恭喜，您已经成功注册！");
+                    // layer.open({
+                    //     title:"恭喜",
+                    //     content:"您已经成功注册！",
+                    //     yes:function () {
+                    //         // window.location.href="/html/login.html";
+                    //     }
+                    // });
                 }else{
                     layer.msg("服务器错误，注册失败！");
                 }
