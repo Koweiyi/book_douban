@@ -106,7 +106,7 @@ class DoubanMusicPipeline:
         #print(item['music_time'])
         #print(item['music_mark'])
         # self.cursor.ping()
-        print("来呀来呀来呀来呀来呀来呀来呀来呀")
+        #print("来呀来呀来呀来呀来呀来呀来呀来呀")
 
         # 录入music表
         self.cursor.execute('''
@@ -153,7 +153,7 @@ class DoubanMusicPipeline:
                             VALUE (\"%s\", \"%s\", \"%s\", \"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\", \"%s\", \"%s\")'''
 
         if film is None:
-            print("报错！报错！！！！！！！！！！！！music表: music_id找不到，插入detail")
+            #print("报错！报错！！！！！！！！！！！！music表: music_id找不到，插入detail")
             self.cursor.execute(sql_insert11, (
                 item['music_id'],
                 item['music_name'], item['music_man'], item['music_rename'],
