@@ -4,10 +4,12 @@
 #
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+import base64
 import datetime
 import random
 
 from scrapy import signals
+from scrapy.downloadermiddlewares.httpproxy import HttpProxyMiddleware
 from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
 
 
@@ -136,4 +138,32 @@ class RotateUserAgentMiddleware(UserAgentMiddleware):
         "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1061.0 Safari/536.3",
         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24",
         "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"]
+
+
+
+PROXIES = [
+        {'ip_port': '192.168.2.198', 'user_pass': '8080'},
+        {'ip_port': '192.168.2.1', 'user_pass': '8080'},
+        {'ip_port': '192.168.2.12', 'user_pass': '8080'},
+        {'ip_port': '192.168.3.1', 'user_pass': '8080'},
+        {'ip_port': '192.168.2.15', 'user_pass': '8080'},
+        {'ip_port': '192.168.2.200', 'user_pass': '8080'},
+        {'ip_port': '192.168.2.16', 'user_pass': '8080'},
+        {'ip_port': '192.168.2.13', 'user_pass': '8080'},
+        {'ip_port': '192.168.2.35', 'user_pass': '8080'},
+        {'ip_port': '192.168.8.1', 'user_pass': '8080'}
+    ]
+
+
+class ProxyMiddleware(HttpProxyMiddleware):
+
+    def process_request(self, request, spider):
+        proxy = random.choice(PROXIES)
+        if proxy['user_pass'] is not None:
+            request.meta['proxy'] = "https://%s" % proxy['ip_port']
+            encoded_user_pass = base64.encodestring(bytes(proxy['user_pass'], 'utf-8'))
+            request.headers['Proxy-Authorization'] = bytes('Basic ', 'utf-8') + encoded_user_pass
+        else:
+            request.meta['proxy'] = "https://%s" % proxy['ip_port']
+
 

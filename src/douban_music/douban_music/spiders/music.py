@@ -58,7 +58,7 @@ class MusicSpider(scrapy.Spider):
         pass
 
     def parse_table(self, response):
-        print("come into pares_table")
+        #print("come into pares_table")
 
         tableItem = MusicTableItem()
         tableItem['music_url'] = ''
