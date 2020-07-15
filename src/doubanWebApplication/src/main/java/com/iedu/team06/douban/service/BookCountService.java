@@ -27,7 +27,7 @@ public interface BookCountService {
 
     List<ValueNameElem> starClassify();
 
-    int bookLikeClunt(String uid);
+    int bookLikeCount(String uid);
 
-    int bookLookedClunt(String uid);
+    int bookLookedCount(String uid);
 }

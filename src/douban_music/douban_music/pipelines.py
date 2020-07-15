@@ -38,14 +38,14 @@ class DoubanMusicPipeline:
         if isinstance(item, MusicDetailItem):
             self.process_musicdetail_item(item)
 
-        elif isinstance(item, MusicUserItem):
-            self.process_musicuser_item(item)
+        # elif isinstance(item, MusicUserItem):
+        #     self.process_musicuser_item(item)
 
         elif isinstance(item, MusicTableItem):
             self.process_musictable_item(item)
 
-        elif isinstance(item, MusicTagsItem):
-            self.process_musictags_item(item)
+        # elif isinstance(item, MusicTagsItem):
+        #     self.process_musictags_item(item)
 
         return item
 
@@ -106,6 +106,7 @@ class DoubanMusicPipeline:
         #print(item['music_time'])
         #print(item['music_mark'])
         # self.cursor.ping()
+        #print("来呀来呀来呀来呀来呀来呀来呀来呀")
 
         # 录入music表
         self.cursor.execute('''
@@ -128,10 +129,12 @@ class DoubanMusicPipeline:
                                 music_star2 = \"%s\",
                                 music_star3 = \"%s\",
                                 music_star4 = \"%s\",
-                                music_star5 = \"%s\"
+                                music_star5 = \"%s\",
+                                music_url = \"%s\"
                                 WHERE music_id = \"%s\"'''
 
-        sql_insert1_1 = '''INSERT INTO dalongtou_music( 
+        sql_insert11 = '''INSERT INTO dalongtou_music( 
+                            music_id,
                             music_name ,
                             music_man ,
                             music_rename,
@@ -145,48 +148,52 @@ class DoubanMusicPipeline:
                             music_star2 ,
                             music_star3 ,
                             music_star4 ,
-                            music_star5 )
-                            VALUE (\"%s\", \"%s\", \"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\", \"%s\")'''
+                            music_star5,
+                            music_url)
+                            VALUE (\"%s\", \"%s\", \"%s\", \"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\", \"%s\", \"%s\")'''
 
         if film is None:
-            print("报错！报错！！！！！！！！！！！！music表: music_id找不到，插入detail")
-            self.cursor.execute(sql_insert1_1, (
+            #print("报错！报错！！！！！！！！！！！！music表: music_id找不到，插入detail")
+            self.cursor.execute(sql_insert11, (
+                item['music_id'],
                 item['music_name'], item['music_man'], item['music_rename'],
                 item['music_sect'], item['music_album'], item['music_media'],
                 item['music_time'], item['music_mark'], item['music_vote'],
                 item['music_star1'], item['music_star2'], item['music_star3'],
-                item['music_star4'], item['music_star5'], item['music_id']))
+                item['music_star4'], item['music_star5'], item['music_url']))
         else:
             self.cursor.execute(sql_insert1, (
                 item['music_name'], item['music_man'], item['music_rename'],
                 item['music_sect'], item['music_album'], item['music_media'],
                 item['music_time'], item['music_mark'], item['music_vote'],
                 item['music_star1'], item['music_star2'], item['music_star3'],
-                item['music_star4'], item['music_star5'], item['music_id']))
-            self.connect.commit()
+                item['music_star4'], item['music_star5'], item['music_url'],item['music_id']))
 
-        # 录入comment表
-
-        self.cursor.execute('''
-                             SELECT * FROM dalongtou_music_comment WHERE music_user_name = \"%s\" and music_id = \"%s\"
-                            ''', (item['music_comment_name'], item['music_id']))
-        film = self.cursor.fetchone()
-
-        sql_insert2 = '''insert into dalongtou_music_comment(
-                                                music_id,music_user_name)
-                                                value (\"%s\",\"%s\")'''
-
-        sql_insert3 = '''UPDATE dalongtou_music_comment
-                            SET music_comment = \"%s\",
-                            music_comment_star = \"%s\"
-                            WHERE music_id = \"%s\" and music_user_name = \"%s\"'''
-
-        if film is None:
-            print("comment表: music_id找不到，插入comment")
-            self.cursor.execute(sql_insert2, (item['music_id'], item['music_comment_name']))
-            self.connect.commit()
-
-        self.cursor.execute(sql_insert3, (
-            item['music_comment'], item['music_comment_star'], item['music_id'], item['music_comment_name']))
         self.connect.commit()
+        print("commit！！！")
+
+        # # 录入comment表
+        #
+        # self.cursor.execute('''
+        #                      SELECT * FROM dalongtou_music_comment WHERE music_user_name = \"%s\" and music_id = \"%s\"
+        #                     ''', (item['music_comment_name'], item['music_id']))
+        # film = self.cursor.fetchone()
+        #
+        # sql_insert2 = '''insert into dalongtou_music_comment(
+        #                                         music_id,music_user_name)
+        #                                         value (\"%s\",\"%s\")'''
+        #
+        # sql_insert3 = '''UPDATE dalongtou_music_comment
+        #                     SET music_comment = \"%s\",
+        #                     music_comment_star = \"%s\"
+        #                     WHERE music_id = \"%s\" and music_user_name = \"%s\"'''
+        #
+        # if film is None:
+        #     print("comment表: music_id找不到，插入comment")
+        #     self.cursor.execute(sql_insert2, (item['music_id'], item['music_comment_name']))
+        #     self.connect.commit()
+        #
+        # self.cursor.execute(sql_insert3, (
+        #     item['music_comment'], item['music_comment_star'], item['music_id'], item['music_comment_name']))
+        # self.connect.commit()
         pass

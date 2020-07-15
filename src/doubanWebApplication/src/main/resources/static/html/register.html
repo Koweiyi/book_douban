@@ -17,7 +17,9 @@
 <div class="layui-canvs"></div>
 <div class="layui-layout layui-layout-login" style="margin-top: 7%;">
     <h1>
-        <strong>注册新用户</strong>
+        <strong>
+            注册新用户
+        </strong>
     </h1>
     <div class="layui-form layui-form-pane" id="login-form">
         <div class="login-block">
@@ -37,10 +39,11 @@
             <div class="layui-val-icon larry-login">
                 <div class="layui-code-box">
                     <input type="text" id="code" name="code" required layui-verify="reauired" placeholder="验证码" maxlength="4" class="login_txtbx">
+                    <input  class="verifyImg" id="verifyImg" onclick="createCode()">
                 </div>
             </div>
             <div id="login-btn-block">
-                <button id="btnRegister" class="layui-btn" style="width: 100%;" lay-filter="btnRegister">注册</button>
+                <button id="btnRegister" class="layui-btn" style="width: 100%;" >注册</button>
             </div>
             <div id="login-form-register">
                 <span>已有账号：</span>
@@ -65,6 +68,7 @@
         });
     });
 </script>
+<script type="text/javascript" src="/js/logic/register_code.js"></script>
 <script type="text/javascript" src="/js/logic/addUser.js"></script>
 </body>
 </html>

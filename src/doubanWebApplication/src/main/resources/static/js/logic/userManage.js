@@ -50,6 +50,7 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
         if ("reSetPwd" === object.event) {
             let index = layer.open({
                 title:"警告",
+                offset:170,
                 width:200,
                 content:"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您将重置当前用户：" + object.data.uid + "的密码。</br>" +
                     "<span style='color: #ff0000;'><i class='layui-icon layui-icon-tips'></i></span>该操作不可逆，请慎重考虑!",
@@ -62,7 +63,7 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
                             'id': object.data.id
                         },
                         function (data) {
-                            layer.alert(data.content);
+                            layer.msg(data.content);
                             layer.close(index);
                         }
 
@@ -74,15 +75,16 @@ layui.use(['jquery', 'form', 'table', 'layer', 'laypage', 'element'], function (
 
                 $.post('/logic/user/' + object.data.id,{},
                     function (result) {
-                        $('#spanEditUid').html(result.uid);
+                        $('#spanEditUid').attr("placeholder",result.uid);
                         // $('#selectState').options[parseInt(result.state)].selected = true;
 
                         layer.open({
                             type:1,
                             title:"用户权限管理",
                             content: $('#divUserInfo'),
-                            area: ['45%', '57%'],
+                            area: ['40%', '45%'],
                             btn: ["设置", "取消"],
+                            offset:70,
                             btnAlign: "c",
                             yes: function (index, lo) {
                                 $.post('/logic/user/setState',

@@ -33,7 +33,7 @@ public class BookCountServiceImpl implements BookCountService {
 
     @Override
     public int publisherCount() {
-        return mapper.punlisherCount();
+        return mapper.publisherCount();
     }
 
     @Override
@@ -67,12 +67,12 @@ public class BookCountServiceImpl implements BookCountService {
     }
 
     @Override
-    public int bookLikeClunt(String uid) {
+    public int bookLikeCount(String uid) {
         return mapper.bookLikeCount(uid);
     }
 
     @Override
-    public int bookLookedClunt(String uid) {
+    public int bookLookedCount(String uid) {
         return mapper.bookLookedCount(uid);
     }
 }

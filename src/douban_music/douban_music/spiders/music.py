@@ -10,7 +10,9 @@ from urllib import parse
 class MusicSpider(scrapy.Spider):
     name = 'music'
     allowed_domains = ['music.douban.com/tag/']
-    start_urls = ['http://music.douban.com/tag/']
+    start_urls = ['https://music.douban.com/tag/']
+
+    #start_urls = ['http://music.douban.com/tag/']
 
     def parse(self, response):
         # href_list = response.css('a[href]: :attr("href")').re('\?start=.*')
@@ -21,10 +23,10 @@ class MusicSpider(scrapy.Spider):
         # for detail_href in detail_list:
         #     urL = response.urljoin(detail_href)
         #     yield scrapy.Request(url=urL, callback=self.parse_detail)
-        print("come into pares")
+        #print("come into pares")
         a = re.match("https://music.douban.com/tag/.*", response.url)
         b = re.match("https://music.douban.com/subject/.*/", response.url)
-        c = re.match("https://music.douban.com/people/.*", response.url)
+        #c = re.match("https://music.douban.com/people/.*", response.url)
         if response.url == "https://music.douban.com/tag/":
             print("====")
             yield scrapy.Request(url=response.url, callback=self.parse_tags, dont_filter=True)
@@ -38,7 +40,7 @@ class MusicSpider(scrapy.Spider):
         pass
 
     def parse_tags(self, response):
-        print("come into pares_tags")
+        #print("come into pares_tags")
         tagsItem = MusicTagsItem()
         tagsItem['url'] = ''
         tags_list1 = response.xpath('//*[@id="风格"]/div[2]/table/tbody/tr')
@@ -56,7 +58,7 @@ class MusicSpider(scrapy.Spider):
         pass
 
     def parse_table(self, response):
-        print("come into pares_table")
+        #print("come into pares_table")
 
         tableItem = MusicTableItem()
         tableItem['music_url'] = ''
@@ -65,7 +67,7 @@ class MusicSpider(scrapy.Spider):
         for table in table_list:
             tableItem['music_url'] = table.xpath('tr/td[1]/a/@href').extract_first()
             tableItem['music_id'] = str(tableItem['music_url']).split('/')[-2]
-            yield tableItem
+            #yield tableItem
 
         href_list = response.css('a[href]').re('https://music.douban.com/subject/.*/')
         for href in href_list:
@@ -73,14 +75,15 @@ class MusicSpider(scrapy.Spider):
                 urL = href
                 yield scrapy.Request(url=urL, callback=self.parse_detail, dont_filter=True)
 
-        next_page = response.css('li.next a[href]').extract_first()
+        #next_page = response.css('li.next a[href]').extract_first()
+        next_page = response.xpath('//*[@id="subject_list"]/div[22]/span[4]/a/@href').extract_first()
         if next_page is not None:
             urL = "https://music.douban.com" + next_page
             yield scrapy.Request(url=urL, callback=self.parse_table, dont_filter=True)
         pass
 
     def parse_detail(self, response):
-        print("come into detail_table")
+        # print("come into detail_table")
         detailItem = MusicDetailItem()
         detailItem['music_id'] = ''
         detailItem['music_url'] = ''
@@ -138,42 +141,43 @@ class MusicSpider(scrapy.Spider):
         detailItem['music_star3'] = response.xpath('//*[@id="interest_sectl"]/div/span[6]/text()').extract_first()
         detailItem['music_star2'] = response.xpath('//*[@id="interest_sectl"]/div/span[8]/text()').extract_first()
         detailItem['music_star1'] = response.xpath('//*[@id="interest_sectl"]/div/span[10]/text()').extract_first()
+        yield detailItem
 
-        以下是爬取评论信息
-        def star(str):
-            if str == "力荐":
-                return 5
-            if str == "推荐":
-                return 4
-            if str == "还行":
-                return 3
-            if str == "很差":
-                return 1
-            return 2
-
-        comment_list = response.xpath('//*[@id="comments"]/ul/li')
-        if len(comment_list) < 3:
-            a = len(comment_list)
-        else:
-            a = 3
-
-        for i in range(0, a):
-            li = comment_list[i]
-            detailItem['music_comment'] = li.xpath(
-                'div/p/span/text()').extract_first()
-
-            if li.xpath('div/h3/span[2]/span[1]/@title').extract_first() is not None:
-                detailItem['music_comment_star'] = star(li.xpath(
-                    'div/h3/span[2]/span[1]/@title').extract_first())
-
-            detailItem['music_comment_name'] = li.xpath('div/h3/span[2]/a/text()').extract_first()
-            yield detailItem
-
-            if li.xpath(
-                    '/div/h3/span[2]/a/text()').extract_first() != "[已注销]" or None:
-                user_href = li.xpath(
-                    'div/h3/span[2]/a/@href').extract_first()
-                yield scrapy.Request(url=user_href, callback=self.parse_user, dont_filter=True)
+        # 以下是爬取评论信息
+        # def star(str):
+        #     if str == "力荐":
+        #         return 5
+        #     if str == "推荐":
+        #         return 4
+        #     if str == "还行":
+        #         return 3
+        #     if str == "很差":
+        #         return 1
+        #     return 2
+        #
+        # comment_list = response.xpath('//*[@id="comments"]/ul/li')
+        # if len(comment_list) < 3:
+        #     a = len(comment_list)
+        # else:
+        #     a = 3
+        #
+        # for i in range(0, a):
+        #     li = comment_list[i]
+        #     detailItem['music_comment'] = li.xpath(
+        #         'div/p/span/text()').extract_first()
+        #
+        #     if li.xpath('div/h3/span[2]/span[1]/@title').extract_first() is not None:
+        #         detailItem['music_comment_star'] = star(li.xpath(
+        #             'div/h3/span[2]/span[1]/@title').extract_first())
+        #
+        #     detailItem['music_comment_name'] = li.xpath('div/h3/span[2]/a/text()').extract_first()
+        #     yield detailItem
+        #
+        #     if li.xpath(
+        #             '/div/h3/span[2]/a/text()').extract_first() != "[已注销]" or None:
+        #         user_href = li.xpath(
+        #             'div/h3/span[2]/a/@href').extract_first()
+        #         yield scrapy.Request(url=user_href, callback=self.parse_user, dont_filter=True)
 
 
 

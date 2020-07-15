@@ -29,10 +29,11 @@ layui.use(['element', 'layer', 'jquery'], function () {
         var dataid = $(this);
 
         if(user.state != 3 && dataid.attr("data-id") == "10"){
-            layer.open({
-                title: '提示',
-                content: '您还不是管理员用户，无权进入管理员平台！',
-            });
+            // layer.open({
+            //     title: '提示',
+            //     content: '您还不是管理员用户，无权进入管理员平台！',
+            // });
+            layer.msg("您还不是管理员用户，无权进入管理员平台!");
             return;
         } else if ($(".layui-tab-title li[lay-id]").length <= 0) {
             active.tabAdd(dataid.attr("data-url"), dataid.attr("data-id"), dataid.attr("data-title"));

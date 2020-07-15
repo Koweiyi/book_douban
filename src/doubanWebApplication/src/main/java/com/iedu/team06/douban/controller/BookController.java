@@ -22,7 +22,7 @@ public class BookController {
     private BookService bookService;
 
     @Autowired
-    private BookCountService bookCountSeivice;
+    private BookCountService bookCountService;
 
     private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -43,20 +43,20 @@ public class BookController {
     @RequestMapping(value = "/count/scoreCount")
     @ResponseBody
     public List<BookScoreCount> bookScoreCount(){
-        return bookCountSeivice.scoreCount();
+        return bookCountService.scoreCount();
     }
 
     @RequestMapping(value = "/count/priceCount")
     @ResponseBody
     public List<DictElem> priceCount(){
-        return  bookCountSeivice.priceCount();
+        return  bookCountService.priceCount();
     }
 
     @RequestMapping(value = "/count/allBookCount")
     @ResponseBody
     public CountMessage allBookCount(){
         CountMessage countMessage = new CountMessage();
-        countMessage.setCount(bookCountSeivice.allBookCount());
+        countMessage.setCount(bookCountService.allBookCount());
         return countMessage;
     }
 
@@ -64,7 +64,7 @@ public class BookController {
     @ResponseBody
     public CountMessage authorCount(){
         CountMessage countMessage = new CountMessage();
-        countMessage.setCount(bookCountSeivice.authorCount());
+        countMessage.setCount(bookCountService.authorCount());
         return countMessage;
     }
 
@@ -72,7 +72,7 @@ public class BookController {
     @ResponseBody
     public CountMessage publisherCount(){
         CountMessage countMessage = new CountMessage();
-        countMessage.setCount(bookCountSeivice.publisherCount());
+        countMessage.setCount(bookCountService.publisherCount());
         return countMessage;
     }
 
@@ -84,7 +84,7 @@ public class BookController {
             countMessage.setCount(0);
             return countMessage;
         }
-        countMessage.setCount(bookCountSeivice.bookLikeClunt(uid));
+        countMessage.setCount(bookCountService.bookLikeCount(uid));
         return countMessage;
     }
 
@@ -96,38 +96,38 @@ public class BookController {
             countMessage.setCount(0);
             return countMessage;
         }
-        countMessage.setCount(bookCountSeivice.bookLookedClunt(uid));
+        countMessage.setCount(bookCountService.bookLookedCount(uid));
         return countMessage;
     }
 
     @RequestMapping(value = "/count/tagCount")
     @ResponseBody
     public List<ValueNameElem> tagCount(){
-        return bookCountSeivice.tagCount();
+        return bookCountService.tagCount();
     }
 
     @RequestMapping(value = "/count/publisherClassify")
     @ResponseBody
     public List<ValueNameElem> publisherClassify(){
-        return  bookCountSeivice.publisherClassify();
+        return  bookCountService.publisherClassify();
     }
 
     @RequestMapping(value = "/count/dateClassify")
     @ResponseBody
     public List<ValueNameElem> dateClassify(){
-        return bookCountSeivice.dateClassify();
+        return bookCountService.dateClassify();
     }
 
     @RequestMapping(value = "/count/authorClassify")
     @ResponseBody
     public List<ValueNameElem> authorClassify(){
-        return bookCountSeivice.authorClassify();
+        return bookCountService.authorClassify();
     }
 
     @RequestMapping(value = "/count/starClassify")
     @ResponseBody
     public List<ValueNameElem> starClassify(){
-        return bookCountSeivice.starClassify();
+        return bookCountService.starClassify();
     }
 
     @RequestMapping("/{id}")

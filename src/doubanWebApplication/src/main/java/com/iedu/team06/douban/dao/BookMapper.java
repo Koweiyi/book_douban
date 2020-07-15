@@ -82,7 +82,7 @@ public interface BookMapper {
     int countSelectByWhere(@Param("book") Book book);
 
     @Select("SELECT COUNT(DISTINCT(publisher)) FROM books")
-    int punlisherCount();
+    int publisherCount();
 
     @Select("SELECT price as K,count(1) as V\n" +
             "\tFROM books\n" +

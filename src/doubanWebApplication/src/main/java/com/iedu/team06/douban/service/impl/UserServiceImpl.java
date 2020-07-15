@@ -97,4 +97,31 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    @Override
+    public boolean userTest(String uid, String pwd) {
+        User user = mapper.selectByUid(uid);
+        if(user != null){
+            if(user.getPwd().equals(pwd))
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateUser(String uid, String nickName, String pwd) {
+        User user = mapper.selectByUid(uid);
+        if(user != null){
+            if(!"".equals(nickName)){
+                user.setNickName(nickName);
+            }
+            if(!"".equals(pwd)){
+                user.setPwd(pwd);
+            }
+            if(mapper.update(user) == 1)
+                return true;
+        }
+        return false;
+    }
+
+
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.*;
 import java.util.List;
 
 @Controller
@@ -23,14 +24,21 @@ public class UserController {
     private UserService userService;
 
     @PostMapping(value = "/login")
-    public String login(@RequestParam("uid") String uid, @RequestParam("pwd") String pwd, Model model){
+    @ResponseBody
+    public Message login(@RequestParam("uid") String uid, @RequestParam("pwd") String pwd, Model model,HttpSession session, SessionStatus sessionStatus){
 
+//        session.invalidate();
+//        sessionStatus.setComplete();
+        Message m = new Message();
+        m.setError(true);
         User user = userService.login(uid, pwd);
         if (user != null){
             model.addAttribute("LoginUser", user);
-            return "redirect:/html/index.html";
+            m.setError(false);
+//            return "redirect:/html/index.html";
         }
-        return "redirect:/html/login.html";
+//        return "redirect:/html/login.html";
+        return m;
     }
 
     @RequestMapping(value = "/LoginUser")
@@ -120,5 +128,28 @@ public class UserController {
         }
         return message;
     }
+
+    @RequestMapping(value = "/userTest")
+    @ResponseBody
+    public Message userTest(String uid, String pwd){
+        Message message = new Message();
+        message.setError(true);
+        if(userService.userTest(uid, pwd)){
+            message.setError(false);
+        }
+        return message;
+    }
+
+    @RequestMapping(value = "/updateUser")
+    @ResponseBody
+    public Message updateUser(String uid, String nickName, String pwd){
+        Message message = new Message();
+        message.setError(true);
+        if(userService.updateUser(uid, nickName, pwd)){
+            message.setError(false);
+        }
+        return message;
+    }
+
 
 }
